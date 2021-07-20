@@ -33,4 +33,5 @@ Route::group(['middleware'=>['authCheck']], function(){
     Route::get('/referral', [MainController::class, 'referral'])->name('referral');
     Route::get('/loan', [MainController::class, 'loan'])->name('loan');
     Route::get('/new_coupone', [MainController::class, 'newCoupone'])->name('new_coupone');
+    Route::post('/re_invest', [MainController::class, 'reInvest'])->name('re_invest');
 });

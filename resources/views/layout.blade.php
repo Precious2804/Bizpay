@@ -37,8 +37,8 @@
         </div>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown"
-              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{$loggedUserInfo['image']}}"
-                class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
+              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> @if($loggedUserInfo['image'])<img alt="image" src="{{$loggedUserInfo['image']}}"
+                class="user-img-radious-style">@endif @if(!$loggedUserInfo['image']) <img src="{{URL::asset('assets/img/blank-image.png')}}" alt=""> @endif <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello {{$loggedUserInfo['username']}}</div>
               <a href="{{ route('profile') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile
@@ -54,31 +54,31 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}"><span class="logo-name">BizPay</span>
+            <a href="{{ route('dashboard') }}"><span class="logo-name"><img src="{{URL::asset('assets/img/Bizpayglobal_logo.png')}}" style="width: 150px;" alt=""></span>
             </a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
-              <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+            <li class="dropdown">
+              <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-desktop" style="color:green;"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('invest') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Investment</span></a>
+              <a href="{{ route('invest') }}" class="nav-link"><i class="fas fa-wallet" style="color:green;"></i><span>Investment</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('withdraw') }}" class="nav-link"><i class="fas fa-money-check"></i><span>Withdrawal</span></a>
+              <a href="{{ route('withdraw') }}" class="nav-link"><i class="fas fa-money-check" style="color:green;"></i><span>Withdrawal</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('referral') }}" class="nav-link"><i class="fas fa-retweet"></i><span>Referral</span></a>
+              <a href="{{ route('referral') }}" class="nav-link"><i class="fas fa-retweet" style="color:green;"></i><span>Referral</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('loan') }}" class="nav-link"><i class="fas fa-credit-card"></i><span>Loan</span></a>
+              <a href="{{ route('loan') }}" class="nav-link"><i class="fas fa-credit-card" style="color:green;"></i><span>Loan</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('new_coupone') }}" class="nav-link"><i class="fas fa-barcode"></i><span>Get New Coupone</span></a>
+              <a href="{{ route('new_coupone') }}" class="nav-link"><i class="fas fa-barcode" style="color:green;"></i><span>Get New Coupone</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt" style="color:red"></i><span>Logout</span></a>
+              <a href="{{ route('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt" style="color:red"></i><span style="color:red"> Logout</span></a>
             </li>
           </ul>
         </aside>

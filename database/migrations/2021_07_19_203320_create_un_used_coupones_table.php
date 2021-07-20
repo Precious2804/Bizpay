@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCouponesTable extends Migration
+class CreateUnUsedCouponesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateCouponesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coupones', function (Blueprint $table) {
+        Schema::create('un_used_coupones', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique_id');
             $table->uuid('coupone_code');
-            $table->string('user_email')->nullable();
-            $table->string('package');
-            $table->string('amount');
-            $table->string('profit');
-            $table->timestamp('expire_at')->nullable();
-            $table->string('days_left')->nullable();
             $table->string('status');
             $table->timestamps();
         });
@@ -35,6 +29,6 @@ class CreateCouponesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coupones');
+        Schema::dropIfExists('un_used_coupones');
     }
 }

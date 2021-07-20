@@ -123,10 +123,6 @@
                               </div>
                             </div>
                             <div class="row">
-                              <div class="form-group col-md-7 col-12">
-                                <label>Contact Address</label>
-                                <input type="text" class="form-control" value="{{$loggedUserInfo['address']}}" name="address">
-                            </div>
                               <div class="form-group col-md-5 col-12">
                                 <label>Phone</label>
                                 <input type="tel" class="form-control" value="{{$loggedUserInfo['phone']}}" name="phone">

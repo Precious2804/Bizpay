@@ -5,20 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupones extends Model
+class UnUsedCoupones extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'unique_id',
         'coupone_code',
-        'user_email',
-        'package',
-        'amount',
-        'profit',
-        'status',
-        'expire_at',
-        'days_left'
+        'status'
     ];
 
     public $incrementing = false;

@@ -39,11 +39,6 @@
                       <input id="last_name" type="text" class="form-control" name="last_name" value="{{old('last_name')}}" placeholder="Enter Last Name">
                     </div>
                     <div class="form-group col-6">
-                      <label for="last_name">User Name <strong class="text text-danger">*</strong></label>
-                      <input id="last_name" type="text" class="form-control" name="username" value="{{old('username')}}" placeholder="Choose a UserName">
-                      <span class="text-danger">@error('username'){{ $message }}@enderror</span>
-                    </div>
-                    <div class="form-group col-6">
                       <label for="last_name">Phone Number <strong class="text text-danger">*</strong></label>
                       <input id="last_name" type="text" class="form-control" name="phone" value="{{old('phone')}}" placeholder="Choose a UserName">
                       <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
@@ -56,19 +51,7 @@
                     <div class="invalid-feedback">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="">Address</label>
-                    <input type="text" name="address" class="form-control" value="{{old('address')}}" placeholder="Enter your Contact Address">
-                  </div>
                   <div class="row">
-                    <div class="form-group col-6">
-                      <label for="gender">Gender</label>
-                      <select name="gender" id="" class="form-control">
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
-                    </div>
                     <div class="form-group col-6">
                         <label for="date">Date of Birth <strong class="text text-danger">*</strong></label>
                         <input type="date" name="date" class="form-control" value="{{old('date')}}">
@@ -83,7 +66,7 @@
                     </div>
                     <div class="form-group col-6">
                     <label for="">Choose a Package Plan <strong class="text text-danger">*</strong></label>
-                      <select name="package" id="" class="form-control">
+                      <select name="value" id="" class="form-control">
                         <option value="">Select Package Plan</option>
                         @foreach($packages as $item)
                           <option value="{{$item->value}}">{{$item->package}}</option>

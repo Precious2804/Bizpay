@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Coupones;
+use Illuminate\Console\Application;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +26,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function(){
+            Coupones::where('expire_at', '<=', now())->update(['status' => "Expired"]);
+            $coupons = Coupones::all();
+            foreach ($coupons as $coupon) {
+                if($coupon->days_left > 0){
+                    $coupon->days_left = $coupon->days_left - 1;
+                    $coupon->save();
+                } 
+            }            
+        })->daily();
     }
 
     /**

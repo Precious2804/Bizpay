@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExpiredCouponesTable extends Migration
+class CreateLoanCouponesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateExpiredCouponesTable extends Migration
      */
     public function up()
     {
-        Schema::create('expired_coupones', function (Blueprint $table) {
+        Schema::create('loan_coupones', function (Blueprint $table) {
             $table->id();
+            $table->uuid('unique_id');
+            $table->uuid('loan_coupone');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateExpiredCouponesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expired_coupones');
+        Schema::dropIfExists('loan_coupones');
     }
 }

@@ -78,8 +78,13 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
                           <h5 class="font-15">Referral Bonus</h5>
-                          <h2 class="mb-3 font-18">$48,697</h2>
-                          <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+                          @if(!$loggedUserInfo['ref_bonus'])
+                            <h2 class="mb-3 font-18">NILL</h2>
+                          @endif
+                          @if($loggedUserInfo['ref_bonus'])
+                            <h2 class="mb-3 font-18">₦{{$loggedUserInfo['ref_bonus']}}</h2>
+                            <a href="{{route('referral')}}"><button type="button" class="btn btn-block btn-success">Withdraw</button></a>
+                          @endif
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -152,6 +157,18 @@
                     </div>
                     </div>
                   @endif
+                  @if($couponeDetails['status'] == "Payment Completed")
+                      <td>
+                      <div class="badge badge-success">{{$couponeDetails['status']}}</div>
+                      </td>
+                      <td>
+                        <div class="badge badge-success">Successfull</div>
+                      </td>
+                      </tr>
+                    </table>
+                    </div>
+                    </div>
+                  @endif
                 </div>
               </div>
 
@@ -164,27 +181,33 @@
                     <div class="table-responsive">
                       <table class="table table-striped table-md">
                         <tr>
-                          <th scope="col">#</th>
                           <th>Transaction ID</th>
                           <th>Coupone Code</th>
                           <th>Package</th>
                           <th>Amount(₦)</th>
                           <th>Transaction Type</th>
+                          <th>Status</th>
                           <th>Date</th>
                         </tr>
                           @foreach($transact as $item)
                           <tr>
-                            <td>{{$item->id}}</td>
                             <th scope="col">{{$item->trans_id}}</th>
                             <th scope="col">{{$item->coupone_code}}</th>
                             <td>{{$item->package}}</td>
                             <td>₦{{$item->amount}}</td>
                             @if($item->trans_type == "Investment")
-                              <th scope="col" class="text-warning">{{$item->trans_type}}</th>
+                              <th scope="col" class="text-info">{{$item->trans_type}}</th>
                             @endif
                             @if($item->trans_type == "Withdrawal")
                               <th scope="col" class="text-success">{{$item->trans_type}}</th>
                             @endif
+                            @if($item->trans_type == "Loan")
+                              <th scope="col" class="text-success">{{$item->trans_type}}</th>
+                            @endif
+                            @if($item->trans_type == "Ref Bonus")
+                              <th scope="col" class="text-info">{{$item->trans_type}}</th>
+                            @endif
+                            <td>{{$item->status}}</td>
                             <td>{{$item->created_at}}</td>
                           </tr>
                           @endforeach

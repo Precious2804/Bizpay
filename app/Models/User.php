@@ -24,7 +24,9 @@ class User extends Authenticatable
         'phone',
         'date',
         'coupone_code',
+        'package',
         'referral',
+        'ref_bonus',
         'image',
         'password',
     ];

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <!-- auth-register.html  21 Nov 2019 04:05:01 GMT -->
 <head>
   <meta charset="UTF-8">
@@ -16,9 +15,7 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{URL::asset('assets/css/custom.css')}}">
   <link rel='shortcut icon' type='image/x-icon' href="{{URL::asset('assets/img/favicon.ico')}}" />
-</head>
 
-<body>
 
 @yield('content')
 
@@ -37,7 +34,3 @@
     <script src="{{URL::asset('assets/js/page/index.js')}}"></script>
     <script src="{{URL::asset('assets/bundles/apexcharts/apexcharts.min.js')}}"></script>
 
-  </body>
-
-<!-- auth-register.html  21 Nov 2019 04:05:02 GMT -->
-</html>

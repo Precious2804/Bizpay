@@ -19,11 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->date('date');
             $table->string('image')->nullable();
             $table->string('coupone_code');
+            $table->string('package');
             $table->string('referral')->nullable();
+            $table->string('ref_bonus')->nullable();
             $table->string('password');
             $table->timestamps();
         });

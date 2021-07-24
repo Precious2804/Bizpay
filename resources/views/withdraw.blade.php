@@ -3,7 +3,22 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-        <div class="row ">
+        <div class="row">
+          <div class="col-lg-12">
+            @if(Session::get('success'))
+              <div class="alert alert-success">{{Session::get('success')}}</div>
+            @endif
+            @if(Session::get('successPay'))
+              <div class="alert alert-success">{{Session::get('successPay')}}</div>
+            @endif
+            @if(Session::get('failed'))
+              <div class="alert alert-danger">{{Session::get('failed')}}</div>
+            @endif
+            @if(Session::get('alreadyExists'))
+              <div class="alert alert-danger">{{Session::get('alreadyExists')}}</div>
+            @endif
+            @error('coupone_code')<div class=" alert alert-danger">{{ "Sorry! This Operation cannot be performed on this coupon" }}</div>@enderror
+          </div>
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div class="card">
                 <div class="card-statistic-4">
@@ -77,9 +92,26 @@
                     <div class="row ">
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
-                          <h5 class="font-15">Referral Bonus</h5>
-                          <h2 class="mb-3 font-18">$48,697</h2>
-                          <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+                          @if($couponeDetails['status'] == "Active")
+                            <h5 class="font-15">Withdrawal </h5>
+                            <h2 class="mb-3 font-18">Status</h2>
+                            <p class="mb-0">Not Ready</p>
+                          @endif
+                          @if($couponeDetails['status'] == "Expired")
+                            <h5 class="font-15">Withdrawal </h5>
+                            <h2 class="mb-3 font-18">Status</h2>
+                            <p class="mb-0"><button type="submit" data-target="#exampleModalCenter1" data-toggle="modal" style="border-radius: 20px;" class="btn btn-success">Withdraw</button></p>
+                          @endif
+                          @if($couponeDetails['status'] == "Awaiting Payment")
+                            <h5 class="font-15">Received </h5>
+                            <h2 class="mb-3 font-18">Payment?</h2>
+                            <p class="mb-0"><button type="button" class="btn btn-success" data-toggle="modal" style="border-radius: 10px;" data-target="#exampleModalCenter2">Confirm</button></p>
+                          @endif
+                          @if($couponeDetails['status'] == "Payment Completed")
+                            <h5 class="font-15" style="color: green;">Withdrawal </h5>
+                            <h2 class="mb-3 font-18" style="color: green;">Successfull</h2>
+                            <p class="mb-0">Congrats!!</p>
+                          @endif
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -103,21 +135,21 @@
                     <div class="table-responsive">
                       <table class="table table-striped table-md">
                         <tr>
-                          <th scope="col">#</th>
                           <th>Transaction ID</th>
-                          <th>Coupone Code</th>
+                          <th style="color: green;">Coupone Code</th>
                           <th>Package</th>
-                          <th>Amount(₦)</th>
+                          <th style="color: green;">Amount(₦)</th>
+                          <th>Status</th>
                           <th>Date</th>
                         </tr>
                           @foreach($transact as $item)
                           <tr>
                             @if($item->trans_type == "Withdrawal")
-                              <td>{{$item->id}}</td>
                               <th scope="col">{{$item->trans_id}}</th>
-                              <th scope="col">{{$item->coupone_code}}</th>
+                              <th scope="col" style="color: green;">{{$item->coupone_code}}</th>
                               <td>{{$item->package}}</td>
-                              <td>₦{{$item->amount}}</td>
+                              <td style="color: green;">₦{{$item->amount}}</td>
+                              <td>{{$item->status}}</td>
                               <td>{{$item->created_at}}</td>
                             @endif
                           </tr>
@@ -129,4 +161,55 @@
               </div>
         </section>
       </div>
+
+          <!-- Withdrawal Request Toogle -->
+          <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Request For Withdrawal of Investment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you Sure You want to Withdraw your Investment funds now? Click Yes to Confirm
+              </div>
+              <div class="modal-footer bg-whitesmoke br">
+              <form action="{{ route('do_withdraw') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="coupone_code" value="{{$couponeDetails['coupone_code']}}">
+                  <button type="submit" class="btn btn-success">Yes</button>
+                </form>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- Confirm Payment Toogle -->
+          <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Confirm Payment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Have You Received Your Payment yet. P.S: Do not click on confirm if you have not received your payment yet
+              </div>
+              <div class="modal-footer bg-whitesmoke br">
+                <form action="{{ route('confirm_pay') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="coupone_code" value="{{$couponeDetails['coupone_code']}}">
+                  <button type="submit" class="btn btn-success">Confirm</button>
+                </form>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
 @stop

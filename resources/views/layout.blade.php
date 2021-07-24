@@ -6,6 +6,41 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
+        <meta name="keywords" content="investment, payment, earning, make money online, investment platform, how to make money, Bizpay Global"/>
+        <meta name="Classification" content="Investment Platform">
+        <meta name="target" content="Investment Platform">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="GOOGLEBOT" content="index follow"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="bingbot" content="index follow" />
+        <meta name="Slurp" content="index follow" />
+
+        <meta property="fb:app_id" content="">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Bizpay Global"/>
+        <meta property="og:title" content="<?php print @$title;?>"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
+        <meta property="og:url" content="https://bizpayglobal.com/">
+        <meta property="og:image" content="https://bizpayglobal.com/img/favicon.png">
+        <meta property="og:image:secure_url" content="https://bizpayglobal.com/img/favicon.png" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="415" />
+
+        <meta name="twitter:card" content="Bizpay Global"/>
+        <meta name="twitter:url" content="https://bizpayglobal.com/">
+        <meta name="twitter:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
+        <meta name="twitter:image" content="https://bizpayglobal.com/img/favicon.png"/>
+        <meta name="twitter:domain" content="https://bizpayglobal.com/">
+        <meta name="twitter:creator" content="Bizpay Global">
+
+        <meta itemprop="name" content="Bizpay Global">
+        <meta itemprop="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
+        <meta itemprop="image" content="https://bizpayglobal.com/img/favicon.png">
   <title>Bizpay</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{URL::asset('assets/css/app.min.css')}}">
@@ -35,13 +70,14 @@
             </li>
           </ul>
         </div>
+        <a href="{{ route('profile') }}" style="color: green;"><div class="text text-success">{{$loggedUserInfo['first_name']}} {{$loggedUserInfo['last_name']}}</div></a>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> @if($loggedUserInfo['image'])<img alt="image" src="{{$loggedUserInfo['image']}}"
-                class="user-img-radious-style">@endif @if(!$loggedUserInfo['image']) <img src="{{URL::asset('assets/img/blank-image.png')}}" alt=""> @endif <span class="d-sm-none d-lg-inline-block"></span></a>
+                class="user-img-radious-style">@endif @if(!$loggedUserInfo['image']) <img src="{{URL::asset('assets/img/blank-image.png')}}" alt="" style="border-color: green;"> @endif <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-              <div class="dropdown-title">Hello {{$loggedUserInfo['username']}}</div>
-              <a href="{{ route('profile') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile
+              <div class="dropdown-title">Hello {{$loggedUserInfo['first_name']}}</div>
+              <a href="{{ route('profile') }}" class="dropdown-item has-icon text-success"> <i class="far fa-user"></i> Profile
               </a> 
               <div class="dropdown-divider"></div>
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
@@ -88,7 +124,7 @@
 
     <footer class="main-footer">
         <div class="footer-left">
-          <a href="{{ route('welcome') }}">BizPay Investments</a>
+          <a href="{{ route('dashboard') }}">BizPay Global Investments</a>
         </div>
         <div class="footer-right">
         </div>

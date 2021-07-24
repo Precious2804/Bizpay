@@ -27,7 +27,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            Coupones::where('expire_at', '<=', now())->update(['status' => "Expired"]);
+            $status = Coupones::all();
+            // $expiration = Coupones::where('expire_at', '<=', now());
+            foreach ($status as $item) {
+                if($item->status == "Active" && $item->expire_at <= now()){
+                    $item->expire_at->update(['status' => "Expired"]);
+                }
+            }
+            
             $coupons = Coupones::all();
             foreach ($coupons as $coupon) {
                 if($coupon->days_left > 0){
@@ -35,7 +42,7 @@ class Kernel extends ConsoleKernel
                     $coupon->save();
                 } 
             }            
-        })->daily();
+        })->everyMinute();
     }
 
     /**

@@ -3,7 +3,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-        <div class="col-12 col-md-12 col-lg-12">
+          <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                   <div class="card-header">
                     <h4>Running Investment</h4>
@@ -33,12 +33,55 @@
                           <td>₦{{$couponeDetails['profit']}}</td>
                           <td>{{$couponeDetails['created_at']}}</td>
                           <td>{{$couponeDetails['expire_at']}}</td>
+
+                  @if($couponeDetails['status'] == "Active" || $couponeDetails['status'] == "Expired" || $couponeDetails['status'] == "Awaiting Payment")
+                    @if($couponeDetails['status'] == "Active")
+                      <td>
+                        <div class="badge badge-warning">{{$couponeDetails['status']}}</div>
+                      </td>
+                      <td>
+                        <div class="badge badge-danger">Not Ready</div>
+                      </td>
+                    @endif  
                     @if($couponeDetails['status'] == "Expired")
+                      <td>
+                        <div class="badge badge-danger">{{$couponeDetails['status']}}</div>
+                      </td>
+                      <td>
+                        <a href="{{ route('withdraw') }}"><div class="badge badge-success">Withdraw Now</div></a>
+                      </td>
+                    @endif  
+                    @if($couponeDetails['status'] == "Awaiting Payment")
+                      <td>
+                        <div class="badge badge-danger">{{$couponeDetails['status']}}</div>
+                      </td>
+                      <td>
+                        <div class="badge badge-success">Processing..</div>
+                      </td>
+                    @endif  
+                      </tr>
+                    </table>
+                    </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="col-lg-5 col-md-5 col-xl-5 float-right">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <button class="btn btn-block btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Get Coupone</button>
+                          </div>
+                          <div class="col-lg-6">
+                            <button class="btn btn-block btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Re-invest Now</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  @endif
+                  @if($couponeDetails['status'] == "Payment Completed")
                             <td>
-                              <div class="badge badge-danger">{{$couponeDetails['status']}}</div>
+                              <div class="badge badge-success">{{$couponeDetails['status']}}</div>
                             </td>
                             <td>
-                              <a href="{{ route('withdraw') }}"><div class="badge badge-success">Withdraw Now</div></a>
+                              <a href="{{ route('withdraw') }}"><div class="badge badge-success">No Withdrawal</div></a>
                             </td>
                           </tr>
                         </table>
@@ -48,39 +91,18 @@
                       <div class="col-lg-5 col-md-5 col-xl-5 float-right">
                         <div class="row">
                           <div class="col-lg-6">
-                            <a href="{{ route('new_coupone') }}" style="color: white;"><button class="btn btn-block btn-success btn-lg">Get a New Coupone</button></a>
+                            <a href="{{ route('new_coupone') }}" style="color: white;"><button class="btn btn-block btn-success btn-lg">Get Coupone</button></a>
                           </div>
                           <div class="col-lg-6">
                             <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#exampleModal">Re-invest Now</button>                         
                           </div>
+                          <div class="text-danger float-left">@error('coupone_code'){{ "You must have a Coupon Code to Invest" }}@enderror</div>
+                          <div class="text-danger float-left">@error('value'){{ "Please Select a Package Plan" }}@enderror</div>
                         </div>
                       </div>
                     </div>
                   @endif
-                  @if($couponeDetails['status'] == "Active")
-                      <td>
-                      <div class="badge badge-warning">{{$couponeDetails['status']}}</div>
-                      </td>
-                      <td>
-                        <div class="badge badge-danger">Not Ready</div>
-                      </td>
-                      </tr>
-                    </table>
-                    </div>
-                    </div>
-                    <div class="card-footer">
-                      <div class="col-lg-5 col-md-5 col-xl-5 float-right">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <button class="btn btn-block btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Get a New Coupone</button>
-                          </div>
-                          <div class="col-lg-6">
-                            <button class="btn btn-block btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Resubscribe</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  @endif
+                  
                 </div>
               </div>
 
@@ -93,21 +115,21 @@
                     <div class="table-responsive">
                       <table class="table table-striped table-md">
                         <tr>
-                          <th scope="col">#</th>
-                          <th>Transaction ID</th>
+                          <th scope="col">Transaction ID</th>
                           <th>Coupone Code</th>
                           <th>Package</th>
                           <th>Amount(₦)</th>
+                          <th>Status</th>
                           <th>Date</th>
                         </tr>
                           @foreach($transact as $item)
                           <tr>
                             @if($item->trans_type == "Investment")
-                              <td>{{$item->id}}</td>
                               <th scope="col">{{$item->trans_id}}</th>
                               <th scope="col">{{$item->coupone_code}}</th>
                               <td>{{$item->package}}</td>
                               <td>₦{{$item->amount}}</td>
+                              <td>{{$item->status}}</td>
                               <td>{{$item->created_at}}</td>
                             @endif
                           </tr>
@@ -141,7 +163,6 @@
                                       </div>
                                     </div>
                                     <input type="text" class="form-control" placeholder="Input Coupon Code" name="coupone_code">
-                                    <span class="text-danger">@error('coupone_code'){{ $message }}@enderror</span>
                                   </div>
                                 </div>
                                 <div class="form-group">
@@ -158,7 +179,6 @@
                                         <option value="{{$item->value}}">{{$item->package}}</option>
                                       @endforeach
                                     </select>
-                                    <span class="text-danger">@error('package'){{ "You must Select a Package" }}@enderror</span>                                  
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-lg m-t-15 waves-effect">INVEST NOW</button>

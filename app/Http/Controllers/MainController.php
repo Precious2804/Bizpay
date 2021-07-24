@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\AllTransactions;
 use App\Models\Coupones;
+use App\Models\LoanRequests;
 use App\Models\PackagePlans;
+use App\Models\ReferralTable;
+use App\Models\RefWithdraw;
 use App\Models\UnUsedCoupones;
 use App\Models\User;
+use App\Models\WithdrwaRequest;
 use Illuminate\Http\Request;
 use App\Traits\Generics;
 use Carbon\Carbon;
@@ -15,9 +19,40 @@ use Illuminate\Support\Facades\Hash;
 class MainController extends Controller
 {
     use Generics;
+
     //
+    public function about(){
+        $page = 'about';
+        return $this->landingDynamic($page);
+    }
+    public function aboutLoan(){
+        $page = 'about-loan';
+        return $this->landingDynamic($page);
+    }
+    public function howItWorks(){
+        $page = 'how-it-works';
+        return $this->landingDynamic($page);
+    }
+    public function terms(){
+        $page = 'terms';
+        return $this->landingDynamic($page);
+    }
+    public function packages(){
+        $page = 'packages';
+        return $this->landingDynamic($page);
+    }
+    public function contact(){
+        $page = 'contact';
+        return $this->landingDynamic($page);
+    }
+    public function getCoupon(){
+        $page = 'get-coupon';
+        return $this->landingDynamic($page);
+    }
+
     public function login(){
-        return view('auth.login');
+        $page = 'auth.login';
+        return $this->landingDynamic($page);
     } 
         //checks the users inputs and perform sign in
         public function doLogin(Request $req){
@@ -41,59 +76,98 @@ class MainController extends Controller
             }
     
         }
-    public function register(){
+    public function register(Request $req){
+        $referID = ['referID'=>$req->referral];
         $packages = ['packages'=>PackagePlans::all()];
-        return view('auth.register', $packages);
+        return view('auth.register', $packages)->with($referID);
     }
     public function doRegister(Request $req){
+        $req->validate([
+            'email'=>'required|email|unique:users',
+            'phone'=>'required|string|unique:users',
+            'date'=>'required',
+            'coupone_code'=>'required|string',
+            'value'=>'required',
+            'password'=>'required|confirmed'
+        ]);
+
         $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
         if(!$selectCoupone){
-            return back()->with('fail', "Coupone is not Recognized, Kindly Re-confirm Coupone Code to Register");
+            return back()->with('fail', "Sorry! This Coupon is not Recognized, Kindly Re-confirm Coupone Code to Register");
         } 
         else{
-            $expDate = explode('-', $req->date);
-            $year = $expDate[0];
-            $expCurr = explode('-', Carbon::now());
-            $currYear = $expCurr[0];
-            $age = $currYear - $year;
-
-            if($age < 18){
-                return back()->with('ageFail', "You must be Above 18 Years of Age to Register");
+            if($selectCoupone->status == "Used"){
+                return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
             } 
             else{
-                $req->validate([
-                    'email'=>'required|email|unique:users',
-                    'phone'=>'required|string',
-                    'date'=>'required',
-                    'coupone_code'=>'required|string',
-                    'value'=>'required',
-                    'password'=>'required|confirmed'
-                ]);
-                $unique_id = $this->generateRand();
-                $email = $req->email;
-                $result = User::create([
-                    'unique_id'=>$unique_id,
-                    'first_name'=>$req->first_name,
-                    'last_name'=>$req->last_name,
-                    'email'=>$req->email,
-                    'phone'=>$req->phone,
-                    'date'=>$req->date,
-                    'coupone_code'=>$req->coupone_code,
-                    'referral'=>$req->referral,
-                    'password'=>Hash::make($req->password)
-                ]);
-                if($result){
-                    $this->usingAcoupone($email, $req);
-                    
-                    return back()->with('success', "Successfull Registration");
+                $calAge = $this->calculateAge($req); 
+                if($calAge){
+                    return $this->calculateAge($req); 
                 }
-            }
-            
+                else{
+                    $unique_id = $this->generateRand();
+                    $email = $req->email;
+                    $getPackage = PackagePlans::where('value', $req->value)->first();
+                    $packageName = $getPackage->package;
+                    $result = User::create([
+                        'unique_id'=>$unique_id,
+                        'first_name'=>$req->first_name,
+                        'last_name'=>$req->last_name,
+                        'email'=>$req->email,
+                        'phone'=>$req->phone,
+                        'date'=>$req->date,
+                        'coupone_code'=>$req->coupone_code,
+                        'package'=>$packageName,
+                        'password'=>Hash::make($req->password)
+                    ]);
+                    if($result){
+                        $this->usingAcoupone($email, $req);
+                        $registeringUser = User::where('email', $req->email)->first();
+                        //implementing the referral grants id a user uses a referral code
+                        if($req->referral){
+                            $userRef = User::where('unique_id', $req->referral)->first();//get the user with the referral code used
+
+                            //get the user's current package and the ref_bonus for the current package
+                            $package = $userRef['package'];
+                            $ref_package = PackagePlans::where('package', $package)->first();
+                            $ref_bonus = $ref_package['ref_bonus'];
+
+                            //calculate the referral user new referral bonus and update referral user details
+                            $userCurrentRef = $userRef['ref_bonus'];
+                            $newRefBonus = $userCurrentRef + $ref_bonus;
+                            $userRef->update([
+                                'ref_bonus'=>$newRefBonus
+                            ]);
+
+                            //referral user details
+                            $firstName = $userRef['first_name'];
+                            $lastName = $userRef['last_name'];
+                            $email = $userRef['email'];
+                            $registeringUser->update([
+                                'referral'=>$firstName." ".$lastName,
+                            ]);
+                            ReferralTable::create([
+                                'unique_id'=>$this->generateRand(),
+                                'referrer'=>$email,
+                                'refered'=>$req->email,
+                                'ref_id'=>$req->referral
+                            ]);
+                            return back()->with('success', "Successfull Registration");
+                        } else{
+                            $registeringUser->update([
+                                'referral'=>"None",
+                                'ref_bonus'=>"0"
+                            ]);
+                            return back()->with('success', "Successfull Registration");
+                        }
+                    }
+                }
+            }    
         }
         
     }
 
-        //logout method
+    //logout method
     public function logout(){
         if (session()->has('loggedUser')){
             session()->pull('loggedUser');
@@ -122,11 +196,9 @@ class MainController extends Controller
         {
             //find logged in user
             $data = User::find(session('loggedUser'));
-    
             $req->validate([
                 'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2048'
                 ]);
-            
                 if($req->file()) {
                     $name = time().'_'.$req->image->getClientOriginalName();
                     $filePath = $req->file('image')->storeAs('uploads', $name, 'public');
@@ -134,30 +206,24 @@ class MainController extends Controller
                     $data->image = '/storage/' . $filePath;
                     $data->save();
                 }
-        
                 return back()->with('successPic','Profile Picture Uploaded Successfully');
-            
         }
 
     public function dashboard(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        $coupone = ['couponeDetails'=>Coupones::where('user_email', session('loggedUser'))->first()];
-        $transact = ['transact'=>AllTransactions::where('email', session('loggedUser'))->get()];        
-        return view('dashboard', $user)->with($coupone)
-                                        ->with($transact);
+        $page = 'dashboard';
+        return $this->dynamicPage($page);
     }
 
     public function invest(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        $coupone = ['couponeDetails'=>Coupones::where('user_email', session('loggedUser'))->first()];
-        $transact = ['transact'=>AllTransactions::where('email', session('loggedUser'))->get()];
-        $packages = ['packages'=>PackagePlans::all()];
-        return view('invest', $user)->with($coupone)
-                                    ->with($transact)
-                                    ->with($packages);
+        $page = 'invest';
+        return $this->dynamicPage($page);
     }
 
     public function reInvest(Request $req){
+        $req->validate([
+            'coupone_code'=>'required|string',
+            'value'=>'required'
+        ]);
         $user = User::where('email', '=', session('loggedUser'))->first();
         $email = $user->email;
         $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
@@ -165,64 +231,224 @@ class MainController extends Controller
             return back()->with('fail', "Coupone is not Recognized, Kindly Re-confirm Coupone Code");
         }
         else{
-            $req->validate([
-                'coupone_code'=>'required|string',
-                'value'=>'required'
+            if($selectCoupone->status == "Used"){
+                return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
+            }
+            else{
+                $getPackage = PackagePlans::where('value', $req->value)->first();
+                $packageName = $getPackage->package;
+                $expected = $getPackage->min_withdraw;
+                $expire = Carbon::now()->addDays(30);
+                $amount = $req->value;
+                $seclectEmailCoup = Coupones::where('user_email', $email)->first();
+                $user->update([
+                    'coupone_code'=>$req->coupone_code
+                ]);
+                $seclectEmailCoup->update([
+                    'unique_id'=> $this->generateRand(),
+                    'coupone_code'=>$req->coupone_code,
+                    'user_email'=>$email,
+                    'status'=>"Active",
+                    'package'=>$packageName,
+                    'amount'=>$amount,
+                    'profit'=>$expected,
+                    'expire_at'=>$expire,
+                    'days_left'=>30,
+                ]);
+                $unused = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
+                $unused->update([
+                'status'=>"Used"
+                ]);
+                $this->updateCouponeTrans($req, $email, $packageName, $amount);
+                return back()->with('success', "Re-investment was successful");
+            }
+        }
+    }
+    public function withdraw(){
+        $page = 'withdraw';
+        return $this->dynamicPage($page);
+    }
+
+    public function doWithdraw(Request $req){
+        $req->validate([
+            'coupone_code'=>'unique:withdrwa_requests'
+        ]);
+        $email = session('loggedUser');
+        $user = User::where('email', $email)->first();
+        $phone = $user['phone'];
+        $coupone = $req->coupone_code;
+        $couponeDetails = Coupones::where('coupone_code', $coupone)->first();
+        $coupPackage = $couponeDetails['package'];
+        $coupAmount = $couponeDetails['amount'];
+        $coupProfit = $couponeDetails['profit'];
+        $coupStatus = $couponeDetails['status'];
+        if($coupStatus == "Expired"){
+            $result = WithdrwaRequest::create([
+                'unique_id'=>$this->generateRand(),
+                'email'=>$email,
+                'phone'=>$phone,
+                'coupone_code'=>$coupone,
+                'package'=>$coupPackage,
+                'amount'=>$coupAmount,
+                'profit'=>$coupProfit,
+                'status'=>"Awaiting Payment"
             ]);
-            $getPackage = PackagePlans::where('value', $req->value)->first();
-            $packageName = $getPackage->package;
-            $expected = $getPackage->min_withdraw;
-            $expire = Carbon::now()->addDays(30);
-            $amount = $req->amount;
-            $seclectEmailCoup = Coupones::where('user_email', $email)->first();
-            $user->update([
-                'coupone_code'=>$req->coupone_code
+            if($result){
+                $couponeDetails->update([
+                    'status'=>"Awaiting Payment"
+                ]);
+                return back()->with("success", "Your Withdrawal Request was received successfully. Please hold on for a while, as we Process your payment. Thank you");
+            }
+        } 
+        elseif($coupStatus != "Expired"){
+            return back()->with('failed', "Sorry! You cannot Withdraw this Coupon Investment, Thank You");
+        }
+    }
+
+    public function confirmPay(Request $req){
+        $selectTrans = AllTransactions::where('coupone_code', $req->coupone_code)
+                                        ->where('trans_type', "Withdrawal")->first();
+        if($selectTrans){
+            return back()->with('alreadyExists', "Sorry, This coupon has already been withdrawn and paid for");
+        }
+        $selectCoup = Coupones::where('coupone_code', $req->coupone_code)->first();
+        $selectWithdraw = WithdrwaRequest::where('coupone_code', $req->coupone_code)->first();
+
+        $result = $selectCoup->update([
+            'status'=>"Payment Completed"
+        ]);
+        if($result){
+            $selectWithdraw->update([
+                'status'=>"Payment Completed"
             ]);
-            $seclectEmailCoup->update([
-                'unique_id'=> $this->generateRand(),
-                'coupone_code'=>$req->coupone_code,
-                'user_email'=>$email,
-                'package'=>$packageName,
-                'amount'=>$req->value,
-                'profit'=>$expected,
-                'expire_at'=>$expire,
-                'days_left'=>30,
-                'status'=>"Active"
-            ]);
-            $unused = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
-            $unused->update([
-            'status'=>"Used"
-            ]);
+            $email = session('loggedUser');
+            $trans_type = "Withdrawal";
+            $packageName = $selectCoup['package'];
+            $amount = $selectCoup['profit'];
+            $coupone = $req->coupone_code;
             AllTransactions::create([
                 'trans_id'=>$this->generateRand(),
                 'email'=>$email,
-                'coupone_code'=>$req->coupone_code,
-                'trans_type'=> "Investment",
+                'coupone_code'=>$coupone,
+                'trans_type'=> $trans_type,
                 'package'=>$packageName,
-                'amount'=>$amount
+                'amount'=>$amount,
+                'status'=>"Withdrawal Completed"
             ]);
-            return back()->with('success', "Re-investment was successful");
-        }
+            return back()->with('successPay', "Payment has been Completed and Confirmed Successfully");
 
+        }
     }
-    public function withdraw(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        $coupone = ['couponeDetails'=>Coupones::where('user_email', session('loggedUser'))->first()];
-        $transact = ['transact'=>AllTransactions::where('email', session('loggedUser'))->get()];
-        return view('withdraw', $user)->with($coupone)
-                                        ->with($transact);
-    }
+
     public function referral(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        return view('referral', $user);
+        $page = 'referral';
+        return $this->dynamicPage($page);
     }
+    public function withdrawBonus(Request $req){
+        $req->validate([
+            'ref_id'=>'unique:ref_withdraws'
+        ]);
+        $user = User::where('email', session('loggedUser'))->first();
+        $phone = $user['phone'];
+        $bonus_amount = $req->bonus_amount;
+
+        if($bonus_amount < 10000){
+            return back()->with('fail', "You are currently not eligible to Withdraw your referral bonus");
+        }
+        else{
+            $result = RefWithdraw::create([
+                'unique_id'=>$this->generateRand(),
+                'ref_id'=>$req->ref_id,
+                'email'=>session('loggedUser'),
+                'phone'=>$phone,
+                'bonus_amount'=>$bonus_amount,
+                'status'=>"Awaiting Response"
+            ]);
+            if($result){
+                return back()->with('success', "Your Request to withdraw your bonus has been received Successfully");
+            }
+        }
+    }
+    public function confirmRef(Request $req){
+        $user = User::where('unique_id', $req->ref_id)->first();
+        $selectRefWith = RefWithdraw::where('ref_id', $req->ref_id)->first();
+        if($selectRefWith){
+            $selectRefWith->delete();
+            AllTransactions::create([
+                'trans_id'=>$this->generateRand(),
+                'coupone_code'=>"Ref Bonus",
+                'package'=>"Ref Boonus",
+                'email'=>session('loggedUser'),
+                'trans_type'=>"Ref Bonus",
+                'amount'=>$req->bonus_amount,
+                'status'=>"Payment Completed"
+            ]);
+            $user->update([
+                'ref_bonus'=>"0"
+            ]);
+
+            return back()->with('successConfirm', "Referral Bonus has been confirmed as Received");
+        }
+    }
+
     public function loan(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        return view('loan', $user);
+        $page = 'loan';
+        return $this->dynamicPage($page);
+    }
+
+    public function getLoan(Request $req){
+        $checkEmail = User::where('email', '=', $req->email)->first(); 
+            $req->validate([
+                'email'=>'required|email',
+                'fname'=>'required|string',
+                'lname'=>'required|string',
+                'phone'=>'required|max:12',
+                'duration'=>'required',
+                'amount'=>'required',
+                'reasons'=>'required',
+                'document' => 'required|mimes:png,jpg,jpeg,gif,svg|max:4096'
+            ]);
+            if(!$checkEmail){
+                return back()->with('invalid', "Your Email Address is not Registered on Bizpay, please create an Account first on our Platform to Use this feature, Thank You");
+            } 
+            else {
+            //if request has a file type
+            if($req->file()){
+                $name = time().'_'.$req->document->getClientOriginalName();
+                $filePath = $req->file('document')->storeAs('uploads', $name, 'public');
+    
+                $loan_coupone = $this->generateId();
+                //creates the message
+                $result = LoanRequests::create([
+                    'loan_id'=>$this->generateRand(),
+                    'loan_coupone'=>$loan_coupone,
+                    'email'=>$req->email,
+                    'fname'=>$req->fname,
+                    'lname'=>$req->lname,
+                    'phone'=>$req->phone,
+                    'duration'=>$req->duration,
+                    'amount'=>$req->amount,
+                    'reasons'=>$req->reasons,
+                    'document'=>$filePath,
+                    'status'=>"Awaiting Approval"
+                ]);
+                if($result){
+                    AllTransactions::create([
+                        'trans_id'=>$this->generateRand(),
+                        'coupone_code'=>$loan_coupone,
+                        'package'=>"Loan Package",
+                        'email'=>$req->email,
+                        'trans_type'=>"Loan",
+                        'amount'=>$req->amount,
+                        'status'=>"Awaiting Approval"
+                    ]);
+                    return back()->with('success', "Your Loan Request has been Sent and is Awaiting Confirmation");
+                }
+            }
+        }
     }
     public function newCoupone(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        $coupone = ['couponeDetails'=>Coupones::where('email', session('loggedUser'))->first()];
-        return view('new_coupone', $user)->with($coupone);
+        $page = 'new_coupone';
+        return $this->dynamicPage($page);
     }
 }

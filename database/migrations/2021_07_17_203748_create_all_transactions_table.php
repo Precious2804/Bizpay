@@ -21,6 +21,7 @@ class CreateAllTransactionsTable extends Migration
             $table->string('email');
             $table->string('trans_type');
             $table->string('amount');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -15,7 +15,8 @@ class AllTransactions extends Model
         'coupone_code',
         'package',
         'trans_type',
-        'amount'
+        'amount',
+        'status'
     ];
 
     public $incrementing = false;

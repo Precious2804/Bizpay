@@ -46,14 +46,6 @@
                     <div class="py-4">
                       <p class="clearfix">
                         <span class="float-left">
-                          Username
-                        </span>
-                        <span class="float-right text-muted">
-                          {{$loggedUserInfo['username']}}
-                        </span>
-                      </p>
-                      <p class="clearfix">
-                        <span class="float-left">
                           Birthday
                         </span>
                         <span class="float-right text-muted">
@@ -78,18 +70,10 @@
                       </p>
                       <p class="clearfix">
                         <span class="float-left">
-                          Gender
-                        </span>
-                        <span class="float-right text-muted">
-                            {{$loggedUserInfo['gender']}}
-                        </span>
-                      </p>
-                      <p class="clearfix">
-                        <span class="float-left">
                           Refered By:
                         </span>
                         <span class="float-right text-muted">
-                          <a href="#">@johndeo</a>
+                          {{$loggedUserInfo['referral']}}
                         </span>
                       </p>
                     </div>

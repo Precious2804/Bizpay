@@ -1,0 +1,1543 @@
+@media only screen and (max-width: 767px) {
+  /*----- Default CSS -----*/
+  body {
+    font-size: 15px;
+  }
+  .ptb-100 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .pt-100 {
+    padding-top: 50px;
+  }
+  .pb-70 {
+    padding-bottom: 20px;
+  }
+  .pb-100 {
+    padding-bottom: 50px;
+  }
+  .mb-100 {
+    margin-bottom: 0;
+  }
+  .section-title {
+    margin-bottom: 30px;
+  }
+  .section-title h2 {
+    font-size: 30px;
+  }
+  .container {
+    max-width: 540px;
+  }
+  .container-fluid {
+    max-width: 540px;
+  }
+  /*----- Home Demo One CSS -----*/
+  /*-- Header --*/
+  .header-area {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd45;
+  }
+  .header-area .left {
+    margin-bottom: 10px;
+  }
+  .header-area .left ul li {
+    margin-right: 0;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .header-area .left ul li:last-child {
+    margin-bottom: 0;
+  }
+  .header-area .right {
+    text-align: center;
+  }
+  /*-- Navbar --*/
+  .side-nav {
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -webkit-box-shadow: 0px 0px 15px 0px #dddddd45;
+            box-shadow: 0px 0px 15px 0px #dddddd45;
+  }
+  .side-nav .consultant-btn {
+    padding: 10px 18px;
+  }
+  /*-- Banner --*/
+  .banner-area {
+    padding-top: 190px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  .banner-area:before {
+    background: #000;
+    opacity: .80;
+  }
+  .banner-area .banner-shape img {
+    display: none;
+  }
+  .banner-item {
+    height: 100%;
+  }
+  .banner-content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+  }
+  .banner-content h1 {
+    font-size: 30px;
+  }
+  .banner-content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .banner-slider-img {
+    position: relative;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    max-width: 255px;
+  }
+  .banner-slider-img.two {
+    max-width: 180px;
+  }
+  .banner-slider-img.three {
+    max-width: 180px;
+  }
+  /*-- About --*/
+  .about-area .about-shape img {
+    position: absolute;
+  }
+  .about-area .about-shape img:nth-child(1) {
+    top: 100px;
+    left: 0;
+  }
+  .about-area .about-shape img:nth-child(2) {
+    left: 40px;
+    top: 140px;
+    -webkit-animation: about-ani-two 15s linear infinite;
+            animation: about-ani-two 15s linear infinite;
+  }
+  .about-area .about-shape img:nth-child(3) {
+    top: 100px;
+    left: 30px;
+    max-width: 210px;
+    -webkit-animation: about-ani-one 5s linear infinite;
+            animation: about-ani-one 5s linear infinite;
+  }
+  .about-area .left-padding {
+    padding-left: 15px;
+  }
+  .about-area .about-img {
+    margin-bottom: 30px;
+  }
+  .about-area .about-img .one {
+    text-align: center;
+  }
+  .about-area .about-img .one img:nth-child(1) {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area .about-img .one img:nth-child(2) {
+    display: none;
+  }
+  .about-area .about-img .three {
+    margin-bottom: 30px;
+  }
+  .about-area .about-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .about-area .about-content .section-title {
+    text-align: center;
+  }
+  .about-area .about-content .middle span {
+    font-size: 16px;
+  }
+  .about-area .about-content .bottom {
+    margin-bottom: 30px;
+  }
+  .about-area .about-content .bottom ul li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-left: 0;
+  }
+  .about-area .about-content .bottom ul li:last-child {
+    margin-bottom: 0;
+  }
+  .about-area .about-content .bottom ul li i {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .about-area .about-content .years {
+    left: 0;
+  }
+  .about-area .about-content .years ul li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about-area .about-content .years ul li:nth-child(2) {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about-area .about-content .years ul li .years-inner {
+    padding: 18px 40px 20px 105px;
+    text-align: left;
+    margin-bottom: 35px;
+    max-width: 385px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area .about-content .years ul li .years-inner span {
+    font-size: 60px;
+    left: 20px;
+  }
+  .about-area .about-content .years ul li .years-inner h4 {
+    font-size: 30px;
+  }
+  .about-area .about-content .years ul li .years-inner i {
+    opacity: .10;
+  }
+  .about-area .about-content .years ul li .years-inner img {
+    display: none;
+  }
+  /*-- Services --*/
+  .services-item {
+    padding: 55px 15px 30px 15px;
+    text-align: center;
+  }
+  .services-item .icon {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+  .services-item h3 {
+    font-size: 22px;
+  }
+  /*-- Works --*/
+  .works-item h3 {
+    font-size: 22px;
+  }
+  /*-- Book --*/
+  .book-area .book-content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .book-area .book-content h2 {
+    font-size: 30px;
+  }
+  .book-area .book-content p {
+    font-size: 22px;
+  }
+  /*-- Touch --*/
+  .touch-area .section-title {
+    text-align: center;
+  }
+  /*-- Team --*/
+  .team-area .owl-prev {
+    display: none !important;
+  }
+  .team-area .owl-next {
+    display: none !important;
+  }
+  .team-item {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .team-item .top ul {
+    top: unset;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    text-align: center;
+  }
+  .team-item .top ul li {
+    display: inline-block;
+  }
+  /*-- Plan --*/
+  .plan-area {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+  .plan-area:before {
+    width: 0%;
+  }
+  .plan-area .plan-content {
+    padding: 20px 15px 30px 15px;
+    max-width: 100%;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-area .plan-content .section-title {
+    text-align: center;
+  }
+  .plan-area .plan-content .section-title h2 {
+    max-width: 100%;
+  }
+  .plan-area .plan-content .skill-wrap {
+    text-align: left;
+  }
+  .plan-area .plan-content .skill-bar span {
+    display: none;
+  }
+  /*-- FAQ --*/
+  .faq-area .section-title {
+    text-align: center;
+  }
+  .faq-area .faq-img img:nth-child(2) {
+    display: none;
+  }
+  .faq-item .accordion p {
+    padding: 20px 20px 20px 25px;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area {
+    padding-bottom: 50px;
+  }
+  .testimonials-area .section-title {
+    text-align: center;
+  }
+  .testimonials-area .testimonials-item {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .testimonials-area .testimonials-item img {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .testimonials-area .testimonials-item .inner {
+    padding-left: 0;
+  }
+  .testimonials-area .testimonials-item .inner h2 {
+    font-size: 22px;
+  }
+  .testimonials-area .testimonials-item .inner h3 {
+    font-size: 22px;
+  }
+  .testimonials-area .testimonials-item .inner i {
+    display: none;
+  }
+  .testimonials-area .owl-theme .owl-nav {
+    margin-top: 0;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  /*-- Blog --*/
+  .blog-item {
+    text-align: center;
+  }
+  .blog-item .bottom {
+    padding: 20px 15px 25px;
+  }
+  .blog-item .bottom ul li {
+    margin-right: 5px;
+  }
+  .blog-item .bottom h3 {
+    font-size: 22px;
+  }
+  /*-- Footer --*/
+  .footer-item h3 {
+    font-size: 22px;
+  }
+  /*----- End Home Demo One CSS -----*/
+  /*----- Home Demo Two CSS -----*/
+  /*-- Banner --*/
+  .banner-area-two .banner-item .banner-content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+  .banner-area-two .banner-item .banner-content h1 {
+    font-size: 40px;
+  }
+  .banner-area-two .owl-prev {
+    top: 90%;
+  }
+  .banner-area-two .owl-next {
+    top: 90%;
+  }
+  /*-- About --*/
+  .about-area-two .about-content {
+    text-align: center;
+  }
+  .about-area-two .about-content .section-title {
+    text-align: center;
+  }
+  .about-area-two .about-content ul li {
+    text-align: left;
+  }
+  .about-area-two .about-content ul li h3 {
+    font-size: 22px;
+  }
+  .about-area-two .about-content .common-btn {
+    margin-top: 35px;
+  }
+  /*-- Projects --*/
+  .projects-item .inner {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .projects-item .inner h3 {
+    font-size: 22px;
+  }
+  /*-- Services Two --*/
+  .services-item-two {
+    text-align: center;
+  }
+  .services-item-two .bottom {
+    padding: 20px 15px 25px;
+  }
+  .services-item-two .bottom h3 {
+    font-size: 22px;
+  }
+  /*-- Projects Two --*/
+  .projects-item-two {
+    padding: 30px 15px 30px;
+    text-align: center;
+  }
+  .projects-item-two h3 {
+    font-size: 22px;
+  }
+  /*-- Counter --*/
+  .counter-wrap {
+    padding: 30px 15px 0px;
+  }
+  .counter-item:before {
+    display: none;
+  }
+  .counter-item i {
+    font-size: 50px;
+    line-height: 50px;
+  }
+  .counter-item h3 {
+    font-size: 35px;
+  }
+  .counter-item p {
+    font-size: 16px;
+  }
+  /*-- Video --*/
+  .video-area {
+    height: 450px;
+  }
+  .video-area .video-item .video-wrap {
+    margin-left: 0;
+  }
+  .video-area .video-item span {
+    font-size: 25px;
+  }
+  /*-- Works --*/
+  .works-area-two .works-img img:nth-child(1) {
+    display: none;
+  }
+  .works-area-two .works-img img:nth-child(2) {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    margin-bottom: 30px;
+    margin-top: -10px;
+  }
+  .works-area-two .works-content {
+    text-align: center;
+  }
+  .works-area-two .works-content .section-title.two {
+    text-align: center;
+  }
+  .works-area-two .works-content ul li {
+    text-align: left;
+  }
+  .works-area-two .works-content ul li h3 {
+    font-size: 22px;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area-two .testimonials-item h2 {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .testimonials-area-two .owl-prev {
+    top: 90%;
+    left: 0;
+  }
+  .testimonials-area-two .owl-next {
+    top: 90%;
+    right: 0;
+  }
+  /*----- End Home Demo Two CSS -----*/
+  /*----- Home Demo Three CSS -----*/
+  /*-- Navbar --*/
+  .side-nav .navbar-form .form-control {
+    height: 25px;
+  }
+  /*-- Banner --*/
+  .banner-area-three {
+    height: 100%;
+    padding-top: 180px;
+    padding-bottom: 90px;
+    text-align: center;
+  }
+  .banner-area-three .banner-shape {
+    left: -30px;
+  }
+  .banner-area-three .banner-content {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-three .banner-slider-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+  }
+  /*-- Provide --*/
+  .provide-area .nav li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  .provide-area .nav li:last-child {
+    margin-bottom: 0;
+  }
+  .provide-area .tab-content {
+    text-align: center;
+  }
+  .provide-area .tab-content .provide-left h2 {
+    font-size: 30px;
+  }
+  .provide-area .tab-content .provide-left ul li {
+    padding-left: 0;
+  }
+  .provide-area .tab-content .provide-left ul li i {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 10px;
+  }
+  .provide-area .tab-content .provide-left ul li h3 {
+    font-size: 22px;
+  }
+  /*-- Features --*/
+  .features-area .projects-item-two.bottom-gap-top {
+    margin-top: 0;
+  }
+  .features-area .projects-item-two.bottom-gap-bottom {
+    margin-top: 0;
+  }
+  /*-- Projects --*/
+  .projects-area-three .section-title.three {
+    text-align: center;
+  }
+  .projects-area-three .container-fluid {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .projects-area-three .owl-theme .owl-nav {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 30px;
+  }
+  .projects-item-three {
+    text-align: center;
+  }
+  .projects-item-three .bottom h3 {
+    font-size: 22px;
+  }
+  /*-- Touch --*/
+  .touch-area.three .section-title.three {
+    padding-left: 0;
+  }
+  .touch-area.three .touch-content {
+    margin-bottom: 30px;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area-three .testimonials-item .top h2 {
+    line-height: 1.6;
+  }
+  .testimonials-area-three .owl-prev {
+    display: none !important;
+  }
+  .testimonials-area-three .owl-next {
+    display: none !important;
+  }
+  /*----- End Home Demo Three CSS -----*/
+  /*----- About CSS -----*/
+  .page-title-area {
+    height: 400px;
+  }
+  .page-title-area .title-content {
+    margin-top: 95px;
+  }
+  .page-title-area .title-content h2 {
+    font-size: 35px;
+  }
+  /*----- End About CSS -----*/
+  /*----- Services CSS -----*/
+  .pagination-area ul li a {
+    width: 40px;
+  }
+  /*----- End Services CSS -----*/
+  /*----- Service details CSS -----*/
+  .service-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-img {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-img h2 {
+    font-size: 30px;
+  }
+  .service-details-area .details-item .details-business {
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-business h3 {
+    font-size: 22px;
+  }
+  .service-details-area .details-item .details-faq .section-title {
+    text-align: center;
+  }
+  .widget-area .widget-item {
+    padding: 30px 15px 30px;
+  }
+  .widget-area .widget-item h3 {
+    font-size: 22px;
+  }
+  .widget-area .consultation .inner h3 {
+    font-size: 25px;
+  }
+  /*----- End Service details CSS -----*/
+  /*----- Project details CSS -----*/
+  .project-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .project-details-area .details-item .details-img {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .project-details-area .details-item .details-img h2 {
+    font-size: 30px;
+  }
+  .project-details-area .details-item .details-client {
+    margin-bottom: 30px;
+  }
+  .project-details-area .details-item .details-client h3 {
+    font-size: 22px;
+  }
+  .project-details-area .details-item .details-related {
+    text-align: center;
+  }
+  .project-details-area .details-item .details-related h3 {
+    font-size: 22px;
+  }
+  /*----- End Project details CSS -----*/
+  /*----- Blog details CSS -----*/
+  .blog-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .blog-details-area .details-item .details-img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-img h2 {
+    font-size: 30px;
+  }
+  .blog-details-area .details-item .details-quote {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-quote blockquote {
+    padding: 30px 15px 30px;
+  }
+  .blog-details-area .details-item .details-quote blockquote h3 {
+    font-size: 17px;
+  }
+  .blog-details-area .details-item .details-quote blockquote i {
+    font-size: 40px;
+    bottom: 8px;
+    right: 25px;
+  }
+  .blog-details-area .details-item .details-grow {
+    margin-bottom: 30px;
+  }
+  .blog-details-area .details-item .details-grow h3 {
+    font-size: 22px;
+  }
+  .blog-details-area .details-item .details-form {
+    padding: 30px 15px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-form h3 {
+    font-size: 22px;
+  }
+  .blog-details-area .details-item .details-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .blog-details-area .details-item .details-comment h3 {
+    font-size: 22px;
+  }
+  .blog-details-area .details-item .details-comment ul li {
+    padding-left: 105px;
+  }
+  .blog-details-area .details-item .details-comment ul li:nth-child(2) {
+    margin-left: 0;
+  }
+  .blog-details-area .details-item .details-comment ul li h4 {
+    font-size: 19px;
+  }
+  .widget-area .popular .popular-inner ul li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .widget-area .popular .popular-inner ul li:last-child {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 65%;
+            flex: 0 0 65%;
+    max-width: 65%;
+  }
+  /*----- End Blog details CSS -----*/
+  /*----- Contact CSS -----*/
+  .contact-info-item h3 {
+    font-size: 22px;
+  }
+  .map-area #map {
+    height: 350px;
+  }
+  /*----- End Contact CSS -----*/
+  /*----- User Form CSS -----*/
+  .user-form-area .form-item form h2 {
+    font-size: 30px;
+  }
+  .user-form-area .form-item .user-btn span:before {
+    width: 30%;
+  }
+  .user-form-area .form-item .user-btn span:after {
+    width: 30%;
+  }
+  /*----- End User Form CSS -----*/
+  /*----- Loan CSS -----*/
+  .loan-area .loan-item {
+    margin-bottom: 30px;
+  }
+  .loan-area .loan-item .loan-img {
+    text-align: center;
+  }
+  .loan-area .loan-item .loan-img h2 {
+    font-size: 30px;
+  }
+  .loan-area .loan-item ul li h3 {
+    font-size: 22px;
+  }
+  /*----- End Loan CSS -----*/
+  /*----- Apply CSS -----*/
+  .apply-area .apply-item h2 {
+    font-size: 30px;
+  }
+  /*----- End Apply CSS -----*/
+  /*----- Error CSS -----*/
+  .error-area .error-content h1 {
+    font-size: 85px;
+  }
+  /*----- End Error CSS -----*/
+  /*----- Coming Soon CSS -----*/
+  .coming-soon-area .soon-item img {
+    max-width: 100%;
+  }
+  /*----- End Coming Soon CSS -----*/
+  /*----- Rules CSS -----*/
+  .rules-area .rules-item h3 {
+    font-size: 22px;
+  }
+  /*----- End Rules CSS -----*/
+  .side-nav .language {
+    margin-right: 5px;
+  }
+  .side-nav .language .nice-select {
+    padding-left: 0;
+  }
+  .side-nav .navbar-form {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .services-item {
+    padding: 60px 10px 30px 10px;
+  }
+  .services-item h3 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /*----- Default CSS -----*/
+  body {
+    font-size: 15px;
+  }
+  .ptb-100 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .pt-100 {
+    padding-top: 70px;
+  }
+  .pb-70 {
+    padding-bottom: 40px;
+  }
+  .pb-100 {
+    padding-bottom: 70px;
+  }
+  .mb-100 {
+    margin-bottom: 50px;
+  }
+  .section-title {
+    margin-bottom: 30px;
+  }
+  .section-title h2 {
+    font-size: 35px;
+  }
+  .container {
+    max-width: 720px;
+  }
+  .container-fluid {
+    max-width: 720px;
+  }
+  /*----- Home Demo One CSS -----*/
+  /*-- Header --*/
+  .header-area {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd45;
+  }
+  .header-area .left {
+    margin-bottom: 10px;
+  }
+  .header-area .left ul li {
+    margin-right: 0;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .header-area .left ul li:last-child {
+    margin-bottom: 0;
+  }
+  .header-area .right {
+    text-align: center;
+  }
+  /*-- Navbar --*/
+  .side-nav {
+    position: absolute;
+    top: 0;
+    right: 75px;
+    top: 0;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 8px;
+  }
+  .side-nav .nav-flag-dropdown .btn {
+    color: #fff;
+  }
+  .side-nav .consultant-btn {
+    padding: 10px 18px;
+  }
+  /*-- Banner --*/
+  .banner-area {
+    padding-top: 190px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  .banner-area:before {
+    background: #000;
+    opacity: .80;
+  }
+  .banner-area .banner-shape img {
+    display: none;
+  }
+  .banner-item {
+    height: 100%;
+  }
+  .banner-content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+  }
+  .banner-content h1 {
+    font-size: 45px;
+  }
+  .banner-content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .banner-slider-img {
+    position: relative;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    max-width: 410px;
+  }
+  .banner-slider-img.two {
+    max-width: 300px;
+  }
+  .banner-slider-img.three {
+    max-width: 300px;
+  }
+  /*-- About --*/
+  .about-area .left-padding {
+    padding-left: 15px;
+  }
+  .about-area .about-img {
+    margin-bottom: 30px;
+  }
+  .about-area .about-img .one img:nth-child(2) {
+    display: none;
+  }
+  .about-area .about-content {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-area .about-content .section-title {
+    text-align: center;
+  }
+  .about-area .about-content .bottom {
+    margin-bottom: 40px;
+  }
+  .about-area .about-content .bottom ul li {
+    text-align: left;
+  }
+  .about-area .about-content .years {
+    left: 0;
+  }
+  .video-wrap {
+    margin-left: 0;
+  }
+  /*-- Services --*/
+  .services-item {
+    padding: 60px 15px 30px 15px;
+    text-align: center;
+  }
+  .services-item .icon {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+  /*-- Book --*/
+  .book-area .book-content {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .book-area .book-content h2 {
+    font-size: 35px;
+  }
+  .book-area .book-content p {
+    font-size: 28px;
+  }
+  /*-- Touch --*/
+  .touch-area .section-title {
+    text-align: center;
+  }
+  /*-- Team --*/
+  .team-area .owl-prev {
+    display: none !important;
+  }
+  .team-area .owl-next {
+    display: none !important;
+  }
+  /*-- Plan --*/
+  .plan-area {
+    text-align: center;
+  }
+  .plan-area:before {
+    width: 150px;
+  }
+  .plan-area .plan-content {
+    padding: 40px 40px 50px 50px;
+    top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-area .plan-content .section-title {
+    text-align: center;
+  }
+  .plan-area .plan-content .section-title h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-area .plan-content .skill-wrap {
+    text-align: left;
+  }
+  /*-- FAQ --*/
+  .faq-area .section-title {
+    text-align: center;
+  }
+  .faq-area .faq-img img:nth-child(2) {
+    display: none;
+  }
+  .faq-item .accordion p {
+    padding: 20px 20px 20px 25px;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area {
+    padding-bottom: 50px;
+  }
+  .testimonials-area .section-title {
+    text-align: center;
+  }
+  .testimonials-area .testimonials-item {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .testimonials-area .testimonials-item img {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .testimonials-area .testimonials-item .inner {
+    padding-left: 0;
+  }
+  .testimonials-area .testimonials-item .inner h2 {
+    font-size: 22px;
+  }
+  .testimonials-area .testimonials-item .inner h3 {
+    font-size: 22px;
+  }
+  .testimonials-area .testimonials-item .inner i {
+    display: none;
+  }
+  .testimonials-area .owl-theme .owl-nav {
+    margin-top: 0;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  /*-- Blog --*/
+  .blog-item {
+    text-align: center;
+  }
+  .blog-item .bottom {
+    padding: 20px 15px 25px;
+  }
+  .blog-item .bottom ul li {
+    margin-right: 5px;
+  }
+  /*----- End Home Demo One CSS -----*/
+  /*----- Home Demo Two CSS -----*/
+  /*-- Banner --*/
+  .banner-area-two .banner-item .banner-content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 160px;
+    padding-bottom: 100px;
+  }
+  .banner-area-two .banner-item .banner-content h1 {
+    font-size: 50px;
+  }
+  .banner-area-two .owl-prev {
+    top: 50%;
+  }
+  .banner-area-two .owl-next {
+    top: 50%;
+  }
+  /*-- About --*/
+  .about-area-two .about-content {
+    text-align: center;
+  }
+  .about-area-two .about-content .section-title {
+    text-align: center;
+  }
+  .about-area-two .about-content ul li {
+    text-align: left;
+  }
+  .about-area-two .about-content .common-btn {
+    margin-top: 35px;
+  }
+  /*-- Projects --*/
+  .projects-item .inner {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  /*-- Services Two --*/
+  .services-item-two {
+    text-align: center;
+  }
+  .services-item-two .bottom {
+    padding: 20px 15px 25px;
+  }
+  /*-- Projects Two --*/
+  .projects-item-two {
+    padding: 30px 15px 30px;
+    text-align: center;
+  }
+  /*-- Counter --*/
+  .counter-item:before {
+    display: none;
+  }
+  /*-- Video --*/
+  .video-area {
+    height: 450px;
+  }
+  .video-area .video-item .video-wrap {
+    margin-left: 0;
+  }
+  .video-area .video-item span {
+    font-size: 28px;
+  }
+  /*-- Works --*/
+  .works-area-two .works-img img:nth-child(1) {
+    display: none;
+  }
+  .works-area-two .works-img img:nth-child(2) {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    margin-bottom: 30px;
+    margin-top: -20px;
+  }
+  .works-area-two .works-content {
+    text-align: center;
+  }
+  .works-area-two .works-content .section-title.two {
+    text-align: center;
+  }
+  .works-area-two .works-content ul li {
+    text-align: left;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area-two .testimonials-item h2 {
+    font-size: 25px;
+    line-height: 1.6;
+  }
+  .testimonials-area-two .owl-prev {
+    top: 80%;
+    left: 0;
+  }
+  .testimonials-area-two .owl-next {
+    top: 80%;
+    right: 0;
+  }
+  /*----- End Home Demo Two CSS -----*/
+  /*----- Home Demo Three CSS -----*/
+  /*-- Navbar --*/
+  .side-nav .navbar-form .form-control {
+    height: 25px;
+    position: relative;
+    top: 2px;
+  }
+  .side-nav .navbar-form .btn {
+    top: 8px;
+  }
+  /*-- Banner --*/
+  .banner-area-three {
+    height: 100%;
+    padding-top: 150px;
+    padding-bottom: 90px;
+    text-align: center;
+  }
+  .banner-area-three .banner-shape {
+    left: -30px;
+  }
+  .banner-area-three .banner-content {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .banner-area-three .banner-slider-img {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+  }
+  /*-- Provide --*/
+  .provide-area .nav li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 45%;
+            flex: 0 0 45%;
+    max-width: 45%;
+    margin-bottom: 10px;
+  }
+  .provide-area .tab-content {
+    text-align: center;
+  }
+  .provide-area .tab-content .provide-left h2 {
+    font-size: 30px;
+  }
+  .provide-area .tab-content .provide-left ul li {
+    padding-left: 0;
+  }
+  .provide-area .tab-content .provide-left ul li i {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 10px;
+  }
+  /*-- Features --*/
+  .features-area .projects-item-two.bottom-gap-top {
+    margin-top: 0;
+  }
+  .features-area .projects-item-two.bottom-gap-bottom {
+    margin-top: 0;
+  }
+  /*-- Touch --*/
+  .touch-area.three .section-title.three {
+    padding-left: 0;
+  }
+  .touch-area.three .touch-content {
+    margin-bottom: 30px;
+  }
+  /*-- Testimonials --*/
+  .testimonials-area-three .testimonials-item .top h2 {
+    line-height: 1.6;
+  }
+  .testimonials-area-three .owl-prev {
+    display: none !important;
+  }
+  .testimonials-area-three .owl-next {
+    display: none !important;
+  }
+  /*----- End Home Demo Three CSS -----*/
+  /*----- About CSS -----*/
+  .page-title-area {
+    height: 400px;
+  }
+  .page-title-area .title-content {
+    margin-top: 60px;
+  }
+  .page-title-area .title-content h2 {
+    font-size: 40px;
+  }
+  /*----- End About CSS -----*/
+  /*----- Service details CSS -----*/
+  .service-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-img {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-img h2 {
+    font-size: 35px;
+  }
+  .service-details-area .details-item .details-business {
+    margin-bottom: 30px;
+  }
+  .service-details-area .details-item .details-faq .section-title {
+    text-align: center;
+  }
+  .widget-area .widget-item {
+    padding: 30px 15px 30px;
+  }
+  /*----- End Service details CSS -----*/
+  /*----- Project details CSS -----*/
+  .project-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .project-details-area .details-item .details-img {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .project-details-area .details-item .details-img h2 {
+    font-size: 35px;
+  }
+  .project-details-area .details-item .details-client {
+    margin-bottom: 30px;
+  }
+  .project-details-area .details-item .details-related {
+    text-align: center;
+  }
+  /*----- End Project details CSS -----*/
+  /*----- Blog details CSS -----*/
+  .blog-details-area .details-item {
+    margin-bottom: 30px;
+  }
+  .blog-details-area .details-item .details-img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-quote {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-grow {
+    margin-bottom: 30px;
+  }
+  .blog-details-area .details-item .details-form {
+    padding: 30px 15px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .blog-details-area .details-item .details-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .blog-details-area .details-item .details-comment h3 {
+    font-size: 22px;
+  }
+  .widget-area .popular .popular-inner ul li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 15%;
+            flex: 0 0 15%;
+    max-width: 15%;
+  }
+  .widget-area .popular .popular-inner ul li:last-child {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+    max-width: 75%;
+  }
+  /*----- End Blog details CSS -----*/
+  /*----- User Form CSS -----*/
+  .user-form-area .form-item form h2 {
+    font-size: 35px;
+  }
+  /*----- End User Form CSS -----*/
+  /*----- Loan CSS -----*/
+  .loan-area .loan-item {
+    margin-bottom: 30px;
+  }
+  .loan-area .loan-item .loan-img {
+    text-align: center;
+  }
+  .loan-area .loan-item .loan-img h2 {
+    font-size: 35px;
+  }
+  /*----- End Loan CSS -----*/
+  /*----- Apply CSS -----*/
+  .apply-area .apply-item h2 {
+    font-size: 35px;
+  }
+  /*----- End Apply CSS -----*/
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .side-nav .consultant-btn {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+  .side-nav .nav-flag-dropdown {
+    margin-right: 5px;
+  }
+  .main-nav nav .navbar-nav .nav-item a {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .navbar-light .navbar-brand {
+    margin-right: 5px;
+    max-width: 125px;
+  }
+  .banner-item {
+    height: 755px;
+  }
+  .banner-content {
+    max-width: 595px;
+  }
+  .banner-slider-img {
+    right: 15px;
+    max-width: 517px;
+  }
+  .banner-slider-img.two {
+    max-width: 375px;
+  }
+  .banner-slider-img.three {
+    max-width: 375px;
+  }
+  .about-area .about-content .years ul li .years-inner {
+    padding: 18px 50px 20px 126px;
+  }
+  .video-wrap span {
+    margin-left: 2px;
+  }
+  .about-area .about-content .years ul li .years-inner i {
+    opacity: .10;
+  }
+  .services-item {
+    padding: 60px 15px 30px 15px;
+    text-align: center;
+  }
+  .services-item .icon {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+  .team-area .owl-prev {
+    display: none !important;
+  }
+  .team-area .owl-next {
+    display: none !important;
+  }
+  .works-item h3 {
+    font-size: 21px;
+  }
+  .banner-area-two .owl-prev {
+    display: none !important;
+  }
+  .banner-area-two .owl-next {
+    display: none !important;
+  }
+  .projects-item-two {
+    padding: 30px 15px 30px;
+  }
+  .works-area-two .works-img img:nth-child(2) {
+    max-width: 510px;
+  }
+  .blog-item .bottom {
+    padding: 20px 15px 25px;
+  }
+  .main-nav.three nav .navbar-nav .nav-item a {
+    font-size: 14px;
+  }
+  .banner-area-three {
+    height: 810px;
+  }
+  .banner-area-three .banner-slider-img {
+    max-width: 400px;
+  }
+  .provide-area .nav li {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 14.5%;
+            flex: 1 0 14.5%;
+    max-width: 15.5%;
+  }
+  .provide-area .nav li a h3 {
+    font-size: 16px;
+  }
+  .testimonials-area-three .owl-prev {
+    display: none !important;
+  }
+  .testimonials-area-three .owl-next {
+    display: none !important;
+  }
+  .side-nav .language {
+    margin-right: 6px;
+  }
+  .side-nav .navbar-form {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .banner-area-three .banner-slider-img {
+    max-width: 780px;
+  }
+  .projects-area-three .container-fluid {
+    max-width: 1560px;
+  }
+  .banner-item {
+    height: 1000px;
+  }
+  .banner-content {
+    margin-top: 110px;
+  }
+  .banner-area-three .banner-content {
+    margin-top: 45px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .mean-container .mean-bar {
+    /*background-color: #011a41;*/
+    background-color: #fff;
+  }
+  .mobile-nav .logo {
+    top: 10px;
+    max-width: 105px;
+  }
+  .mean-container a.meanmenu-reveal span {
+    margin-top: 30px;
+    position: relative;
+    top: -10px;
+  }
+  .mobile-nav.mean-container .mean-nav ul li a.active {
+    color: #e93c05;
+  }
+  .navbar-nav {
+    height: 375px;
+    overflow-y: scroll;
+  }
+  .mean-container .mean-nav ul li a.mean-expand {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1300px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1320px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1350px) {
+  .banner-slider-img {
+    max-width: 645px;
+  }
+  .provide-area .nav li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 14.5%;
+            flex: 0 0 14.5%;
+    max-width: 14.5%;
+  }
+  .provide-area .nav li a h3 {
+    font-size: 18px;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

@@ -29,6 +29,11 @@
                         {{Session::get('ageFail')}}
                     </div>
                 @endif
+                @if (Session::get('usedCoup'))
+                    <div class="alert alert-danger">
+                        {{Session::get('usedCoup')}}
+                    </div>
+                @endif
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="frist_name">First Name</label>
@@ -69,14 +74,15 @@
                       <select name="value" id="" class="form-control">
                         <option value="">Select Package Plan</option>
                         @foreach($packages as $item)
-                          <option value="{{$item->value}}">{{$item->package}}</option>
+                          <option value="{{$item->value}}">{{$item->package}} (₦{{$item->value}})</option>
                         @endforeach
                       </select>
                       <span class="text-danger">@error('package'){{ "You must Select a Package" }}@enderror</span>
                     </div>
                     <div class="form-group col-6">
-                        <label for="last_name">Referral Link</label>
-                        <input id="last_name" type="text" class="form-control" name="referral" value="{{old('referral')}}" placeholder="Referral Link(Optional)">
+                        <label for="last_name">Referral ID</label>
+                          <input id="last_name" type="hidden" class="form-control" name="referral" value="{{$referID}}" placeholder="Referral Link(Optional)">
+                          <input id="last_name" type="text" disabled class="form-control" value="{{$referID}}" placeholder="Referral ID(Optional)">
                     </div>
                   </div>
                   <div class="row">

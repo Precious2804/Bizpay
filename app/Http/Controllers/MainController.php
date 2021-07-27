@@ -11,9 +11,11 @@ use App\Models\RefWithdraw;
 use App\Models\UnUsedCoupones;
 use App\Models\User;
 use App\Models\WithdrwaRequest;
+use App\Notifications\CreatedInvestment;
 use Illuminate\Http\Request;
 use App\Traits\Generics;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -54,33 +56,52 @@ class MainController extends Controller
         $page = 'auth.login';
         return $this->landingDynamic($page);
     } 
-        //checks the users inputs and perform sign in
-        public function doLogin(Request $req){
-            //validating inputs
-            $req->validate([
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
-            $loggedUserInfo = User::where('email', '=', $req->email)->first();
-    
-            if (!$loggedUserInfo){
-                return back()->with('fail', "Un-recognized Email Address");
-            } else {
-                //check password
-                if (Hash::check($req->password, $loggedUserInfo->password)){
-                    $req->session()->put('loggedUser', $loggedUserInfo->email);
-                    return redirect('dashboard');
-                } else {
-                    return back()->with('fail', "Incorrect Password");
-                }
-            }
-    
-        }
     public function register(Request $req){
+        $page = 'auth.register';
         $referID = ['referID'=>$req->referral];
         $packages = ['packages'=>PackagePlans::all()];
-        return view('auth.register', $packages)->with($referID);
-    }
+        return $this->landingDynamic($page)->with($referID)
+                                            ->with($packages);
+    } 
+        //checks the users inputs and perform sign in
+        // public function doLogin(Request $req){
+        //     //validating inputs
+        //     $req->validate([
+        //         'email' => 'required|email',
+        //         'password' => 'required'
+        //     ]);
+        //     $loggedUserInfo = User::where('email', '=', $req->email)->first();
+    
+        //     if (!$loggedUserInfo){
+        //         return back()->with('fail', "Un-recognized Email Address");
+        //     } else {
+        //         //check password
+        //         if (Hash::check($req->password, $loggedUserInfo->password)){
+        //             $req->session()->put('loggedUser', $loggedUserInfo->email);
+        //             return redirect('dashboard');
+        //         } else {
+        //             return back()->with('fail', "Incorrect Password");
+        //         }
+        //     }
+    
+        // }
+        //checks the users inputs and perform sign in
+    public function doLogin(Request $req){
+        if(User::Where('email', $req->email)->exists() == true){
+
+            $credentials = ['email' => $req->email, 'password' => $req->password];
+            if(Auth::validate($credentials) == true) {
+                Auth::attempt($credentials, $req->remember_me == 'on' ? true : false);
+                return redirect()->to(route('dashboard'));
+            } else {
+                return redirect()->back()->with('info', 'invalid username or Password, please check your credentials and try again.')->withInput($req->only('loginEmail'));
+            }
+
+        } else{
+            return redirect()->back()->with('info', 'invalid username or Password, please check your credentials and try again.')->withInput($req->only('loginEmail'));
+        }
+
+   }
     public function doRegister(Request $req){
         $req->validate([
             'email'=>'required|email|unique:users',
@@ -167,21 +188,26 @@ class MainController extends Controller
         
     }
 
+    // //logout method
+    // public function logout(){
+    //     if (session()->has('loggedUser')){
+    //         session()->pull('loggedUser');
+    //         return redirect ('auth/login');
+    //     }
+    // }
     //logout method
     public function logout(){
-        if (session()->has('loggedUser')){
-            session()->pull('loggedUser');
-            return redirect ('auth/login');
-        }
+        Auth::logout();
+        return redirect('auth/login');
     }
 
     public function profile(){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        return view('profile', $user);
+        $page = 'profile';
+        return $this->dynamicPage($page);
     }
 
     public function updateProfile(Request $req){
-        $user = User::where('email', '=', session('loggedUser'))->first();
+        $user = User::where('email', auth()->user()->email)->first();
         $result = $user->update([
             'first_name'=>$req->first_name,
             'last_name'=>$req->last_name,
@@ -195,7 +221,7 @@ class MainController extends Controller
         public function updatePicture(Request $req)
         {
             //find logged in user
-            $data = User::find(session('loggedUser'));
+            $data = User::where('email', auth()->user()->email)->first();
             $req->validate([
                 'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2048'
                 ]);
@@ -224,7 +250,7 @@ class MainController extends Controller
             'coupone_code'=>'required|string',
             'value'=>'required'
         ]);
-        $user = User::where('email', '=', session('loggedUser'))->first();
+        $user = User::where('email', '=', auth()->user()->email)->first();
         $email = $user->email;
         $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
         if(!$selectCoupone){
@@ -260,6 +286,7 @@ class MainController extends Controller
                 'status'=>"Used"
                 ]);
                 $this->updateCouponeTrans($req, $email, $packageName, $amount);
+                // $user->notify(new CreatedInvestment($email));
                 return back()->with('success', "Re-investment was successful");
             }
         }
@@ -273,7 +300,7 @@ class MainController extends Controller
         $req->validate([
             'coupone_code'=>'unique:withdrwa_requests'
         ]);
-        $email = session('loggedUser');
+        $email = auth()->user()->email;
         $user = User::where('email', $email)->first();
         $phone = $user['phone'];
         $coupone = $req->coupone_code;
@@ -321,7 +348,7 @@ class MainController extends Controller
             $selectWithdraw->update([
                 'status'=>"Payment Completed"
             ]);
-            $email = session('loggedUser');
+            $email = auth()->user()->email;
             $trans_type = "Withdrawal";
             $packageName = $selectCoup['package'];
             $amount = $selectCoup['profit'];
@@ -348,7 +375,7 @@ class MainController extends Controller
         $req->validate([
             'ref_id'=>'unique:ref_withdraws'
         ]);
-        $user = User::where('email', session('loggedUser'))->first();
+        $user = User::where('email', auth()->user()->email)->first();
         $phone = $user['phone'];
         $bonus_amount = $req->bonus_amount;
 
@@ -359,7 +386,7 @@ class MainController extends Controller
             $result = RefWithdraw::create([
                 'unique_id'=>$this->generateRand(),
                 'ref_id'=>$req->ref_id,
-                'email'=>session('loggedUser'),
+                'email'=>auth()->user()->email,
                 'phone'=>$phone,
                 'bonus_amount'=>$bonus_amount,
                 'status'=>"Awaiting Response"
@@ -373,12 +400,14 @@ class MainController extends Controller
         $user = User::where('unique_id', $req->ref_id)->first();
         $selectRefWith = RefWithdraw::where('ref_id', $req->ref_id)->first();
         if($selectRefWith){
-            $selectRefWith->delete();
+            $selectRefWith->update([
+                'status'=>"Payment Completed"
+            ]);
             AllTransactions::create([
                 'trans_id'=>$this->generateRand(),
                 'coupone_code'=>"Ref Bonus",
                 'package'=>"Ref Boonus",
-                'email'=>session('loggedUser'),
+                'email'=>auth()->user()->email,
                 'trans_type'=>"Ref Bonus",
                 'amount'=>$req->bonus_amount,
                 'status'=>"Payment Completed"
@@ -418,9 +447,10 @@ class MainController extends Controller
                 $filePath = $req->file('document')->storeAs('uploads', $name, 'public');
     
                 $loan_coupone = $this->generateId();
+                $loan_id = $this->generateRand();
                 //creates the message
                 $result = LoanRequests::create([
-                    'loan_id'=>$this->generateRand(),
+                    'loan_id'=>$loan_id,
                     'loan_coupone'=>$loan_coupone,
                     'email'=>$req->email,
                     'fname'=>$req->fname,
@@ -434,7 +464,7 @@ class MainController extends Controller
                 ]);
                 if($result){
                     AllTransactions::create([
-                        'trans_id'=>$this->generateRand(),
+                        'trans_id'=>$loan_id,
                         'coupone_code'=>$loan_coupone,
                         'package'=>"Loan Package",
                         'email'=>$req->email,

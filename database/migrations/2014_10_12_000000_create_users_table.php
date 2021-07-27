@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('package');
             $table->string('referral')->nullable();
             $table->string('ref_bonus')->nullable();
+            $table->string('isAdmin')->nullable()->default(0);
             $table->string('password');
             $table->timestamps();
         });

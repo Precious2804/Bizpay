@@ -39,7 +39,7 @@ Route::get('/packages', [MainController::class, 'packages'])->name('packages');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/get-coupon', [MainController::class, 'getCoupon'])->name('get-coupon');
 
-Route::group(['middleware'=>['authCheck']], function(){
+Route::group(['middleware'=>['auth']], function(){
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
@@ -60,7 +60,18 @@ Route::group(['middleware'=>['authCheck']], function(){
 
 
 //admin controller
-Route::get('/admin/create_package', [AdminController::class, 'createPackage'])->name('admin.create_package');
-Route::post('/creating_package', [AdminController::class, 'creatingPackage'])->name('creating_package');
-Route::get('/admin/create_coupone', [AdminController::class, 'createCoupone'])->name('admin.create_coupone');
-Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');
+Route::group(['middleware'=>['is_admin']], function(){
+    Route::get('/admin/create_package', [AdminController::class, 'createPackage'])->name('admin.create_package');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/withdraw', [AdminController::class, 'withdraw'])->name('admin.withdraw');
+    Route::get('/admin/all_users', [AdminController::class, 'allUsers'])->name('admin.all_users');
+    Route::get('/delete-user/{unique_id}', [AdminController::class, 'delUser'])->name('delete-user');
+    Route::get('/delete-with/{unique_id}', [AdminController::class, 'delWith'])->name('delete-with');
+    Route::post('/creating_package', [AdminController::class, 'creatingPackage'])->name('creating_package');
+    Route::get('/admin/create_coupone', [AdminController::class, 'createCoupone'])->name('admin.create_coupone');
+    Route::get('/admin/loan', [AdminController::class, 'loan'])->name('admin.loan');
+    Route::get('/admin/referral', [AdminController::class, 'referral'])->name('admin.referral');
+    Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');
+    Route::get('/approve/{loan_id}', [AdminController::class, 'approve'])->name('approve');
+});
+

@@ -29,14 +29,14 @@ trait Generics{
     }
 
     function dynamicPage($page){
-        $user = ['loggedUserInfo'=>User::where('email', '=', session('loggedUser'))->first()];
-        $coupone = ['couponeDetails'=>Coupones::where('user_email', session('loggedUser'))->first()];
-        $transact = ['transact'=>AllTransactions::where('email', session('loggedUser'))->get()];
+        $user = ['loggedUserInfo'=>User::where('email', auth()->user()->email)->first()];
+        $coupone = ['couponeDetails'=>Coupones::where('user_email', auth()->user()->email)->first()];
+        $transact = ['transact'=>AllTransactions::where('email', auth()->user()->email)->get()];
         $packages = ['packages'=>PackagePlans::all()];
         $registerRoute = route('auth.register');
         $unique_id = $user['loggedUserInfo']['unique_id'];
         $routeName = ['routeName'=>$registerRoute."?referral=".$unique_id];
-        $refReqDetails = ['refReqDetails'=>RefWithdraw::where('email', session('loggedUser'))->first()];
+        $refReqDetails = ['refReqDetails'=>RefWithdraw::where('email', auth()->user()->email)->first()];
         return view($page)->with($user)
                             ->with($coupone)
                             ->with($transact)

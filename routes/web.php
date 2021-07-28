@@ -2,7 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
+use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +21,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+function dyn($page)
+{
+    $siteName = ['siteName' => "Bizpay Global"];
+    $whatsAppPhone = ['whatsAppPhone' => "2348098862800"];
+    $phone = ['phone' => "882-569-756"];
+    $email = ['email' => "info@bizpayglobal.com"];
+    $address = ['address' => "4578 Marmora Road, NG"];
+
+    return view($page)->with($siteName)
+        ->with($whatsAppPhone)
+        ->with($phone)
+        ->with($email)
+        ->with($address);
+}
+
 Route::get('/', function () {
-    $siteName = ['siteName'=>"Bizpay Global"];
-    $whatsAppPhone = ['whatsAppPhone'=>"2348098862800"];
-    $phone = ['phone'=>"882-569-756"];
-    $email = ['email'=>"info@bizpayglobal.com"];
-    $address = ['address'=>"4578 Marmora Road, NG"];
-    return view('welcome')->with($siteName)
-                            ->with($whatsAppPhone)
-                            ->with($phone)
-                            ->with($email)
-                            ->with($address);
+    $page = 'welcome';
+    return dyn($page);
 })->name('welcome');
+
 Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
 Route::post('/do-login', [MainController::class, 'doLogin'])->name('do-login');
 Route::get('auth/register', [MainController::class, 'register'])->name('auth.register');
@@ -39,7 +53,7 @@ Route::get('/packages', [MainController::class, 'packages'])->name('packages');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/get-coupon', [MainController::class, 'getCoupon'])->name('get-coupon');
 
-Route::group(['middleware'=>['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
@@ -60,7 +74,7 @@ Route::group(['middleware'=>['auth']], function(){
 
 
 //admin controller
-Route::group(['middleware'=>['is_admin']], function(){
+Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/create_package', [AdminController::class, 'createPackage'])->name('admin.create_package');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/withdraw', [AdminController::class, 'withdraw'])->name('admin.withdraw');
@@ -75,3 +89,59 @@ Route::group(['middleware'=>['is_admin']], function(){
     Route::get('/approve/{loan_id}', [AdminController::class, 'approve'])->name('approve');
 });
 
+
+Route::get('/password.request', function () {
+    $page = 'forgot';
+    return dyn($page);
+})->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+    $email = $request->email;
+    $checkEmail = User::where('email', $email)->first();
+    if (!$checkEmail) {
+        return back()->with('invalid', "This email address is not Registered on this Platform");
+    } else {
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+})->name('password.email');
+
+Route::get('/reset-password/{token}', function ($token) {
+    $page = 'reset-password';
+    $bnn = ['token' => $token];
+    return dyn($page)->with($bnn);
+})->name('password.reset');
+
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+    ]);
+    $checkEmail = User::where('email', $request->email)->first();
+    if (!$checkEmail) {
+        return back()->with('invalid', "Invalid Email Address");
+    } else {
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('auth.login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
+    }
+})->name('password.update');

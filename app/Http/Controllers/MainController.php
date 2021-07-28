@@ -63,29 +63,8 @@ class MainController extends Controller
         return $this->landingDynamic($page)->with($referID)
                                             ->with($packages);
     } 
-        //checks the users inputs and perform sign in
-        // public function doLogin(Request $req){
-        //     //validating inputs
-        //     $req->validate([
-        //         'email' => 'required|email',
-        //         'password' => 'required'
-        //     ]);
-        //     $loggedUserInfo = User::where('email', '=', $req->email)->first();
-    
-        //     if (!$loggedUserInfo){
-        //         return back()->with('fail', "Un-recognized Email Address");
-        //     } else {
-        //         //check password
-        //         if (Hash::check($req->password, $loggedUserInfo->password)){
-        //             $req->session()->put('loggedUser', $loggedUserInfo->email);
-        //             return redirect('dashboard');
-        //         } else {
-        //             return back()->with('fail', "Incorrect Password");
-        //         }
-        //     }
-    
-        // }
-        //checks the users inputs and perform sign in
+
+    //checks the users inputs and perform sign in
     public function doLogin(Request $req){
         if(User::Where('email', $req->email)->exists() == true){
 
@@ -188,13 +167,6 @@ class MainController extends Controller
         
     }
 
-    // //logout method
-    // public function logout(){
-    //     if (session()->has('loggedUser')){
-    //         session()->pull('loggedUser');
-    //         return redirect ('auth/login');
-    //     }
-    // }
     //logout method
     public function logout(){
         Auth::logout();

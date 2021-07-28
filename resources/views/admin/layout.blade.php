@@ -73,7 +73,7 @@
         <ul class="navbar-nav navbar-right">
           <li class="dropdown">
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+              <a href="{{route('logout')}}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Logout
               </a>
             </div>

@@ -11,6 +11,12 @@
                   @if(Session::get('success'))
                     <div class="alert alert-success">{{Session::get('success')}}</div>
                   @endif
+                  @if(Session::get('fail'))
+                    <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                  @endif
+                  @if(Session::get('usedCoup'))
+                    <div class="alert alert-danger">{{Session::get('usedCoup')}}</div>
+                  @endif
                   <div class="card-body p-0">
                     <div class="table-responsive">
                       <table class="table table-striped table-md">

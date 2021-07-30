@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
+use App\Models\PackagePlans;
 use App\Models\User;
+use App\Models\VendorAccount;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,12 +30,14 @@ function dyn($page)
     $phone = ['phone' => "882-569-756"];
     $email = ['email' => "info@bizpayglobal.com"];
     $address = ['address' => "4578 Marmora Road, NG"];
+    $packages = ['packages'=>PackagePlans::all()];
 
     return view($page)->with($siteName)
-        ->with($whatsAppPhone)
-        ->with($phone)
-        ->with($email)
-        ->with($address);
+                        ->with($whatsAppPhone)
+                        ->with($phone)
+                        ->with($email)
+                        ->with($address)
+                        ->with($packages);
 }
 
 Route::get('/', function () {
@@ -87,6 +91,9 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/referral', [AdminController::class, 'referral'])->name('admin.referral');
     Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');
     Route::get('/approve/{loan_id}', [AdminController::class, 'approve'])->name('approve');
+    Route::get('/admin/vendor', [AdminController::class, 'vendor'])->name('admin.vendor');
+    Route::post('/create-vendor', [AdminController::class, 'creatingVendor'])->name('create-vendor');
+    Route::get('/del-vendor/{vendor_id}', [AdminController::class, 'delVendor'])->name('del-vendor');
 });
 
 

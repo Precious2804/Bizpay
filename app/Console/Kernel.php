@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
                     $coupon->save();
                 } 
             }            
-        })->everyMinute();
+        })->daily();
     }
 
     /**

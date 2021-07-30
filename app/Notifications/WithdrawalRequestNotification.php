@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LoanRequest extends Notification
+class WithdrawalRequestNotification extends Notification
 {
     use Queueable;
 
@@ -16,15 +16,15 @@ class LoanRequest extends Notification
      *
      * @return void
      */
-    public function __construct($email, $loan_coupone, $username, $reasons, $duration, $amount)
+    public function __construct($email, $coupAmount, $coupPackage, $username, $coupProfit, $coupone)
     {
         //
         $this->email = $email;
-        $this->loan_coupone = $loan_coupone;
+        $this->coupAmount = $coupAmount;
+        $this->coupPackage = $coupPackage;
         $this->username = $username;
-        $this->reasons = $reasons;
-        $this->duration = $duration;
-        $this->amount = $amount;
+        $this->coupProfit = $coupProfit;
+        $this->coupone = $coupone;
     }
 
     /**
@@ -46,15 +46,15 @@ class LoanRequest extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = route('loan');
+        $url = route('withdraw');
         return (new MailMessage)
-                                ->greeting('Hello '."$this->username")
-                                ->line('You initiated a Loan request of ₦'.$this->amount.' on Bizpay Global with the Loan Coupon ID of '."$this->loan_coupone")
-                                ->line('For the purpose stated as: '."$this->reasons")
+                                ->greeting('Hello '.$this->username)
+                                ->line('You initiated a Withdrawal request of ₦'.$this->coupAmount.' on Bizpay Global for the Coupon Code of '."$this->coupone")
+                                ->line('The Coupon was investted on pacakge: '."$this->coupPackage ". 'at an amount cost of ₦'.$this->coupAmount. ', which is expected yield a profit of ₦'.$this->coupProfit. ' after a period 30 days')
                                 ->action('Go to Dashboard', $url)
-                                ->line('PS: The Administration of Bizpay Global would review your loan application request and then provide an approval for the loan request')
-                                ->line('Thank you for choosing Bizpay Global');
-                            }
+                                ->line('PS: The Administration would confirm your request in the soonest possible time and then make the necessary procedures to provide a payment returns for your investment')
+                                ->line('Thank you for choosing Bizpay Global');                                
+    }
 
     /**
      * Get the array representation of the notification.

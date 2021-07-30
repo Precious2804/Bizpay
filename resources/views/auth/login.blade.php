@@ -19,9 +19,19 @@
                         {{Session::get('info')}}
                     </div>
                 @endif                
+                @if (Session::get('infoEmail'))
+                    <div class="alert alert-danger">
+                        {{Session::get('infoEmail')}}
+                    </div>
+                @endif                
                 @if (Session::get('status'))
                     <div class="alert alert-success">
                         {{Session::get('status')}}
+                    </div>
+                @endif                
+                @if (Session::get('success_reg'))
+                    <div class="alert alert-success">
+                        {{Session::get('success_reg')}}
                     </div>
                 @endif                
                 @csrf

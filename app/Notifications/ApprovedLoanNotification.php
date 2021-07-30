@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPassword extends Notification
+class ApprovedLoanNotification extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,13 @@ class ResetPassword extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($email, $loan_coupone, $amount, $username)
     {
         //
+        $this->email = $email;
+        $this->loan_coupone = $loan_coupone;
+        $this->amount = $amount;
+        $this->username = $username;
     }
 
     /**
@@ -40,10 +44,13 @@ class ResetPassword extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = route('loan');
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                                ->greeting('Hello '."$this->username")
+                                ->line('Your Loan request of ₦'.$this->amount.' on Bizpay Global with the Loan Coupon ID of '."$this->loan_coupone". ' has been approved to receive payment on Bizpay')
+                                ->line('PS: This approval was completed as a result of the satisfaction of the reason behind the Loan application and verification of the uploaded ID document')
+                                ->action('Go to Dashboard', $url)
+                                ->line('Thank you for choosing Bizpay Global');
     }
 
     /**

@@ -110,6 +110,9 @@
               <a href="{{ route('admin.referral') }}" class="nav-link"><i class="fas fa-retweet"></i><span>Referral Withdrawal</span></a>
             </li>
             <li class="dropdown">
+              <a href="{{ route('admin.vendor') }}" class="nav-link"><i class="fas fa-users"></i><span>Manage Vendors</span></a>
+            </li>
+            <li class="dropdown">
               <a href="{{ route('logout') }}" class="nav-link"><span style="color:red"> Logout</span></a>
             </li>
           </ul>

@@ -15,16 +15,16 @@
                         You are currently not eligible to send a Get Coupone Request to the Admin, until the already Running Coupone Investment has been completed and payment is confirmed
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Send Message to Admin</button>
+                      <button class="btn btn-lg" style="background-color:#b6adb4; color: #fff !important; text-decoration: none !important; opacity:0.5" >Get a New Coupon</button>
                     </div>
                   @endif
                   @if($couponeDetails['status'] == "Payment Completed")
                   <div class="card-body alert-success">
-                    Hint: Click on the "Send Message to Admin" button to make a request to the Admin to get a Coupone Code
+                    Hint: Click on the "Get a New Coupon" button to make a request to the Admin to get a Coupone Code
                   </div>
                   <div class="card-footer text-right">
                     <div class="col-md-5 col-lg-5 col-xl-5 float-right">
-                      <a href="https://wa.link/f3ek2i" target="_blank"><button class="btn btn-success btn-lg">Send Message to Admin</button><i class="fas fa-whatsapp"></i></a>
+                      <a href="{{route('get-coupone')}}" target="_blank"><button class="btn btn-success btn-lg">Get a New Coupon</button><i class="fas fa-whatsapp"></i></a>
                     </div>
                   </div>
                   @endif

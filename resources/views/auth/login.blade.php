@@ -34,6 +34,16 @@
                         {{Session::get('success_reg')}}
                     </div>
                 @endif                
+                @if (Session::get('noauth'))
+                    <div class="alert alert-danger">
+                        {{Session::get('noauth')}}
+                    </div>
+                @endif                
+                @if (Session::get('unverified'))
+                    <div class="alert alert-danger">
+                        {{Session::get('unverified')}}
+                    </div>
+                @endif                
                 @csrf
                   <div class="form-group">
                     <label for="email">Email</label>

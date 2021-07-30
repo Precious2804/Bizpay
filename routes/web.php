@@ -56,6 +56,7 @@ Route::get('/terms', [MainController::class, 'terms'])->name('terms');
 Route::get('/packages', [MainController::class, 'packages'])->name('packages');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/get-coupon', [MainController::class, 'getCoupon'])->name('get-coupon');
+Route::get('/complete-verification', [MainController::class, 'completeVerification'])->name('complete-verification');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
@@ -87,6 +88,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/delete-with/{unique_id}', [AdminController::class, 'delWith'])->name('delete-with');
     Route::post('/creating_package', [AdminController::class, 'creatingPackage'])->name('creating_package');
     Route::get('/admin/create_coupone', [AdminController::class, 'createCoupone'])->name('admin.create_coupone');
+    Route::get('/admin/coupone/{package_id}', [AdminController::class, 'coupone'])->name('admin.coupone');
     Route::get('/admin/loan', [AdminController::class, 'loan'])->name('admin.loan');
     Route::get('/admin/referral', [AdminController::class, 'referral'])->name('admin.referral');
     Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');

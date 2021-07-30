@@ -16,9 +16,9 @@
               <div class="card-body">
                 <form method="POST" action="{{route('do-register')}}">
                 @csrf
-                @if (Session::get('success'))
+                @if (Session::get('verifyEmail'))
                     <div class="alert alert-success">
-                        {{Session::get('success')}} <a href="{{ route('auth.login') }}">Click Here to Login</a>
+                        {{Session::get('verifyEmail')}}
                     </div>
                 @endif
                 @if (Session::get('fail'))

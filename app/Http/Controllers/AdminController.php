@@ -49,24 +49,32 @@ class AdminController extends Controller
             return "successfull";
         }
     }
+    public function coupone($package_id){
+        $selectPack = ['selectPack'=>PackagePlans::where('package_id', $package_id)->first()];
+        return view('admin.coupone', $selectPack);
+    }
+
     public function createCoupone(){
         $allcoupones = ['allcoupones'=>UnUsedCoupones::all()];
         return view('admin.create_coupone')->with($allcoupones);
     }
     
     public function creatingCoupone(Request $req){
-        $unique_id = $this->generateRand();
-        $coupone_code = $this->generateId();
-
-        $result = UnUsedCoupones::create([
-            'unique_id'=>$unique_id,
-            'coupone_code'=>$coupone_code,
-            'status'=>"un-used"
-        ]);
-        if($result){
-            return back()->with('created', "Coupone Code Has been Created Successfully!");
+        $no = $req->no_of_coup;
+        $package = $req->package;
+        $stat = "un-used";
+        
+        for($i = 0; $i < $no; $i++){
+            $model = new UnUsedCoupones();
+            $model->unique_id = $this->generateRand();
+            $model->coupone_code = $this->generateId();
+            $model->package = $package;
+            $model->status = $stat;
+            $model->save();
         }
-    }
+        return back()->with('created', "Coupon Codes Has been Created Successfully!");
+        }
+
     public function allUsers(){
         $allusers = ['allusers'=>User::all()];
         return view('admin.all_users')->with($allusers);

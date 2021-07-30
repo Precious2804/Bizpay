@@ -21,6 +21,7 @@
                                     <th scope="col">Sponsord Bonus</th>
                                     <th scope="col">Minimum Withdrawable</th>
                                     <th scope="col">Date/Time Created</th>
+                                    <th scope="col">Operation</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,7 @@
                                         <th>{{$item->spons_bonus}}</th>
                                         <th>{{$item->min_withdraw}}</th>
                                         <th>{{$item->created_at}}</th>
+                                        <th><a href="coupone/{{$item->package_id}}">Create Coupon</a></th>
                                     </tr>
                                 @endforeach
                             </tbody>

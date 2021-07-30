@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUnUsedCouponesTable extends Migration
+class CreateEmailVerifyTokensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUnUsedCouponesTable extends Migration
      */
     public function up()
     {
-        Schema::create('un_used_coupones', function (Blueprint $table) {
+        Schema::create('email_verify_tokens', function (Blueprint $table) {
             $table->id();
-            $table->uuid('unique_id');
-            $table->uuid('coupone_code');
-            $table->string('status');
-            $table->string('package');
+            $table->uuid('token');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateUnUsedCouponesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('un_used_coupones');
+        Schema::dropIfExists('email_verify_tokens');
     }
 }

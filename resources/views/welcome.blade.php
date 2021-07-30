@@ -16,7 +16,7 @@ $active1 = 'active';
                     <div class="container">
                         <div class="banner-content" style="margin-top: 0px;">
                             <!--<span>Your Financial Status Is Good Hands</span>-->
-                            <h1>Welcome to <br><?php print $siteName; ?></h1>
+                            <h1 style="  color: #2c7920;">Welcome to <br><?php print $siteName; ?></h1>
                             <p style="text-align: justify;">At <?php print $siteName; ?>, Our goal is to make financial expertise broadly accessible and effective in helping individuals grow their money faster. Bizpay is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions.</p>
                             <div class="banner-btn-area">
                                 <a class="common-btn three" style="background-color: #2c7920;" href="contact">
@@ -38,7 +38,7 @@ $active1 = 'active';
                     <div class="container">
                         <div class="banner-content" style="margin-top: 0px;">
                             <!--<span>Your Financial Status Is Good Hands</span>-->
-                            <h1>Invest and earn passive income at ease</h1>
+                            <h1 style="  color: #2c7920;">Invest and earn passive income at ease</h1>
                             <p style="text-align: justify;"><?php print $siteName; ?> is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions. </p>
                             <div class="banner-btn-area">
                                 <a class="common-btn three" href="contact">
@@ -72,17 +72,17 @@ $active1 = 'active';
                         Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you. </p>
                     <ul>
                         <li>
-                            <i class="flaticon-bar-chart"></i>
+                            <i class="flaticon-bar-chart" style="color: #2c7920;"></i>
                             <h3>Our Misson</h3>
                             <p>Our vision is to be a trusted partner for our clients and a respected leader in global asset management.</p>
                         </li>
                         <li>
-                            <i class="flaticon-consulting"></i>
+                            <i class="flaticon-consulting" style="color: #2c7920;"></i>
                             <h3>Our vision</h3>
                             <p>Our mission is to add value with active portfolio management to help our clients reach their long-term financial goals. We achieve this through our investment strategies, adhering to our values and investment principles, and offering employees a challenging and rewarding place to build a career.</p>
                         </li>
                         <li>
-                            <i class="flaticon-consultation"></i>
+                            <i class="flaticon-consultation" style="color: #2c7920;"></i>
                             <h3>Our strategy</h3>
                             <p>We’ve invest in Farming, Livestock, Automobile sales, Gadgets sales, Active take in forex and business that yield high profit at the end of the duration.</p>
                         </li>
@@ -105,24 +105,16 @@ $active1 = 'active';
                     </div>
 
                     <div class="main-video-box video-popup">
-                        <a href="https://www.youtube.com/watch?v=9No-FiEInLA" target="_blank" class="video-link  mt-30">
-                            <div class="single-popup-wrap">
-                                <img class="img-fluid border-radus-5" src="img/3.jpeg" alt="">
-                                <div class="ht-popup-video video-button">
-                                    <div class="video-mark">
-                                        <div class="wave-pulse wave-pulse-1"></div>
-                                        <div class="wave-pulse wave-pulse-2"></div>
-                                    </div>
-                                    <div class="video-button__two">
-                                        <div class="video-play">
-                                            <span class="video-play-icon"></span>
-                                        </div>
-                                    </div>
+                        <div class="single-popup-wrap">
+                            <img class="img-fluid border-radus-5" src="img/3.jpeg" alt="">
+                            <div class="ht-popup-video video-button">
+                                <div class="video-mark">
+                                    <div class="wave-pulse wave-pulse-1"></div>
+                                    <div class="wave-pulse wave-pulse-2"></div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-
 
                     <div class="ht-banner-03">
                         <img class="img-fluid border-radus-5 animation_images three wow fadeInDown" src="img/1.jpeg" alt="">
@@ -149,38 +141,38 @@ $active1 = 'active';
             <div class="row">
                 <div class="col-6 col-sm-6 col-lg-3">
                     <div class="counter-item">
-                        <i class="flaticon-project-management"></i>
+                        <i class="flaticon-project-management" style="color: #2c7920;"></i>
                         <h3>
                             <span class="odometer" data-count="15">00</span>
                         </h3>
-                        <p> Profitable Investment plans</p>
+                        <p style="color: #2c7920;"> Profitable Investment plans</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
                     <div class="counter-item">
-                        <i class="flaticon-like"></i>
+                        <i class="flaticon-like" style="color: #2c7920;"></i>
                         <h3>
                             <span class="odometer" data-count="469">00</span>+
                         </h3>
-                        <p>Satisfied Clients</p>
+                        <p style="color: #2c7920;">Satisfied Clients</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
                     <div class="counter-item">
-                        <i class="flaticon-trophy"></i>
+                        <i class="flaticon-trophy" style="color: #2c7920;"></i>
                         <h3>
                             <span class="odometer" data-count="2000">00</span>+
                         </h3>
-                        <p> Paid withdrawals</p>
+                        <p style="color: #2c7920;"> Paid withdrawals</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
                     <div class="counter-item right-border">
-                        <i class="flaticon-team"></i>
+                        <i class="flaticon-team" style="color: #2c7920;"></i>
                         <h3>
                             <span class="odometer" data-count="1890">00</span>+
                         </h3>
-                        <p> Users</p>
+                        <p style="color: #2c7920;"> Users</p>
                     </div>
                 </div>
             </div>

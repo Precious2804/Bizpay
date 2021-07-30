@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('referral')->nullable();
             $table->string('ref_bonus')->nullable();
             $table->string('isAdmin')->nullable()->default(0);
+            $table->string('isVerified')->nullable()->default(0);
             $table->string('password');
             $table->string('remember_token')->nullable();
             $table->timestamps();

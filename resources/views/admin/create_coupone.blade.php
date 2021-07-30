@@ -4,23 +4,6 @@
 <div class="main-content">
     <section class="section">
         <div class="section-body">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Create Coupon Code Here</h4>
-                </div>
-                <div class="card-body">
-                    Click on the action button "Create Coupon" to create a new Coupon Code
-                </div>
-                <div class="card-footer text-right">
-                    <form action="{{route('create_coup')}}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-lg btn-primary">Create Coupon</button>
-                        @if(Session::get('created'))
-                            <div class="text-success">{{Session::get('created')}}</div>
-                        @endif
-                    </form>        
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">

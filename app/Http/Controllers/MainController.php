@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AllTransactions;
 use App\Models\Coupones;
+use App\Models\EmailVerifyToken;
 use App\Models\LoanRequests;
 use App\Models\PackagePlans;
 use App\Models\ReferralTable;
@@ -14,10 +15,12 @@ use App\Models\VendorAccount;
 use App\Models\WithdrwaRequest;
 use App\Notifications\CreatedInvestment;
 use App\Notifications\LoanRequest;
+use App\Notifications\VerifyEmailNotification;
 use App\Notifications\WithdrawalRequestNotification;
 use Illuminate\Http\Request;
 use App\Traits\Generics;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -68,6 +71,24 @@ class MainController extends Controller
         $page = 'auth.login';
         return $this->landingDynamic($page);
     }
+    public function completeVerification(Request $req)
+    {
+        $email = $req->email;
+        $token = $req->token;
+        if(EmailVerifyToken::where('token', $token)->exists() == true){
+            $page = 'complete-verification';
+
+            $user = User::where('email', $email)->first();
+            $user->update([
+                'isVerified'=> 1
+            ]);
+            $tok = EmailVerifyToken::where('token', $token)->first();
+            $tok->delete();
+            return $this->landingDynamic($page);        
+        } 
+    }
+    
+
     public function register(Request $req)
     {
         $page = 'auth.register';
@@ -80,12 +101,21 @@ class MainController extends Controller
     //checks the users inputs and perform sign in
     public function doLogin(Request $req)
     {
+        $user = User::where('email', $req->email)->first();
         if (User::Where('email', $req->email)->exists() == true) {
 
             $credentials = ['email' => $req->email, 'password' => $req->password];
             if (Auth::validate($credentials) == true) {
                 Auth::attempt($credentials, $req->remember_me == 'on' ? true : false);
-                return redirect()->to(route('dashboard'));
+                if($user['isAdmin'] == 1){
+                    return redirect()->to(route('admin.dashboard'));
+                } else{
+                    if($user['isVerified'] == 0){
+                        return back()->with('unverified', "This account has not been verified");
+                    } else{
+                        return redirect()->to(route('dashboard'));
+                    }
+                }
             } else {
                 return redirect()->back()->with('info', 'Incorrect password!, please check your credentials and try again.')->withInput($req->only('loginEmail'));
             }
@@ -104,10 +134,14 @@ class MainController extends Controller
             'value' => 'required',
             'password' => 'required|confirmed'
         ]);
+        $getPackage = PackagePlans::where('value', $req->value)->first();
+        $packageName = $getPackage->package;
 
-        $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)->first();
+        $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)
+                                        ->where('package', $packageName)
+                                        ->first();
         if (!$selectCoupone) {
-            return back()->with('fail', "Sorry! This Coupon is not Recognized, Kindly Re-confirm Coupone Code to Register");
+            return back()->with('fail', 'Sorry! This Coupon is not Recognized for the selected Package , Kindly Re-confirm Coupone Code to Register');
         } else {
             if ($selectCoupone->status == "Used") {
                 return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
@@ -118,8 +152,6 @@ class MainController extends Controller
                 } else {
                     $unique_id = $this->generateRand();
                     $email = $req->email;
-                    $getPackage = PackagePlans::where('value', $req->value)->first();
-                    $packageName = $getPackage->package;
                     $result = User::create([
                         'unique_id' => $unique_id,
                         'first_name' => $req->first_name,
@@ -163,21 +195,22 @@ class MainController extends Controller
                                 'refered' => $req->email,
                                 'ref_id' => $req->referral
                             ]);
-
-                            //sending the mail
-                            $name = $req->first_name;
-                            $coupone = $req->coupone;
-                            $amount = $req->value;
-                            $user = User::where('email', $req->email)->first();
-                            $user->notify(new CreatedInvestment($name, $email, $packageName, $amount, $coupone));
-                            return redirect()->to('auth.login')->with('success_reg', "Successfull Registration");
                         } else {
                             $registeringUser->update([
                                 'referral' => "None",
                                 'ref_bonus' => "0"
                             ]);
-                            return back()->with('success', "Successfull Registration");
                         }
+                        //sending the mail
+                        $name = $req->first_name;
+                        $token = $this->generateId();
+                        $userDet = User::where('email', $email)->first();
+                        $userDet->notify(new VerifyEmailNotification($name, $email, $token));
+                        EmailVerifyToken::create([
+                            'token'=>$token,
+                            'email'=>$email
+                        ]);
+                        return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address ".$email. " for veification. Do ensure to verify your email address before progressing!");
                     }
                 }
             }
@@ -245,19 +278,21 @@ class MainController extends Controller
             'coupone_code' => 'required|string',
             'value' => 'required'
         ]);
+        $getPackage = PackagePlans::where('value', $req->value)->first();
+        $packageName = $getPackage->package;
         $coupone = $req->coupone_code;
         $name = auth()->user()->first_name;
         $user = User::where('email', '=', auth()->user()->email)->first();
         $email = $user->email;
-        $selectCoupone = UnUsedCoupones::where('coupone_code', $coupone)->first();
+        $selectCoupone = UnUsedCoupones::where('coupone_code', $coupone)
+                                        ->where('package', $packageName)
+                                        ->first();
         if (!$selectCoupone) {
-            return back()->with('fail', "Coupone is not Recognized, Kindly Re-confirm Coupone Code");
+            return back()->with('fail', "Coupone is not Recognized for the selected package plan, Kindly Re-confirm the coupone details and Try again");
         } else {
             if ($selectCoupone->status == "Used") {
                 return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
             } else {
-                $getPackage = PackagePlans::where('value', $req->value)->first();
-                $packageName = $getPackage->package;
                 $expected = $getPackage->min_withdraw;
                 $expire = Carbon::now()->addDays(30);
                 $amount = $req->value;

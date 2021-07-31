@@ -36,7 +36,8 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'driver' => env('MAIL_DRIVER', 'smtp'),
+            'host' => env('MAIL_HOST', 'bizpayglobal.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
@@ -83,7 +84,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'preshdev28@gmail.com', 'name' => 'Bizpay Global'],
+    'from' => ['address' => 'info@bizpayglobal.com', 'name' => 'Bizpay Global'],
 
 
     /*

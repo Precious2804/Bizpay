@@ -48,7 +48,9 @@ Route::get('/', function () {
 Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
 Route::post('/do-login', [MainController::class, 'doLogin'])->name('do-login');
 Route::get('auth/register', [MainController::class, 'register'])->name('auth.register');
+Route::get('auth/resend-email', [MainController::class, 'resendEmail'])->name('auth.resend-email');
 Route::post('/do-register', [MainController::class, 'doRegister'])->name('do-register');
+Route::post('/resend', [MainController::class, 'resend'])->name('resend');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/about-loan', [MainController::class, 'aboutLoan'])->name('about-loan');
 Route::get('/how-it-works', [MainController::class, 'howItWorks'])->name('how-it-works');

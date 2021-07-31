@@ -41,7 +41,8 @@
                 @endif                
                 @if (Session::get('unverified'))
                     <div class="alert alert-danger">
-                        {{Session::get('unverified')}}
+                        {{Session::get('unverified')}} <br>
+                        <a href="{{route('auth.resend-email')}}">Resend Verification Email</a>
                     </div>
                 @endif                
                 @csrf

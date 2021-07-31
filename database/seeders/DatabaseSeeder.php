@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'package'=>"Admin",
             'isAdmin' => '1',
             'referral'=>'admin',
+            'isVerified'=>'1',
             'ref_bonus'=>'0000000',
             'password' => Hash::make(123456),
         ]);

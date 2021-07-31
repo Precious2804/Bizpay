@@ -59,10 +59,31 @@ class MainController extends Controller
         $page = 'contact';
         return $this->landingDynamic($page);
     }
+    public function resendEmail()
+    {
+        $page = 'auth.resend-email';
+        return $this->landingDynamic($page);
+    }
+    public function resend(Request $req)
+    {
+        $req->validate([
+            'email'=>'required|email'
+        ]);
+        $email = $req->email;
+        $user = User::where('email', $email)->first();
+        if(!$user){
+            return back()->with('unknown', "This email address is not recognized");
+        } else{
+            $name = $user['first_name'];
+            $token = $this->generateId();
+            $user->notify(new VerifyEmailNotification($name, $email, $token));
+            return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address " . $email . " for veification. Do ensure to verify your email address before progressing!");
+        }
+    }
     public function getCoupon()
     {
         $page = 'get-coupon';
-        $vendors = ['vendors'=>VendorAccount::all()];
+        $vendors = ['vendors' => VendorAccount::all()];
         return $this->landingDynamic($page)->with($vendors);
     }
 
@@ -75,19 +96,19 @@ class MainController extends Controller
     {
         $email = $req->email;
         $token = $req->token;
-        if(EmailVerifyToken::where('token', $token)->exists() == true){
+        if (EmailVerifyToken::where('token', $token)->exists() == true) {
             $page = 'complete-verification';
 
             $user = User::where('email', $email)->first();
             $user->update([
-                'isVerified'=> 1
+                'isVerified' => 1
             ]);
             $tok = EmailVerifyToken::where('token', $token)->first();
             $tok->delete();
-            return $this->landingDynamic($page);        
-        } 
+            return $this->landingDynamic($page);
+        }
     }
-    
+
 
     public function register(Request $req)
     {
@@ -107,12 +128,12 @@ class MainController extends Controller
             $credentials = ['email' => $req->email, 'password' => $req->password];
             if (Auth::validate($credentials) == true) {
                 Auth::attempt($credentials, $req->remember_me == 'on' ? true : false);
-                if($user['isAdmin'] == 1){
+                if ($user['isAdmin'] == 1) {
                     return redirect()->to(route('admin.dashboard'));
-                } else{
-                    if($user['isVerified'] == 0){
+                } else {
+                    if ($user['isVerified'] == 0) {
                         return back()->with('unverified', "This account has not been verified");
-                    } else{
+                    } else {
                         return redirect()->to(route('dashboard'));
                     }
                 }
@@ -138,8 +159,8 @@ class MainController extends Controller
         $packageName = $getPackage->package;
 
         $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)
-                                        ->where('package', $packageName)
-                                        ->first();
+            ->where('package', $packageName)
+            ->first();
         if (!$selectCoupone) {
             return back()->with('fail', 'Sorry! This Coupon is not Recognized for the selected Package , Kindly Re-confirm Coupone Code to Register');
         } else {
@@ -207,10 +228,10 @@ class MainController extends Controller
                         $userDet = User::where('email', $email)->first();
                         $userDet->notify(new VerifyEmailNotification($name, $email, $token));
                         EmailVerifyToken::create([
-                            'token'=>$token,
-                            'email'=>$email
+                            'token' => $token,
+                            'email' => $email
                         ]);
-                        return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address ".$email. " for veification. Do ensure to verify your email address before progressing!");
+                        return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address " . $email . " for veification. Do ensure to verify your email address before progressing!");
                     }
                 }
             }
@@ -285,8 +306,8 @@ class MainController extends Controller
         $user = User::where('email', '=', auth()->user()->email)->first();
         $email = $user->email;
         $selectCoupone = UnUsedCoupones::where('coupone_code', $coupone)
-                                        ->where('package', $packageName)
-                                        ->first();
+            ->where('package', $packageName)
+            ->first();
         if (!$selectCoupone) {
             return back()->with('fail', "Coupone is not Recognized for the selected package plan, Kindly Re-confirm the coupone details and Try again");
         } else {
@@ -333,7 +354,7 @@ class MainController extends Controller
             'coupone_code' => 'unique:withdrwa_requests'
         ]);
         $email = auth()->user()->email;
-        $username = auth()->user()->first_name. " ". auth()->user()->last_name;
+        $username = auth()->user()->first_name . " " . auth()->user()->last_name;
         $user = User::where('email', $email)->first();
         $phone = $user['phone'];
         $coupone = $req->coupone_code;
@@ -466,7 +487,7 @@ class MainController extends Controller
     {
         $checkEmail = User::where('email', '=', $req->email)->first();
         $email = $req->email;
-        $username = $req->fname." ".$req->lname;
+        $username = $req->fname . " " . $req->lname;
         $reasons = $req->reasons;
         $duration = $req->duration;
         $amount = $req->amount;

@@ -13,7 +13,8 @@ $title = 'Verify Email | Bizpay Global';
                             <h4>Verification Completed</h4>
                         </div>
                         <div class="card-body">
-                            Your Email Address has been successfully verified on Bizpay Global. <br> You can now proceed to Login into your account. <span><a href="{{route('auth.login')}}">Login Here</a></span>
+                            <div class="alert alert-success">Your Email Address has been successfully verified on Bizpay Global. <br> You can now proceed to Login into your account. <span><a href="{{route('auth.login')}}">Login Here</a></span>
+                            </div>
                         </div>
                     </div>
                 </div>

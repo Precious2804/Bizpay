@@ -17,6 +17,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Unique ID</th>
+                                            <th scope="col">Package Name</th>
                                             <th scope="col">Coupon Code</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date Created</th>
@@ -28,6 +29,7 @@
                                                 <tr>
                                                     <th scope="row">{{$item->id}}</th>
                                                     <td>{{$item->unique_id}}</td>
+                                                    <td>{{$item->package}}</td>
                                                     <th scope="col">{{$item->coupone_code}}</th>
                                                     <td style="color: red;">{{$item->status}}</td>
                                                     <td>{{$item->created_at}}</td>
@@ -52,6 +54,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Unique ID</th>
+                                            <th scope="col">Package Name</th>
                                             <th scope="col">Coupon Code</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date Created</th>
@@ -63,6 +66,7 @@
                                                 <tr>
                                                     <th scope="row">{{$item->id}}</th>
                                                     <td>{{$item->unique_id}}</td>
+                                                    <td>{{$item->package}}</td>
                                                     <th scope="col">{{$item->coupone_code}}</th>
                                                     <td style="color: green;">{{$item->status}}</td>
                                                     <td>{{$item->created_at}}</td>

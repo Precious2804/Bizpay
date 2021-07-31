@@ -37,6 +37,13 @@ class AdminController extends Controller
         return view('admin.create_package')->with($packages);
     }
     public function creatingPackage(Request $req){
+        $req->validate([
+            'package'=>'required|unique:package_plans',
+            'value'=>'required|unique:package_plans',
+            'ref_bonus'=>'required|unique:package_plans',
+            'spons_bonus'=>'required|unique:package_plans',
+            'min_withdraw'=>'required|unique:package_plans'
+        ]);
         $result = PackagePlans::create([
             'package_id'=>$this->generateRand(),
             'package'=>$req->package,
@@ -46,7 +53,7 @@ class AdminController extends Controller
             'min_withdraw'=>$req->min_withdraw,
         ]);
         if($result){
-            return "successfull";
+            return back()->with('success', "Package has been created Successfully");
         }
     }
     public function coupone($package_id){

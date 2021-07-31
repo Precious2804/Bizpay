@@ -50,14 +50,19 @@
                 <div class="card-body">
                     <form action="{{ route('creating_package') }}" method="POST">
                         @csrf
+                        @if(Session::get('success'))
+                            <div class="alert alert-success">{{Session::get('success')}}</div>
+                        @endif
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label for="">Pacakage Name</label>
                                 <input type="text" name="package" placeholder="Enter Package name" class="form-control">
+                                <span class="text-danger">@error('package'){{ $message }}@enderror</span>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="">Package Value/Amount</label>
                                 <input type="text" name="value" placeholder="Package value/Amount" class="form-control">
+                                <span class="text-danger">@error('value'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         
@@ -65,10 +70,12 @@
                             <div class="form-group col-lg-6">
                                 <label for="">Referral Bonus</label>
                                 <input type="text" name="ref_bonus" placeholder="Ref Bonus" class="form-control">
+                                <span class="text-danger">@error('ref_bonus'){{ $message }}@enderror</span>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="">Sponsord Referral Bonus</label>
                                 <input type="text" name="spons_bonus" placeholder="Sponsord Post Bonus" class="form-control">
+                                <span class="text-danger">@error('spons_bonus'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         
@@ -76,6 +83,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="">Minimum Amount Withdrawable</label>
                                 <input type="text" name="min_withdraw" placeholder="Minimim withdraw" class="form-control">
+                                <span class="text-danger">@error('min_withdraw'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="form-group float-right">

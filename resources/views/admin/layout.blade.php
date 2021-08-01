@@ -113,6 +113,9 @@
               <a href="{{ route('admin.vendor') }}" class="nav-link"><i class="fas fa-users"></i><span>Manage Vendors</span></a>
             </li>
             <li class="dropdown">
+              <a href="{{ route('admin.contact') }}" class="nav-link"><i class="fas fa-envelope"></i><span>Messages</span></a>
+            </li>
+            <li class="dropdown">
               <a href="{{ route('logout') }}" class="nav-link"><span style="color:red"> Logout</span></a>
             </li>
           </ul>

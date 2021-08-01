@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllTransactions;
+use App\Models\ContactMessages;
 use App\Models\LoanCoupones;
 use App\Models\LoanRequests;
 use Illuminate\Http\Request;
@@ -138,6 +139,10 @@ class AdminController extends Controller
         $vendors = ['vendors'=>VendorAccount::all()];
         return view('admin.vendor')->with($vendors);
     }
+    public function contact(){
+        $contact = ['contact'=>ContactMessages::all()];
+        return view('admin.contact')->with($contact);
+    }
     public function creatingVendor(Request $req){
         
         $req->validate([
@@ -166,5 +171,10 @@ class AdminController extends Controller
         $findVendor = VendorAccount::where('vendor_id', $vendor_id)->first();
         $findVendor->delete();
         return back()->with('deleted', "Vendor has been deleted Successfully");
+    }
+    public function delCoup($coupone_code){
+        $findCoup = UnUsedCoupones::where('coupone_code', $coupone_code)->first();
+        $findCoup->delete();
+        return back()->with('deleted', "Used Coupone $coupone_code has been deleted Successfully");
     }
 }

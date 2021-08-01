@@ -57,6 +57,7 @@ Route::get('/how-it-works', [MainController::class, 'howItWorks'])->name('how-it
 Route::get('/terms', [MainController::class, 'terms'])->name('terms');
 Route::get('/packages', [MainController::class, 'packages'])->name('packages');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
+Route::post('/do-contact', [MainController::class, 'doContact'])->name('do-contact');
 Route::get('/get-coupon', [MainController::class, 'getCoupon'])->name('get-coupon');
 Route::get('/complete-verification', [MainController::class, 'completeVerification'])->name('complete-verification');
 
@@ -93,11 +94,13 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/coupone/{package_id}', [AdminController::class, 'coupone'])->name('admin.coupone');
     Route::get('/admin/loan', [AdminController::class, 'loan'])->name('admin.loan');
     Route::get('/admin/referral', [AdminController::class, 'referral'])->name('admin.referral');
+    Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
     Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');
     Route::get('/approve/{loan_id}', [AdminController::class, 'approve'])->name('approve');
     Route::get('/admin/vendor', [AdminController::class, 'vendor'])->name('admin.vendor');
     Route::post('/create-vendor', [AdminController::class, 'creatingVendor'])->name('create-vendor');
     Route::get('/del-vendor/{vendor_id}', [AdminController::class, 'delVendor'])->name('del-vendor');
+    Route::get('/del-coup/{coupone_code}', [AdminController::class, 'delCoup'])->name('del-coup');
 });
 
 

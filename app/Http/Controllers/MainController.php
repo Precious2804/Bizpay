@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllTransactions;
+use App\Models\ContactMessages;
 use App\Models\Coupones;
 use App\Models\EmailVerifyToken;
 use App\Models\LoanRequests;
@@ -58,6 +59,17 @@ class MainController extends Controller
     {
         $page = 'contact';
         return $this->landingDynamic($page);
+    }
+    public function doContact(Request $req){
+        ContactMessages::create([
+            'message_id'=>$this->generateRand(),
+            'name'=>$req->name,
+            'email'=>$req->email,
+            'subject'=>$req->subject,
+            'message'=>$req->message
+        ]);
+
+        return back()->with('sent', "Message has been sent successfully to the admin");
     }
     public function resendEmail()
     {

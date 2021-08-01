@@ -7,15 +7,18 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
+                        @if(Session::get('deleted'))
+                        <div class="alert alert-success">{{Session::get('deleted')}}</div>
+                        @endif
                         <div class="card-header">
                             <h4 class="text-danger">Used Coupons</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover" id="tableExport" style="width:100%;">                                 
+                                <table class="table table-striped table-hover" style="width:100%;">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">Remove</th>
                                             <th scope="col">Unique ID</th>
                                             <th scope="col">Package Name</th>
                                             <th scope="col">Coupon Code</th>
@@ -25,16 +28,17 @@
                                     </thead>
                                     <tbody>
                                         @foreach($allcoupones as $item)
-                                            @if($item->status == "Used")
-                                                <tr>
-                                                    <th scope="row">{{$item->id}}</th>
-                                                    <td>{{$item->unique_id}}</td>
-                                                    <td>{{$item->package}}</td>
-                                                    <th scope="col">{{$item->coupone_code}}</th>
-                                                    <td style="color: red;">{{$item->status}}</td>
-                                                    <td>{{$item->created_at}}</td>
-                                                </tr>
-                                            @endif
+                                        @if($item->status == "Used")
+                                        <tr>
+                                            <th><a href="/del-coup/{{$item->coupone_code}}"><i class="fas fa-trash" style="color: red;"></i></a></th>
+                                            <th scope="row">{{$item->id}}</th>
+                                            <td>{{$item->unique_id}}</td>
+                                            <td>{{$item->package}}</td>
+                                            <th scope="col">{{$item->coupone_code}}</th>
+                                            <td style="color: red;">{{$item->status}}</td>
+                                            <td>{{$item->created_at}}</td>
+                                        </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -49,7 +53,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover" id="tableExport" style="width:100%;">      
+                                <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -62,16 +66,16 @@
                                     </thead>
                                     <tbody>
                                         @foreach($allcoupones as $item)
-                                            @if($item->status == "un-used")
-                                                <tr>
-                                                    <th scope="row">{{$item->id}}</th>
-                                                    <td>{{$item->unique_id}}</td>
-                                                    <td>{{$item->package}}</td>
-                                                    <th scope="col">{{$item->coupone_code}}</th>
-                                                    <td style="color: green;">{{$item->status}}</td>
-                                                    <td>{{$item->created_at}}</td>
-                                                </tr>
-                                            @endif
+                                        @if($item->status == "un-used")
+                                        <tr>
+                                            <th scope="row">{{$item->id}}</th>
+                                            <td>{{$item->unique_id}}</td>
+                                            <td>{{$item->package}}</td>
+                                            <th scope="col">{{$item->coupone_code}}</th>
+                                            <td style="color: green;">{{$item->status}}</td>
+                                            <td>{{$item->created_at}}</td>
+                                        </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>

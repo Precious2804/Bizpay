@@ -313,10 +313,10 @@
                                         <a href="how-it-works">How it works</a>
                                     </li>
                                     <li>
-                                        <a href="login">Login</a>
+                                        <a href="{{route('auth.login')}}">Login</a>
                                     </li>
                                     <li>
-                                        <a href="Register">Register</a>
+                                        <a href="{{route('auth.register')}}">Register</a>
                                     </li>
                                     <li>
                                         <a href="terms">Terms</a>

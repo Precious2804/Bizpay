@@ -79,7 +79,7 @@ $active1 = 'active';
                         </div>
                     </div>
 
-                    <div class="section-under-heading text-center section-space--mt_80">Challenges are just opportunities in disguise. <a href="register">Get Started!</a></div>
+                    <div class="section-under-heading text-center section-space--mt_80">Challenges are just opportunities in disguise. <a href="{{route('auth.register')}}">Get Started!</a></div>
 
                 </div>
             </div>

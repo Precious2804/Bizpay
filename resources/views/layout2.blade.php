@@ -38,21 +38,21 @@
         <meta itemprop="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
         <meta itemprop="image" content="https://bizpayglobal.com/img/favicon.png">
 
-        <link rel="stylesheet" href="asset/css/bootstrap.min.css">
-        <link rel="stylesheet" href="asset/css/meanmenu.css">
-        <link rel="stylesheet" href="asset/css/boxicons.min.css">
-        <link rel="stylesheet" href="asset/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="asset/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="asset/css/animate.min.css">
-        <link rel="stylesheet" href="asset/fonts/flaticon.css">
-        <link rel="stylesheet" href="asset/css/odometer.min.css">
-        <link rel="stylesheet" href="asset/css/nice-select.min.css">
-        <link rel="stylesheet" href="asset/css/magnific-popup.min.css">
-        <link rel="stylesheet" href="asset/style.css">
-        <link rel="stylesheet" href="asset/css/style.css">
-        <link rel="stylesheet" href="asset/css/responsive.css">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/meanmenu.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/boxicons.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/owl.theme.default.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/animate.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/fonts/flaticon.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/odometer.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/nice-select.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/magnific-popup.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/style.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/style.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('asset/css/responsive.css')}}">
         <title><?php print @$title;?></title>
-        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="icon" type="image/png" href="{{URL::asset('img/favicon.png')}}">
     </head>
 
     <body>
@@ -120,7 +120,7 @@
 
             <div class="mobile-nav">
                 <a href="./" class="logo">
-                    <img src="img/logo.png" alt="Logo">
+                    <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
                 </a>
             </div>
 
@@ -128,7 +128,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="./">
-                            <img src="img/logo.png" alt="Logo">
+                            <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
                         </a>
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav">
@@ -186,7 +186,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="img/logo.png" alt="Logo">
+                        <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -199,37 +199,37 @@
                             <div class="row">
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/3.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/3.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/5.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/5.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/4.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/4.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/6.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/6.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/2.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/2.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
                                 <div class="col-6 col-lg-4">
                                     <a>
-                                        <img src="img/1.jpeg" alt="Instagram">
+                                        <img src="{{URL::asset('img/1.jpeg')}}" alt="Instagram">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </div>
@@ -275,7 +275,7 @@
                         <div class="footer-item">
                             <div class="footer-logo">
                                 <a class="logo" href="./">
-                                    <img src="img/logo.png" alt="Logo">
+                                    <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
                                 </a>
                                 <p>Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
                                 <ul>
@@ -377,20 +377,20 @@
             <i class='bx bxs-up-arrow'></i>
         </div>
 
-        <script src="asset/js/jquery-3.5.1.min.js"></script>
-        <script src="asset/js/popper.min.js"></script>
-        <script src="asset/js/bootstrap.min.js"></script>
-        <script src="asset/js/form-validator.min.js"></script>
-        <script src="asset/js/contact-form-script.js"></script>
-        <script src="asset/js/jquery.ajaxchimp.min.js"></script>
-        <script src="asset/js/jquery.meanmenu.js"></script>
-        <script src="asset/js/owl.carousel.min.js"></script>
-        <script src="asset/js/plugins/lightgallery.min.js"></script>
-        <script src="asset/js/wow.min.js"></script>
-        <script src="asset/js/odometer.min.js"></script>
-        <script src="asset/js/jquery.appear.min.js"></script>
-        <script src="asset/js/jquery.nice-select.min.js"></script>
-        <script src="asset/js/jquery.magnific-popup.min.js"></script>
-        <script src="asset/js/custom.js"></script>
+        <script src="{{URL::asset('asset/js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/popper.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/bootstrap.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/form-validator.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/contact-form-script.js')}}"></script>
+        <script src="{{URL::asset('asset/js/jquery.ajaxchimp.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/jquery.meanmenu.js')}}"></script>
+        <script src="{{URL::asset('asset/js/owl.carousel.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/plugins/lightgallery.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/wow.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/odometer.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/jquery.appear.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/jquery.nice-select.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
+        <script src="{{URL::asset('asset/js/custom.js')}}"></script>
     </body>
 </html>

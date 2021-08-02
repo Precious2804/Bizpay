@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\VendorAccount;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,13 @@ Route::get('/', function () {
     $page = 'welcome';
     return dyn($page);
 })->name('welcome');
+
+Route::get('/clear-cache', function(){
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:clear');
+
+    return "DONE";
+});
 
 Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
 Route::post('/do-login', [MainController::class, 'doLogin'])->name('do-login');

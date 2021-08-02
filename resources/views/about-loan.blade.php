@@ -76,7 +76,7 @@
                 <div class="col-lg-4 offset-lg-1">
                     <div class="modern-number-01">
                         <h2 class="heading  mr-5"><span class="mark-text">15</span> Profitable Investment plans.</h2>
-                        <h6 class="heading mt-30"><img src="img/blog-07-960x960.jpg"></h6>
+                        <h6 class="heading mt-30"><img src="{{URL::asset('img/blog-07-960x960.jpg')}}"></h6>
                     </div>
                 </div>
 

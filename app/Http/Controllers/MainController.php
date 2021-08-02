@@ -53,7 +53,8 @@ class MainController extends Controller
     public function packages()
     {
         $page = 'packages';
-        return $this->landingDynamic($page);
+        $packages = ['packages'=>PackagePlans::all()];
+        return $this->landingDynamic($page)->with($packages);
     }
     public function contact()
     {

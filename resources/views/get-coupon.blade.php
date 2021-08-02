@@ -56,7 +56,7 @@ $active1 = 'active';
                                             @if($item->image == "/storage/No Image")
                                             <img src="{{URL::asset('assets/img/Bizpayglobal_logo_only.png')}}" alt="" height="120px" width="140px">
                                             @else
-                                            <img class="img-fulid" src="{{$item->image}}" alt="" height="120px" width="140px">
+                                            <img class="img-fulid" src="{{URL::asset($item->image)}}" alt="" height="120px" width="140px">
                                             @endif
                                         </div>
                                         <div class="content">

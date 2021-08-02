@@ -7,7 +7,7 @@ $active1 = 'active';
 
 <div class="banner-area-three">
     <div class="banner-shape">
-        <img src="assets/img/banner/banner-shape2.png" alt="Shape">
+        <img src="{{URL::asset('assets/img/banner/banner-shape2.png')}}" alt="Shape">
     </div>
     <div class="banner-slider owl-theme owl-carousel">
         <div class="banner-item">
@@ -26,7 +26,7 @@ $active1 = 'active';
                             </div>
                         </div>
                         <div class="banner-slider-img">
-                            <img src="assets/img/banner/banner-main4.png" alt="Banner">
+                            <img src="{{URL::asset('assets/img/banner/banner-main4.png')}}" alt="Banner">
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ $active1 = 'active';
                             </div>
                         </div>
                         <div class="banner-slider-img">
-                            <img src="assets/img/banner/banner-main5.png" alt="Banner">
+                            <img src="{{URL::asset('assets/img/banner/banner-main5.png')}}" alt="Banner">
                         </div>
                     </div>
                 </div>
@@ -97,16 +97,16 @@ $active1 = 'active';
                 <div class="rv-video-section">
 
                     <div class="ht-banner-01 ">
-                        <img class="img-fluid border-radus-5 animation_images one wow fadeInDown" src="img/2.jpeg" alt="">
+                        <img class="img-fluid border-radus-5 animation_images one wow fadeInDown" src="{{URL::asset('img/2.jpeg')}}" alt="">
                     </div>
 
                     <div class="ht-banner-02">
-                        <img class="img-fluid border-radus-5 animation_images two wow fadeInDown" src="img/6.jpeg" alt="">
+                        <img class="img-fluid border-radus-5 animation_images two wow fadeInDown" src="{{URL::asset('img/6.jpeg')}}" alt="">
                     </div>
 
                     <div class="main-video-box video-popup">
                         <div class="single-popup-wrap">
-                            <img class="img-fluid border-radus-5" src="img/3.jpeg" alt="">
+                            <img class="img-fluid border-radus-5" src="{{URL::asset('img/3.jpeg')}}" alt="">
                             <div class="ht-popup-video video-button">
                                 <div class="video-mark">
                                     <div class="wave-pulse wave-pulse-1"></div>
@@ -117,11 +117,11 @@ $active1 = 'active';
                     </div>
 
                     <div class="ht-banner-03">
-                        <img class="img-fluid border-radus-5 animation_images three wow fadeInDown" src="img/1.jpeg" alt="">
+                        <img class="img-fluid border-radus-5 animation_images three wow fadeInDown" src="{{URL::asset('img/1.jpeg')}}" alt="">
                     </div>
 
                     <div class="ht-banner-04">
-                        <img class="img-fluid border-radus-5 animation_images four wow fadeInDown" src="img/4.jpeg" alt="">
+                        <img class="img-fluid border-radus-5 animation_images four wow fadeInDown" src="{{URL::asset('img/4.jpeg')}}" alt="">
                     </div>
 
 
@@ -135,8 +135,8 @@ $active1 = 'active';
     <div class="container">
         <div class="counter-wrap">
             <div class="counter-shape">
-                <img src="assets/img/counter-shape3.png" alt="Shape">
-                <img src="assets/img/counter-shape4.png" alt="Shape">
+                <img src="{{URL::asset('assets/img/counter-shape3.png')}}" alt="Shape">
+                <img src="{{URL::asset('assets/img/counter-shape4.png')}}" alt="Shape">
             </div>
             <div class="row">
                 <div class="col-6 col-sm-6 col-lg-3">
@@ -185,8 +185,8 @@ $active1 = 'active';
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="works-img">
-                    <img src="assets/img/works-shape1.png" alt="Shape">
-                    <img src="assets/img/works-main.png" alt="Works">
+                    <img src="{{URL::asset('assets/img/works-shape1.png')}}" alt="Shape">
+                    <img src="{{URL::asset('assets/img/works-main.png')}}" alt="Works">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -259,8 +259,8 @@ $active1 = 'active';
     <div class="container">
         <div class="book-content">
             <div class="book-shape">
-                <img src="assets/img/book-shape1.png" alt="Shape">
-                <img src="assets/img/book-shape2.png" alt="Shape">
+                <img src="{{URL::asset('assets/img/book-shape1.png')}}" alt="Shape">
+                <img src="{{URL::asset('assets/img/book-shape2.png')}}" alt="Shape">
             </div>
             <h2>“ Want to know more get with our expert right now!</h2>
             <p>With lots of unique information to be shared with you, you can easily contact out support.</p>
@@ -297,15 +297,19 @@ $active1 = 'active';
                                     </div> <br>
                                     <div>₦{{$item->ref_bonus}} Referral Bonus</div>
                                     <div>₦{{$item->spons_bonus}} Sponsord Bonus</div>
-                                    <div>₦{{$item->min_withdraw}} MInimum Withdrawable</div>
+                                    <div>₦{{$item->min_withdraw}} Minimum Withdrawable</div>
+                                    <br>
+                                    <div>
+                                        <a href="{{route('get-coupon')}}" target="_blank" class="ht-btn ht-btn-default btn--secondary" style="background-color: #e93c05;">Get started</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
                 </div>
-
             </div>
+        </div>
 </section>
 
 @stop

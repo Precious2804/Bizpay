@@ -10,10 +10,10 @@
                   <div class="card-body">
                     <div class="author-box-center">
                         @if(!$loggedUserInfo['image'])
-                            <img src="assets/img/blank-image.png" alt="" class="rounded-circle author-box-picture">
+                            <img src="{{URL::asset('assets/img/blank-image.png')}}" alt="" class="rounded-circle author-box-picture">
                         @endif
                         @if($loggedUserInfo['image'])
-                            <img alt="image" src="{{$loggedUserInfo['image']}}" class="rounded-circle author-box-picture" >
+                            <img alt="image" src="{{URL::asset($loggedUserInfo['image'])}}" class="rounded-circle author-box-picture" >
                         @endif
                       <div class="clearfix"></div>
                       <div class="author-box-name">

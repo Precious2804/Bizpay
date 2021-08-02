@@ -23,10 +23,10 @@
                     <div class="cybersecurity-hero-images-wrap wow move-up">
                         <div class="cybersecurity-hero-images section-space--mt_80">
                             <div class="inner-img-one">
-                                <img class="img-fluid worldRotate" src="img/mitech-slider-cybersecurity-global-image.png" alt="">
+                                <img class="img-fluid worldRotate" src="{{URL::asset('img/mitech-slider-cybersecurity-global-image.png')}}" alt="">
                             </div>
                             <div class="inner-img-two">
-                                <img class="img-fluid  ml-5 " src="img/slider-cybersecurity-slide-01-image-01.png" alt="">
+                                <img class="img-fluid  ml-5 " src="{{URL::asset('img/slider-cybersecurity-slide-01-image-01.png')}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                 <div class="col-lg-4 offset-lg-1">
                     <div class="modern-number-01">
                         <h2 class="heading  mr-5"><span class="mark-text">15</span> Profitable Investment plans.</h2>
-                        <h6 class="heading mt-30"><img src="img/home-processing-video-intro-slider-slide-01-image-01.jpg"></h6>
+                        <h6 class="heading mt-30"><img src="{{URL::asset('img/home-processing-video-intro-slider-slide-01-image-01.jpg')}}"></h6>
                     </div>
                 </div>
 

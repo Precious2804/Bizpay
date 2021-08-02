@@ -72,18 +72,9 @@
         </div>
         <a href="{{ route('profile') }}" style="color: green;"><div class="text text-success">{{$loggedUserInfo['first_name']}} {{$loggedUserInfo['last_name']}}</div></a>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown"><a href="#" data-toggle="dropdown"
-              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> @if($loggedUserInfo['image'])<img alt="image" src="{{$loggedUserInfo['image']}}"
-                class="user-img-radious-style">@endif @if(!$loggedUserInfo['image']) <img src="{{URL::asset('assets/img/blank-image.png')}}" alt="" style="border-color: green;"> @endif <span class="d-sm-none d-lg-inline-block"></span></a>
-            <div class="dropdown-menu dropdown-menu-right pullDown">
-              <div class="dropdown-title">Hello {{$loggedUserInfo['first_name']}}</div>
+          <li class="dropdown">
               <a href="{{ route('profile') }}" class="dropdown-item has-icon text-success"> <i class="far fa-user"></i> Profile
               </a> 
-              <div class="dropdown-divider"></div>
-              <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
-            </div>
           </li>
         </ul>
       </nav>

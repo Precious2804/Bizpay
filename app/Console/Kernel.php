@@ -26,20 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function(){
-
-            $expiration = Coupones::where('status', "Active")->whereIn('expire_at', '<=', now());
-            $expiration->update(['status' => "Expired"]);
-            
-
-            $coupons = Coupones::all();
-            foreach ($coupons as $coupon) {
-                if($coupon->days_left > 0){
-                    $coupon->days_left = $coupon->days_left - 1;
-                    $coupon->save();
-                } 
-            }            
-        })->daily();
+        $schedule->command('check:active')->daily();
     }
 
     /**

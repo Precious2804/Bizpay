@@ -8,7 +8,8 @@ $title = 'Register | Bizpay Global';
   <section class="section">
     <div class="container mt-5">
       <div class="row">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2" style="padding-top: 55px;">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+        <br><br><br><br>
           <div class="card card-primary">
             <div class="card-header">
               <h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px">Register Here</h4>

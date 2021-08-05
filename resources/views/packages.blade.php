@@ -55,7 +55,7 @@
                                     <div>₦{{$item->min_withdraw}} Minimum Withdrawable</div>
                                     <br>
                                     <div>
-                                        <a href="{{route('get-coupon')}}" target="_blank" class="ht-btn ht-btn-default btn--secondary" style="background-color: #e93c05;">Get started</a>
+                                        <a href="{{route('get-coupon')}}" target="_blank" class="ht-btn ht-btn-default btn--secondary" style="background-color: #2c7920;">Get started</a>
                                     </div>
                                 </div>
                             </div>

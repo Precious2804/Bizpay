@@ -50,17 +50,6 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label>Loan Duration <strong class="text text-danger">*</strong></label>
-                          <select class="custom-select" style="border-color: green;" name="duration">
-                            <option value="">Select Loan Duration</option>
-                            <option value="50">50% Interest 3days</option>
-                            <option value="100">100% Interest 6days</option>
-                          </select>
-                          <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                        </div>
-                      </div>
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Amount <strong class="text text-danger">*</strong></label>

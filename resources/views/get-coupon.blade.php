@@ -61,12 +61,12 @@ $active1 = 'active';
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">{{$item->name}}</h5>
-                                            <div class="text-default"> {{$item->phone}} <br> Click on the button below to message this seller for a Coupon</div>
+                                            <div class="text-default"> Click on the button below to message this seller for a Coupon</div>
                                             <div class="circle-arrow">
                                                 <div class="middle-dot"></div>
                                                 <div class="middle-dot dot-2"></div>
-                                                <a href="https://web.whatsapp.com/send?phone={{$item->phone}}" target="_blank">
-                                                    <i class="bx bx-arrow-to-right"></i>
+                                                <a href="https://web.whatsapp.com/send?phone={{$item->phone}}" style="background:#2c7920" target="_blank">
+                                                    <i class="bx bxl-whatsapp"></i>
                                                 </a>
                                             </div>
                                         </div>

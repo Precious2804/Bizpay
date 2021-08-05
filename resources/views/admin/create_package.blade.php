@@ -5,6 +5,9 @@
     <section class="section">
         <div class="section-body">
             <div class="card">
+                @if(Session::get('deleted'))
+                <div class="alert alert-success">{{Session::get('deleted')}}</div>
+                @endif
                 <div class="card-header">
                     <h4>Available Package Plans</h4>
                 </div>
@@ -22,21 +25,23 @@
                                     <th scope="col">Minimum Withdrawable</th>
                                     <th scope="col">Date/Time Created</th>
                                     <th scope="col">Operation</th>
+                                    <th scope="col">Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($packages as $item)
-                                    <tr>
-                                        <th scope="col">{{$item->id}}</th>
-                                        <th scope="col">{{$item->package_id}}</th>
-                                        <th>{{$item->package}}</th>
-                                        <th>{{$item->value}}</th>
-                                        <th>{{$item->ref_bonus}}</th>
-                                        <th>{{$item->spons_bonus}}</th>
-                                        <th>{{$item->min_withdraw}}</th>
-                                        <th>{{$item->created_at}}</th>
-                                        <th><a href="coupone/{{$item->package_id}}">Create Coupon</a></th>
-                                    </tr>
+                                <tr>
+                                    <th scope="col">{{$item->id}}</th>
+                                    <th scope="col">{{$item->package_id}}</th>
+                                    <th>{{$item->package}}</th>
+                                    <th>{{$item->value}}</th>
+                                    <th>{{$item->ref_bonus}}</th>
+                                    <th>{{$item->spons_bonus}}</th>
+                                    <th>{{$item->min_withdraw}}</th>
+                                    <th>{{$item->created_at}}</th>
+                                    <th><a href="coupone/{{$item->package_id}}">Create Coupon</a></th>
+                                    <th><a href="/del_pack/{{$item->package_id}}"><i class="fas fa-trash" style="color: red;"></i></a></th>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -51,7 +56,7 @@
                     <form action="{{ route('creating_package') }}" method="POST">
                         @csrf
                         @if(Session::get('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div>
+                        <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
                         <div class="row">
                             <div class="form-group col-lg-6">
@@ -65,7 +70,7 @@
                                 <span class="text-danger">@error('value'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label for="">Referral Bonus</label>
@@ -78,7 +83,7 @@
                                 <span class="text-danger">@error('spons_bonus'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label for="">Minimum Amount Withdrawable</label>

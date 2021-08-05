@@ -109,6 +109,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::post('/create-vendor', [AdminController::class, 'creatingVendor'])->name('create-vendor');
     Route::get('/del-vendor/{vendor_id}', [AdminController::class, 'delVendor'])->name('del-vendor');
     Route::get('/del-coup/{coupone_code}', [AdminController::class, 'delCoup'])->name('del-coup');
+    Route::get('/del_pack/{package_id}', [AdminController::class, 'delPack'])->name('del_pack');
 });
 
 

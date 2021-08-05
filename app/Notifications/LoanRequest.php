@@ -16,14 +16,13 @@ class LoanRequest extends Notification
      *
      * @return void
      */
-    public function __construct($email, $loan_coupone, $username, $reasons, $duration, $amount)
+    public function __construct($email, $loan_coupone, $username, $reasons, $amount)
     {
         //
         $this->email = $email;
         $this->loan_coupone = $loan_coupone;
         $this->username = $username;
         $this->reasons = $reasons;
-        $this->duration = $duration;
         $this->amount = $amount;
     }
 

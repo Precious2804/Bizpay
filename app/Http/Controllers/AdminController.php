@@ -177,4 +177,9 @@ class AdminController extends Controller
         $findCoup->delete();
         return back()->with('deleted', "Used Coupone $coupone_code has been deleted Successfully");
     }
+    public function delPack($package_id){
+        $findPack = PackagePlans::where('package_id', $package_id)->first();
+        $findPack->delete();
+        return back()->with('deleted', "The Package Plan with ID $package_id has been deleted Successfully");
+    }
 }

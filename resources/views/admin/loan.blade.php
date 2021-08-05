@@ -25,7 +25,6 @@
                                             <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
                                             <th scope="col">Phone</th>
-                                            <th scope="col">Duration</th>
                                             <th scope="col">Amount</th>
                                             <th scope="col">Reason</th>
                                             <th scope="col">Document</th>
@@ -43,7 +42,6 @@
                                                     <th>{{$item->fname}}</th>
                                                     <th>{{$item->lname}}</th>
                                                     <th>{{$item->phone}}</th>
-                                                    <th>{{$item->duration}}</th>
                                                     <th>{{$item->amount}}</th>
                                                     <th>{{$item->reasons}}</th>
                                                     <th><a href="{{ asset('storage/'.$item->document) }}" target="_blank"><img src="{{ asset('storage/'.$item->document) }}" width="70px" height="50px" alt=""></a></th>

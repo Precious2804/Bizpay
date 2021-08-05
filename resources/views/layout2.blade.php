@@ -67,55 +67,6 @@
             </div>
         </div>
 
-        <div class="header-area three">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="left">
-                            <ul>
-                                <li>
-                                    <i class='bx bx-phone text-warning'></i>
-                                    <a href="tel:<?php print $phone?>">
-                                        <?php print $phone;?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class='bx bx-mail-send text-warning'></i>
-                                    <a href="mailto:<?php print $email;?>" data-cfemail="0a626f6666654a6c6364656424696567"><?php print $email;?></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="right">
-                            <ul>
-                                <li>
-                                    <a href="https://facebook.com/" target="_blank">
-                                        <i class='bx bxl-facebook'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/" target="_blank">
-                                        <i class='bx bxl-twitter'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://instagram.com/" target="_blank">
-                                        <i class='bx bxl-instagram'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://linkedin.com/" target="_blank">
-                                        <i class='bx bxl-linkedin'></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="navbar-area sticky-top">
 
             <div class="mobile-nav">
@@ -289,11 +240,6 @@
                                         <span>Email:</span>
                                         <a href="mailto:<?php print $email;?>"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
                                     </li>
-                                    <li>
-                                        <i style="color: #2c7920;" class='bx bx-current-location'></i>
-                                        <span>Address:</span>
-                                        <a><?php print $address;?></a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -325,39 +271,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="footer-item">
-                            <h3>Disclaimer</h3>
-                            <p class="text-white">Member expressly agrees that use of the service is at member’s sole risk. The service is provided on an “as is” and “as available” basis. to the maximum extent allowed by applicable Nigerian law, we disclaims all warranties of any kind, express or implied by law, custom or otherwise, including <a href="terms"><em class="text-warning">...continue</em></a></p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="footer-item">
-                            <div class="footer-links">
-                                <h3>What We Do</h3>
-                                <ul>
-                                    <li>
-                                        <a href="about">Financial Advice</a>
-                                    </li>
-                                    <li>
-                                        <a href="about">Planning Strategies</a>
-                                    </li>
-                                    <li>
-                                        <a href="about">Investment Trending</a>
-                                    </li>
-                                    <li>
-                                        <a href="about">Wealth Commitment</a>
-                                    </li>
-                                    <li>
-                                        <a href="about">Investment</a>
-                                    </li>
-                                    <li>
-                                        <a href="loan">Loan</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </footer>
@@ -372,7 +285,7 @@
         </div>
 
 
-        <div class="go-top">
+        <div class="go-top" style="background:#2c7920">
             <i class='bx bxs-up-arrow'></i>
             <i class='bx bxs-up-arrow'></i>
         </div>

@@ -502,14 +502,12 @@ class MainController extends Controller
         $email = $req->email;
         $username = $req->fname . " " . $req->lname;
         $reasons = $req->reasons;
-        $duration = $req->duration;
         $amount = $req->amount;
         $req->validate([
             'email' => 'required|email',
             'fname' => 'required|string',
             'lname' => 'required|string',
             'phone' => 'required|max:12',
-            'duration' => 'required',
             'amount' => 'required',
             'reasons' => 'required',
             'document' => 'required|mimes:png,jpg,jpeg,gif,svg|max:4096'
@@ -532,10 +530,10 @@ class MainController extends Controller
                     'fname' => $req->fname,
                     'lname' => $req->lname,
                     'phone' => $req->phone,
-                    'duration' => $req->duration,
                     'amount' => $req->amount,
+                    'duration'=>"NULL",
                     'reasons' => $req->reasons,
-                    'document' => $filePath,
+                    'document' => '/storage/' . $filePath,
                     'status' => "Awaiting Approval"
                 ]);
                 if ($result) {
@@ -548,7 +546,7 @@ class MainController extends Controller
                         'amount' => $req->amount,
                         'status' => "Awaiting Approval"
                     ]);
-                    $checkEmail->notify(new LoanRequest($email, $loan_coupone, $username, $reasons, $duration, $amount));
+                    $checkEmail->notify(new LoanRequest($email, $loan_coupone, $username, $reasons, $amount));
                     return back()->with('success', "Your Loan Request has been Sent and is Awaiting Confirmation");
                 }
             }

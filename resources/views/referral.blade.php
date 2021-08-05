@@ -27,7 +27,7 @@
                   </div>
                   <label>Your Referral Link:</label>
                     <div class="form-group">
-                      <input type="text" id="box" class="form-control" value="{{$routeName}}" style="border-color: green;">
+                      <input type="text" id="box" class="form-control" value="{{$routeName}}" style="border-color: green;" readonly>
                     </div>
                     <div class="form-group float-left">  
                       @if($refReqDetails['status'] == "Awaiting Response")

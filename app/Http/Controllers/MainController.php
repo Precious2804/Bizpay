@@ -40,6 +40,11 @@ class MainController extends Controller
         $page = 'about-loan';
         return $this->landingDynamic($page);
     }
+    public function loanPage()
+    {
+        $page = 'loan-page';
+        return $this->landingDynamic($page);
+    }
     public function howItWorks()
     {
         $page = 'how-it-works';

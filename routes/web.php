@@ -61,6 +61,7 @@ Route::post('/do-register', [MainController::class, 'doRegister'])->name('do-reg
 Route::post('/resend', [MainController::class, 'resend'])->name('resend');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/about-loan', [MainController::class, 'aboutLoan'])->name('about-loan');
+Route::get('/loan-page', [MainController::class, 'loanPage'])->name('loan-page');
 Route::get('/how-it-works', [MainController::class, 'howItWorks'])->name('how-it-works');
 Route::get('/terms', [MainController::class, 'terms'])->name('terms');
 Route::get('/packages', [MainController::class, 'packages'])->name('packages');

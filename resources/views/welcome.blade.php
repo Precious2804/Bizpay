@@ -17,31 +17,9 @@ $active1 = 'active';
                         <div class="banner-content" style="margin-top: 0px;">
                             <!--<span>Your Financial Status Is Good Hands</span>-->
                             <h1 style="  color: #2c7920;">Welcome to <br><?php print $siteName; ?></h1>
-                            <p style="text-align: justify;">At <?php print $siteName; ?>, Our goal is to make financial expertise broadly accessible and effective in helping individuals grow their money faster. Bizpay is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions.</p>
+                            <p style="text-align: center; font-size: 14px;"><?php print $siteName; ?> is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions. </p>
                             <div class="banner-btn-area">
-                                <a class="common-btn three" style="background-color: #2c7920;" href="contact">
-                                    Contact Us
-                                    <span></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="banner-slider-img">
-                            <img src="{{URL::asset('assets/img/banner/banner-main4.png')}}" alt="Banner">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="banner-item">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="banner-content" style="margin-top: 0px;">
-                            <!--<span>Your Financial Status Is Good Hands</span>-->
-                            <h1 style="  color: #2c7920;">Invest and earn passive income at ease</h1>
-                            <p style="text-align: justify;"><?php print $siteName; ?> is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions. </p>
-                            <div class="banner-btn-area">
-                                <a class="common-btn three" href="contact">
+                                <a class="common-btn three" href="contact" style="background-color: #2c7920;">
                                     Contact Us
                                     <span></span>
                                 </a>
@@ -67,7 +45,7 @@ $active1 = 'active';
                         <span class="sub-title" style="color: #2c7920;">About <?php print $siteName; ?></span>
                         <h2>We Help Our Clients To Grow Their Investment</h2>
                     </div>
-                    <p style="text-align: justify;" class="about-p">We are Biz pay.
+                    <p style="text-align: center;" class="about-p">We are Biz pay.
                         We help over 2000 people feel more confident in their most important financial goals, manage employee benefit programs for over 45 Businesses, and support more than 4 Financial institutions with innovative investments and technology solutions to grow their businesses.
                         Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you. </p>
                     <ul>

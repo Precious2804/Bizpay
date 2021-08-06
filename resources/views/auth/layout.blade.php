@@ -79,7 +79,7 @@
                                 <a href="{{route('about')}}" class="nav-link <?php print @$active2 ?>">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('about-loan')}}" class="nav-link <?php print @$active3 ?>">Loan</a>
+                                <a href="{{route('loan-page')}}" class="nav-link <?php print @$active3 ?>">Loan</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('how-it-works')}}" class="nav-link <?php print @$active4 ?>">How it works </a>
@@ -208,61 +208,62 @@
 
     @yield('content')
 
-    <footer class="footer-area three pt-100 pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-lg-4">
-                    <div class="footer-item">
-                        <div class="footer-logo">
-                            <a class="logo" href="{{route('welcome')}}">
-                                <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
-                            </a>
-                            <p>Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
-                            <ul>
-                                <li>
-                                    <i style="color: #2c7920;" class='bx bx-phone-call'></i>
-                                    <span>Phone:</span>
-                                    <a href="tel:<?php print $phone; ?>"><?php print $phone; ?></a>
-                                </li>
-                                <li>
-                                    <i style="color: #2c7920;" class='bx bx-mail-send'></i>
-                                    <span>Email:</span>
-                                    <a href="mailto:<?php print $email; ?>"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email; ?></span></a>
-                                </li>
-                            </ul>
+    <hr>
+        <footer class="footer-area three pt-100 pb-70" style="background: white !important;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="footer-item">
+                            <div class="footer-logo">
+                                <a class="logo" href="./">
+                                    <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
+                                </a>
+                                <p style="color: #000000 !important;">Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
+                                <ul>
+                                    <li>
+                                        <i style="color: #2c7920;" class='bx bx-phone-call'></i>
+                                        <span>Phone:</span>
+                                        <a style="color: #000000 !important;" href="tel:<?php print $phone;?>"><?php print $phone;?></a>
+                                    </li>
+                                    <li>
+                                        <i style="color: #2c7920;" class='bx bx-mail-send'></i>
+                                        <span>Email:</span>
+                                        <a style="color: #000000 !important;" href="mailto:<?php print $email;?>"><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                    <div class="footer-item">
-                        <div class="footer-links">
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li>
-                                    <a href="{{route('about')}}">About</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about-loan')}}">Loan</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('how-it-works')}}">How it works</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('auth.login')}}">Login</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('auth.register')}}">Register</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('terms')}}">Terms</a>
-                                </li>
-                            </ul>
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="footer-item">
+                            <div class="footer-links">
+                                <h3 style="color: #2c7920;">Quick Links</h3>
+                                <ul>
+                                    <li>
+                                        <a href="/about" class="text-black">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="/loan-page" class="text-black">Loan</a>
+                                    </li>
+                                    <li>
+                                        <a href="/how-it-works" class="text-black">How it works</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('auth.login')}}" class="text-black">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('auth.register')}}" class="text-black">Register</a>
+                                    </li>
+                                    <li>
+                                        <a href="/terms" class="text-black">Terms</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
 
     <div class="copyright-area three">

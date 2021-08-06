@@ -90,7 +90,7 @@
                                     <a href="about" class="nav-link <?php print @$active2?>">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="about-loan" class="nav-link <?php print @$active3?>">Loan</a>
+                                    <a href="loan-page" class="nav-link <?php print @$active3?>">Loan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="how-it-works" class="nav-link <?php print @$active4?>">How it works </a>
@@ -118,14 +118,16 @@
                             </ul>
                             <div class="side-nav hide">
 
-                                <a href="get-coupon" style="background-color: #2c7920;" class="btn btn-success">
-                                    Request Coupon <i class='bx bx-arrow-to-right'></i>
-                                </a>
-                                <div class="navbar-modal-btn">
+                            <div style="float: right; padding-left: 5px;" class="navbar-modal-btn">
                                     <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#myModalRight">
                                         <i class='bx bx-menu-alt-right'></i>
                                     </button>
                                 </div>
+
+                                <a href="get-coupon" style="background-color: #2c7920; float:right;" class="btn btn-success">
+                                    Request Coupon <i class='bx bx-arrow-to-right'></i>
+                                </a>
+                                
                             </div>
                         </div>
                     </nav>
@@ -142,7 +144,7 @@
                     </div>
                     <div class="modal-body">
                         <h2>About Us</h2>
-                        <p>We are Biz pay.<br>
+                        <p style="text-align:center">We are Biz pay.<br>
                         We help over 2000 people feel more confident in their most important financial goals, manage employee benefit programs for over 45 Businesses, and support more than 4 Financial institutions with innovative investments and technology solutions to grow their businesses.
                             Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
                         <div class="image-area">
@@ -219,7 +221,8 @@
 
         @yield('content')
 
-        <footer class="footer-area three pt-100 pb-70">
+        <hr>
+        <footer class="footer-area three pt-100 pb-70" style="background: white !important;">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
@@ -228,17 +231,17 @@
                                 <a class="logo" href="./">
                                     <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
                                 </a>
-                                <p>Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
+                                <p style="color: #000000 !important;">Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
                                 <ul>
                                     <li>
                                         <i style="color: #2c7920;" class='bx bx-phone-call'></i>
                                         <span>Phone:</span>
-                                        <a href="tel:<?php print $phone;?>"><?php print $phone;?></a>
+                                        <a style="color: #000000 !important;" href="tel:<?php print $phone;?>"><?php print $phone;?></a>
                                     </li>
                                     <li>
                                         <i style="color: #2c7920;" class='bx bx-mail-send'></i>
                                         <span>Email:</span>
-                                        <a href="mailto:<?php print $email;?>"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
+                                        <a style="color: #000000 !important;" href="mailto:<?php print $email;?>"><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -247,25 +250,25 @@
                     <div class="col-sm-6 col-lg-2">
                         <div class="footer-item">
                             <div class="footer-links">
-                                <h3>Quick Links</h3>
+                                <h3 style="color: #2c7920;">Quick Links</h3>
                                 <ul>
                                     <li>
-                                        <a href="about">About</a>
+                                        <a href="about" class="text-black">About</a>
                                     </li>
                                     <li>
-                                        <a href="about-loan">Loan</a>
+                                        <a href="loan-page" class="text-black">Loan</a>
                                     </li>
                                     <li>
-                                        <a href="how-it-works">How it works</a>
+                                        <a href="how-it-works" class="text-black">How it works</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('auth.login')}}">Login</a>
+                                        <a href="{{route('auth.login')}}" class="text-black">Login</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('auth.register')}}">Register</a>
+                                        <a href="{{route('auth.register')}}" class="text-black">Register</a>
                                     </li>
                                     <li>
-                                        <a href="terms">Terms</a>
+                                        <a href="terms" class="text-black">Terms</a>
                                     </li>
                                 </ul>
                             </div>

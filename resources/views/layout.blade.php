@@ -102,7 +102,7 @@
               <a href="{{ route('loan') }}" class="nav-link"><i class="fas fa-credit-card" style="color:green;"></i><span>Loan</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('new_coupone') }}" class="nav-link"><i class="fas fa-barcode" style="color:green;"></i><span>Get New Coupone</span></a>
+              <a href="{{ route('new_coupone') }}" class="nav-link"><i class="fas fa-barcode" style="color:green;"></i><span>Get New Coupon</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt" style="color:red"></i><span style="color:red"> Logout</span></a>

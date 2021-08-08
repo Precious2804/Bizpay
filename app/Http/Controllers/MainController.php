@@ -451,10 +451,12 @@ class MainController extends Controller
             'ref_id' => 'unique:ref_withdraws'
         ]);
         $user = User::where('email', auth()->user()->email)->first();
+        $checkCoup = Coupones::where('user_email', auth()->user()->email)->first();
+        $coupStat = $checkCoup['status'];
         $phone = $user['phone'];
         $bonus_amount = $req->bonus_amount;
 
-        if ($bonus_amount < 10000) {
+        if ($coupStat = "Active") {
             return back()->with('fail', "You are currently not eligible to Withdraw your referral bonus");
         } else {
             $result = RefWithdraw::create([

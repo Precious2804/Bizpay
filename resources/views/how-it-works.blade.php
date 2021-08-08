@@ -10,12 +10,12 @@
 </div>
 
 
-<div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one">
+<div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one" style="background: white;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7">
                 <div class="cta-content md-text-center">
-                    <h3 class="heading text-white">How It Works <span style="color: #2c7920;"> </span></h3>
+                    <h3 class="heading text-black">How It Works <span style="color: #2c7920;"> </span></h3>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">

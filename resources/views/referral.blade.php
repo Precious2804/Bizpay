@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                  <div class="alert alert-success" style="opacity: 0.8;"><strong>Hint:</strong> Share your Referral Link to friends to Register on Bizpay, and get Instant Bonuses into your Bizpay Account. <br> <strong>Note:</strong> The more your share, the more you Earn. <br> <strong>Also, </strong>You are only Eligible to Withdraw your Referral Bonus only until the Bonus is upto a Minimum amount of ₦10,000 </div>
+                  <div class="alert alert-success" style="opacity: 0.8;"><strong>Hint:</strong> Share your Referral Link to friends to Register on Bizpay, and get Instant Bonuses into your Bizpay Account. <br> <strong>Note:</strong> The more your share, the more you Earn. <br> <strong>Also, </strong>You are only Eligible to Withdraw your Referral Bonus only until your current coupone code expires </div>
                 </div>
               </div>
             </div>

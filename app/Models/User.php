@@ -29,7 +29,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'ref_bonus',
         'image',
         'password',
-        'isVerified'
+        'isVerified',
+        'bank',
+        'acct_name',
+        'acct_number'
     ];
 
     /**

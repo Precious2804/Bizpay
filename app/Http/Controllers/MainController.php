@@ -271,11 +271,17 @@ class MainController extends Controller
 
     public function updateProfile(Request $req)
     {
+        $req->validate([
+            'acct_number'=>'unique:users'
+        ]);
         $user = User::where('email', auth()->user()->email)->first();
         $result = $user->update([
             'first_name' => $req->first_name,
             'last_name' => $req->last_name,
             'phone' => $req->phone,
+            'bank'=>$req->bank,
+            'acct_name'=>$req->acct_name,
+            'acct_number'=>$req->acct_number
         ]);
         if ($result) {
             return back()->with('success', "Profile Updated Successfully");

@@ -107,9 +107,23 @@
                               </div>
                             </div>
                             <div class="row">
-                              <div class="form-group col-md-5 col-12">
+                              <div class="form-group col-md-6 col-12">
                                 <label>Phone</label>
                                 <input type="tel" class="form-control" value="{{$loggedUserInfo['phone']}}" name="phone">
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Bank Name</label>
+                                <input type="text" class="form-control" value="{{$loggedUserInfo['bank']}}" name="bank">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Account Name</label>
+                                <input type="text" class="form-control" value="{{$loggedUserInfo['acct_name']}}" name="acct_name">
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Acoount Number</label>
+                                <input type="text" class="form-control" value="{{$loggedUserInfo['acct_number']}}" name="acct_number">
                               </div>
                             </div>
                           </div>

@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->string('package');
             $table->string('referral')->nullable();
             $table->string('ref_bonus')->nullable();
+            $table->string('bank')->nullable();
+            $table->string('acct_name')->nullable();
+            $table->string('acct_number')->nullable()->unique();
             $table->string('isAdmin')->nullable()->default(0);
             $table->string('isVerified')->nullable()->default(0);
             $table->string('password');
@@ -33,7 +36,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

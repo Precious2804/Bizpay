@@ -27,7 +27,7 @@ use Illuminate\Support\Str;
 function dyn($page)
 {
     $siteName = ['siteName' => "Bizpay Global"];
-    $whatsAppPhone = ['whatsAppPhone' => "2348098862800"];
+    $whatsAppPhone = ['whatsAppPhone' => "2349123652607"];
     $phone = ['phone' => "882-569-756"];
     $email = ['email' => "info@bizpayglobal.com"];
     $address = ['address' => "4578 Marmora Road, NG"];

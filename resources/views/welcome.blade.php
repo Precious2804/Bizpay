@@ -83,15 +83,22 @@ $active1 = 'active';
                     </div>
 
                     <div class="main-video-box video-popup">
-                        <div class="single-popup-wrap">
-                            <img class="img-fluid border-radus-5" src="{{URL::asset('img/3.jpeg')}}" alt="">
-                            <div class="ht-popup-video video-button">
-                                <div class="video-mark">
-                                    <div class="wave-pulse wave-pulse-1"></div>
-                                    <div class="wave-pulse wave-pulse-2"></div>
+                        <a target="_blank" href="https://youtu.be/9jzsaAyk9DY" class="video-link  mt-30">
+                            <div class="single-popup-wrap">
+                                <img class="img-fluid border-radus-5" src="{{URL::asset('img/3.jpeg')}}" alt="">
+                                <div class="ht-popup-video video-button">
+                                    <div class="video-mark">
+                                        <div class="wave-pulse wave-pulse-1"></div>
+                                        <div class="wave-pulse wave-pulse-2"></div>
+                                    </div>
+                                    <div class="video-button__two">
+                                        <div class="video-play">
+                                            <span class="video-play-icon"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="ht-banner-03">
@@ -251,6 +258,7 @@ $active1 = 'active';
     </div>
 </div>
 
+
 <section class="provide-area pt-100 pb-70">
     <div class="container">
         <div class="section-title three">
@@ -288,6 +296,7 @@ $active1 = 'active';
                 </div>
             </div>
         </div>
+
 </section>
 
 @stop

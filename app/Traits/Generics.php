@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\VendorAccount;
 use App\Models\WithdrwaRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 trait Generics{
@@ -63,6 +64,11 @@ trait Generics{
         $exploded = explode('-', $unique_id);
         $n_unique_id = $exploded[4];
         return $n_unique_id;
+    }
+
+    function createUniqueID($table, $column){
+        $id = $this->generateId();
+        return DB::table($table)->where($column, $id)->first() ? $this->createUniqueID($table, $column) :  $id;
     }
 
     //a function that generates random numbers

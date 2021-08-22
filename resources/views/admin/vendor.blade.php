@@ -24,9 +24,9 @@
                                 <span class="text-danger">@error('name'){{ $message }}@enderror</span>
                             </div>
                             <div class="form-gorup col-lg-6">
-                                <label for="" class="float-left">Vendor Phone Number <span class="text-italize">(Hint: 0..........)</span></label>
-                                <input type="text" name="phone" class="form-control" placeholder="Enter Vendor Phone Number">
-                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+                                <label for="" class="float-left">Vendor Whatsapp Link <span class="text-italize"></span></label>
+                                <input type="text" name="phone" class="form-control" placeholder="Enter Vendor Whatsapp Link">
+                                <span class="text-danger">@error('link'){{ $message }}@enderror</span>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="" class="float-left">Vendor Image</label>

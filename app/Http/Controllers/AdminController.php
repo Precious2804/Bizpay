@@ -150,8 +150,6 @@ class AdminController extends Controller
             'phone'=>'required|string|unique:vendor_accounts',
             'image'=>'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
         ]);
-        $splitNumber = ltrim($req->phone, '0');
-        $phone = "234".$splitNumber;
         if($req->file()) {
             $name = time().'_'.$req->image->getClientOriginalName();
             $filePath = $req->file('image')->storeAs('VendorPics', $name, 'public');
@@ -162,7 +160,7 @@ class AdminController extends Controller
         VendorAccount::create([
             'vendor_id'=>$this->generateRand(),
             'name'=>$req->name,
-            'phone'=>$phone,
+            'phone'=>$req->phone,
             'image'=>$req->image = '/storage/' . $filePath
         ]);
         return back()->with('created', "$req->name has been created successfully");

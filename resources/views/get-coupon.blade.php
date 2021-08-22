@@ -65,7 +65,7 @@ $active1 = 'active';
                                             <div class="circle-arrow">
                                                 <div class="middle-dot"></div>
                                                 <div class="middle-dot dot-2"></div>
-                                                <a href="https://web.whatsapp.com/send?phone={{$item->phone}}" style="background:#2c7920" target="_blank">
+                                                <a href="{{$item->phone}}" style="background:#2c7920" target="_blank">
                                                     <i class="bx bxl-whatsapp"></i>
                                                 </a>
                                             </div>

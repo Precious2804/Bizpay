@@ -14,7 +14,7 @@ $active3 = 'active';
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7">
                 <div class="cta-content md-text-center">
-                    <h3 class="heading text-black">Bizpay Global <span style="color: #2c7920;"> Loan</span> <br> Get quick loan as coupon code when qualified. 20% Interest applies on all packages.</h3>
+                    <h3 class="heading text-black">Bizpay Global <span style="color: #2c7920;"> Loan</span> <br> Get quick loan as coupon code when qualified. 70% Interest applies on all packages.</h3>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">

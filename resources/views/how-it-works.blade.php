@@ -1,5 +1,6 @@
 <?php
-    $title = 'How it works | Bizpay Global'; $active4='active';
+$title = 'How it works | Bizpay Global';
+$active4 = 'active';
 ?>
 
 @extends('layout2')
@@ -20,7 +21,7 @@
             </div>
             <div class="col-xl-4 col-lg-5">
                 <div class="cta-button-group--one text-center">
-                    <a href="https://web.whatsapp.com/send?phone=<?php print $whatsAppPhone;?>" class="btn btn--white btn-one"><span class="btn-icon mr-2"><i class="far fa-comment-alt-dots"></i></span> Let's talk</a>
+                    <a href="https://web.whatsapp.com/send?phone=<?php print $whatsAppPhone; ?>" class="btn btn--white btn-one"><span class="btn-icon mr-2"><i class="far fa-comment-alt-dots"></i></span> Let's talk</a>
                     <a href="contact" class="btn btn--secondary  btn-two"><span class="btn-icon mr-2"><i class="far fa-info-circle"></i></span> Get in-touch</a>
                 </div>
             </div>
@@ -48,19 +49,55 @@
                     <div class="cybersecurity-about-text" style="text-align: justify;">
 
                         <div class="text">
-                            <p>Bizpay Global is a platform where members invest in physical assets such as Real estates, gadgets and Livestock. <br>
-                            Bizpay Global also offers a monetary trade platform (Peer to peer funding market) </p>
+                            <p>Bizpay Global is a platform where members invest in physical assets such as Real estates, gadgets and Livestock, Gadgets, Agro-based, shares, local and international bonds and stocks <br>
+                                Bizpay Global also offers a monetary trade platform (Peer to peer funding market) </p>
                         </div>
                         <div class="text">
                             <p>The core activities that runs on Bizpay Global are:
-                                <ul>
-                                    <li>1. Registration</li>
-                                    <li>2. Investment</li>
-                                    <li>3. Referral and</li>
-                                    <li>4. Withdrawal</li>
-                                </ul>
+                            <ul>
+                                <li>1. Registration</li>
+                                <li>2. Investment</li>
+                                <li>3. Referral and</li>
+                                <li>4. Withdrawal</li>
+                            </ul>
                             </p>
                             <p>Bizpay Global provides an investment opportunity to interested members of the public who wishes to invest with us. Members funds are invested into real estates projects, livestock and gadgets sales with a mouth watering Profit paid within 14-30 Days.</p>
+                            <div>
+                                <h6>CREATE AN ACCOUNT</h6>
+                                <p>
+                                    Click the 'Register' button to Create an account with Bizpay and get it activated with a coupon code.
+                                </p>
+                            </div>
+                            <br>
+
+                            <div>
+                                <h6>START INVESTING</h6>
+                                <p>
+                                    You start buy purchasing your choice of Coupon code from our verified vendors.
+                                </p>
+                            </div>
+                            <br>
+
+                            <div>
+                                <h6>WITHDRAW</h6>
+                                <p>
+                                    You withdraw your funds when your subscription has expired (30days). payment is disbursed within 24hours upon request.
+                                </p>
+                            </div>
+                            <br>
+
+                            <div>
+                                <h6>REFERRAL PROGRAM</h6>
+                                <p>Our system also includes a referral program where members can earn 5% referral bonus on any amount invested by anyone they refer into the system using their referral link.</p>
+                            </div>
+                            <br>
+
+                            <div>
+                                <h6>LOAN</h6>
+                                <p> Of course Our goal is to make financial expertise broadly accessible and effective in helping people live the lives their want, that is why we also offer Instant loans to individuals and business owners who creates an account with Bizpay and apply for loan when qualified.
+                                    Getting loans on Bizpay is completely easy and just in few clicks you are good to go! Without any bulky documents.
+                                    Bizpay global is strictly for adults therefore you must be at least 18 years of age before you are eligible to create an account with us.</p>
+                            </div>
                         </div>
 
                     </div>

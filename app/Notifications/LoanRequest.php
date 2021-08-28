@@ -48,7 +48,7 @@ class LoanRequest extends Notification
         $url = route('loan');
         return (new MailMessage)
                                 ->greeting('Hello '."$this->username")
-                                ->line('You initiated a Loan request of ₦'.$this->amount.' on Bizpay Global with the Loan Coupon ID of '."$this->loan_coupone")
+                                ->line('You initiated a Loan request of ₦'.$this->amount.' on Bizpay Global')
                                 ->line('For the purpose stated as: '."$this->reasons")
                                 ->action('Go to Dashboard', $url)
                                 ->line('PS: The Administration of Bizpay Global would review your loan application request and then provide an approval for the loan request')

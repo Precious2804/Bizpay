@@ -22,9 +22,9 @@
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone Number</th>
-                                    <th scope="col">Date of Birth</th>
-                                    <th scope="col">Current Coupon</th>
-                                    <th scope="col">Current Pacakge</th>
+                                    <th scope="col">Bank Name</th>
+                                    <th scope="col">Account Number</th>
+                                    <th scope="col">Account Name</th>
                                     <th scope="col">Referral Bonus</th>
                                     <th scope="col">Delete</th>
                                 </tr>
@@ -38,9 +38,9 @@
                                         <th>{{$item->last_name}}</th>
                                         <th>{{$item->email}}</th>
                                         <th>{{$item->phone}}</th>
-                                        <th>{{$item->date}}</th>
-                                        <th>{{$item->coupone_code}}</th>
-                                        <th>{{$item->package}}</th>
+                                        <th>{{$item->bank}}</th>
+                                        <th>{{$item->acct_number}}</th>
+                                        <th>{{$item->acct_name}}</th>
                                         @if($item->ref_bonus == NULL)
                                             <th>0</th>
                                         @endif

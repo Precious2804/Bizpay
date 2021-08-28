@@ -94,7 +94,6 @@
                       <table class="table table-striped table-md">
                         <tr>
                           <th scope="col">Transaction ID</th>
-                          <th>Coupone Code</th>
                           <th style="color: green;">Package</th>
                           <th>Loan Amount(₦)</th>
                           <th style="color: green;">Status</th>
@@ -104,7 +103,6 @@
                           <tr>
                             @if($item->trans_type == "Loan")
                               <th scope="col">{{$item->trans_id}}</th>
-                              <th scope="col">{{$item->coupone_code}}</th>
                               <td style="color: green;">{{$item->package}}</td>
                               <td>₦{{$item->amount}}</td>
                               <td style="color: green;">{{$item->status}}</td>

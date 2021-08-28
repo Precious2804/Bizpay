@@ -3,6 +3,7 @@
 namespace app\Traits;
 
 use App\Models\AllTransactions;
+use App\Models\BankCodes;
 use App\Models\Coupones;
 use App\Models\UnUsedCoupones;
 use App\Models\PackagePlans;
@@ -39,12 +40,14 @@ trait Generics{
         $unique_id = $user['loggedUserInfo']['unique_id'];
         $routeName = ['routeName'=>$registerRoute."?referral=".$unique_id];
         $refReqDetails = ['refReqDetails'=>RefWithdraw::where('email', auth()->user()->email)->first()];
+        $bank = ['bank'=>BankCodes::all()];
         return view($page)->with($user)
                             ->with($coupone)
                             ->with($transact)
                             ->with($packages)
                             ->with($routeName)
-                            ->with($refReqDetails);
+                            ->with($refReqDetails)
+                            ->with($bank);
     }
 
     function calculateAge($req){

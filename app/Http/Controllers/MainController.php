@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllTransactions;
+use App\Models\BankCodes;
 use App\Models\ContactMessages;
 use App\Models\Coupones;
 use App\Models\EmailVerifyToken;
@@ -278,15 +279,68 @@ class MainController extends Controller
         $result = $user->update([
             'first_name' => $req->first_name,
             'last_name' => $req->last_name,
-            'phone' => $req->phone,
-            'bank'=>$req->bank,
-            'acct_name'=>$req->acct_name,
-            'acct_number'=>$req->acct_number
+            'phone' => $req->phone
         ]);
         if ($result) {
             return back()->with('success', "Profile Updated Successfully");
         }
     }
+
+    public function validateAccount(Request $req){
+        $req->validate([
+            'acct_number'=>'required|numeric',
+            'bank'=>'required'
+        ]);
+        $account_number = $req->acct_number;
+        $bank = $req->bank;
+        $curl = curl_init();
+  
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "Authorization: Bearer sk_test_1a916f15781cc01a4992b9b6642c8baf15f653a3",
+            "Cache-Control: no-cache",
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+          echo "cURL Error #:" . $err;
+        } else {
+          $decodeRes = json_decode($response, true);
+          $account_name = $decodeRes['data']['account_name'];
+          $account_number = $decodeRes['data']['account_number'];
+
+          $bank_detail = BankCodes::where('codes', $bank)->first();
+          $bank_name = $bank_detail['bank_name'];
+
+          return back()->with('account', $account_name)
+                        ->with('number', $account_number)
+                        ->with('bank', $bank_name);
+        }
+
+    }
+    public function updateAccount(Request $req){
+        $user = User::where('unique_id', Auth::user()->unique_id)->first();
+
+        $user->update([
+            'bank'=>$req->bank,
+            'acct_number'=>$req->acct_number,
+            'acct_name'=>$req->acct_name
+        ]);
+        return back()->with('bank_updated', "Bank Account Updated Succesfully");
+    }
+
     // update picture method
     public function updatePicture(Request $req)
     {

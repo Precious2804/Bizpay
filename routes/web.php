@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
     Route::post('/update_profile', [MainController::class, 'updateProfile'])->name('update_profile');
+    Route::post('/account_valid', [MainController::class, 'validateAccount'])->name('account_valid');
+    Route::post('/update_account', [MainController::class, 'updateAccount'])->name('update_account');
     Route::post('/update_pic', [MainController::class, 'updatePicture'])->name('update_pic');
     Route::get('/invest', [MainController::class, 'invest'])->name('invest');
     Route::get('/withdraw', [MainController::class, 'withdraw'])->name('withdraw');

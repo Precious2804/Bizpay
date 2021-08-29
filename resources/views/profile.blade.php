@@ -182,6 +182,13 @@
                     @endif
 
                     @if($loggedUserInfo['acct_number'])
+
+                    @if (Session::get('bank_updated'))
+                    <div class="alert alert-success">
+                      {{Session::get('bank_updated')}}
+                    </div>
+                    @endif
+                    
                     <h6>Bank Details</h6>
                     <div class="form-group col-md-12 col-12">
                       <label>Bank: </label>

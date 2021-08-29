@@ -44,7 +44,7 @@
                                                     <th>{{$item->phone}}</th>
                                                     <th>{{$item->amount}}</th>
                                                     <th>{{$item->reasons}}</th>
-                                                    <th><a href="{{ asset('storage/'.$item->document) }}" target="_blank"><img src="{{ asset('storage/'.$item->document) }}" width="70px" height="50px" alt=""></a></th>
+                                                    <th><a href="{{URL::asset('storage/'.$item->document) }}" target="_blank"><img src="{{URL::asset('storage/'.$item->document) }}" width="70px" height="50px" alt=""></a></th>
                                                     @if($item->status == "Awaiting Approval")
                                                         <th><a href="/approve/{{$item->loan_id}}"><button type="button" class="btn btn-danger">Approve Now</button></a></th>
                                                     @endif

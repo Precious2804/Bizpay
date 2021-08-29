@@ -304,7 +304,7 @@ class MainController extends Controller
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "GET",
           CURLOPT_HTTPHEADER => array(
-            "Authorization: Bearer sk_test_1a916f15781cc01a4992b9b6642c8baf15f653a3",
+            "Authorization: Bearer sk_live_8e85518584e900fd4567300544e1d44189c63049",
             "Cache-Control: no-cache",
           ),
         ));
@@ -586,7 +586,6 @@ class MainController extends Controller
             if ($req->file()) {
                 $name = time() . '_' . $req->document->getClientOriginalName();
                 $filePath = $req->file('document')->storeAs('uploads', $name, 'public');
-
                 $loan_coupone = $this->generateId();
                 $loan_id = $this->generateRand();
                 //creates the message

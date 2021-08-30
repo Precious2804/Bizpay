@@ -97,6 +97,11 @@
                       {{Session::get('bank_updated')}}
                     </div>
                     @endif
+                    @if (Session::get('not'))
+                    <div class="alert alert-danger">
+                      {{Session::get('not')}}
+                    </div>
+                    @endif
                     <div class="card-header">
                       <h4>Edit Profile</h4>
                     </div>

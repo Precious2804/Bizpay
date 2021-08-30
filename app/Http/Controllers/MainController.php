@@ -318,15 +318,20 @@ class MainController extends Controller
           echo "cURL Error #:" . $err;
         } else {
           $decodeRes = json_decode($response, true);
-          $account_name = $decodeRes['data']['account_name'];
-          $account_number = $decodeRes['data']['account_number'];
-
-          $bank_detail = BankCodes::where('codes', $bank)->first();
-          $bank_name = $bank_detail['bank_name'];
-
-          return back()->with('account', $account_name)
-                        ->with('number', $account_number)
-                        ->with('bank', $bank_name);
+          $message = $decodeRes['message'];
+          if($message != "Account number resolved"){
+              return back()->with('not', "Unable to resolve the Account number with the details provided");
+          } else{
+            $account_name = $decodeRes['data']['account_name'];
+            $account_number = $decodeRes['data']['account_number'];
+  
+            $bank_detail = BankCodes::where('codes', $bank)->first();
+            $bank_name = $bank_detail['bank_name'];
+  
+            return back()->with('account', $account_name)
+                          ->with('number', $account_number)
+                          ->with('bank', $bank_name);
+          }
         }
 
     }

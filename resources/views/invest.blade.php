@@ -21,14 +21,14 @@
                     <div class="table-responsive">
                       <table class="table table-striped table-md">
                         <tr>
-                          <th>Coupone Code</th>
+                          <th>Coupon Code</th>
                           <th>User</th>
                           <th>Package Type</th>
                           <th>Amount(₦)</th>
                           <th>Minimum Withdrawal(₦)</th>
                           <th>Investment Date/Time</th>
                           <th>Withdrawal Date</th>
-                          <th>Coupone Status</th>
+                          <th>Coupon Status</th>
                           <th>Withdrawal Status</th>
                         </tr>
                         <tr>
@@ -97,7 +97,7 @@
                       <div class="col-lg-5 col-md-5 col-xl-5 float-right">
                         <div class="row">
                           <div class="col-lg-6">
-                            <a href="{{ route('new_coupone') }}" style="color: white;"><button class="btn btn-block btn-success btn-lg">Get Coupone</button></a>
+                            <a href="{{ route('new_coupone') }}" style="color: white;"><button class="btn btn-block btn-success btn-lg">Get Coupon</button></a>
                           </div>
                           <div class="col-lg-6">
                             <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#exampleModal">Re-invest Now</button>                         
@@ -122,7 +122,7 @@
                       <table class="table table-striped table-md">
                         <tr>
                           <th scope="col">Transaction ID</th>
-                          <th>Coupone Code</th>
+                          <th>Coupon Code</th>
                           <th>Package</th>
                           <th>Amount(₦)</th>
                           <th>Status</th>

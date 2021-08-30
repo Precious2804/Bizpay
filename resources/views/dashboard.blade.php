@@ -18,7 +18,7 @@
               <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
-                    <h5 class="font-15">Coupone Code</h5>
+                    <h5 class="font-15">Coupon Code</h5>
                     <h2 class="mb-3 font-15 text-success"><a href=" {{route('invest')}} " style="color: green;">{{$couponeDetails['coupone_code']}}</a></h2>
                     <p class="mb-0"><span class="col-black" style="font-weight: bold; color:green">{{$couponeDetails['days_left']}}</span> Days Left</p>
                   </div>
@@ -109,13 +109,13 @@
     <div class="col-12 col-md-12 col-lg-12">
       <div class="card">
         <div class="card-header">
-          <h4>Coupone Details</h4>
+          <h4>Coupon Details</h4>
         </div>
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-striped table-md">
               <tr>
-                <th>Coupone Code</th>
+                <th>Coupon Code</th>
                 <th>User</th>
                 <th>Package</th>
                 <th>Amount(₦)</th>
@@ -123,7 +123,7 @@
                 <th>Creation Date</th>
                 <th>Expiration Date</th>
                 <th>Days Left</th>
-                <th>Coupone Status</th>
+                <th>Coupon Status</th>
                 <th>Withdrawal Status</th>
               </tr>
               <tr>
@@ -193,7 +193,7 @@
         <table class="table table-striped table-md">
           <tr>
             <th>Transaction ID</th>
-            <th>Coupone Code</th>
+            <th>Coupon Code</th>
             <th>Package</th>
             <th>Amount(₦)</th>
             <th>Transaction Type</th>

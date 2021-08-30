@@ -237,13 +237,19 @@
                                 <ul>
                                     <li>
                                         <i style="color: #2c7920;" class='bx bx-phone-call'></i>
-                                        <span>Phone:</span>
+                                        <span style="color: #2c7920;">Phone: </span>
                                         <a style="color: #000000 !important;" href="tel:<?php print $phone;?>"><?php print $phone;?></a>
                                     </li>
                                     <li>
                                         <i style="color: #2c7920;" class='bx bx-mail-send'></i>
-                                        <span>Email:</span>
+                                        <span style="color: #2c7920;">Email: </span>
                                         <a style="color: #000000 !important;" href="mailto:<?php print $email;?>"><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
+                                    </li>
+                                    <li>
+                                        <a style="color: #000000 !important;" href="https://instagram.com/bizpayglobal_?utm_medium=copy_link"><i style="color: #2c7920;" class='bx bxl-instagram'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Instagram</span></a>
+                                    </li>
+                                    <li>
+                                        <a style="color: #000000 !important;" href="https://m.facebook.com/Bizpay-Global-Investment-107467634964906/?tsid=0.46218908728939245&source=result"><i style="color: #2c7920;" class='bx bxl-facebook-square'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Facebook</span></a>
                                     </li>
                                 </ul>
                             </div>

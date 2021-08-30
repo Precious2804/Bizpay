@@ -26,7 +26,7 @@
                     <div class="row ">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                         <div class="card-content">
-                          <h5 class="font-15">Coupone Code</h5>
+                          <h5 class="font-15">Coupon Code</h5>
                           <h2 class="mb-3 font-15 text-info">{{$couponeDetails['coupone_code']}}</h2>
                           <p class="mb-0"><span class="col-black" style="font-weight: bold; color:green">{{$couponeDetails['days_left']}}</span> Days Left</p>
                         </div>
@@ -136,7 +136,7 @@
                       <table class="table table-striped table-md">
                         <tr>
                           <th>Transaction ID</th>
-                          <th style="color: green;">Coupone Code</th>
+                          <th style="color: green;">Coupon Code</th>
                           <th>Package</th>
                           <th style="color: green;">Amount(₦)</th>
                           <th>Status</th>

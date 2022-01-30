@@ -18,8 +18,6 @@ class CreateWithdrwaRequestsTable extends Migration
             $table->uuid('unique_id');
             $table->string('email');
             $table->string('phone');
-            $table->string('coupone_code');
-            $table->string('package');
             $table->string('amount');
             $table->string('profit');
             $table->string('status')->nullable();

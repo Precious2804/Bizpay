@@ -13,8 +13,6 @@ class WithdrwaRequest extends Model
         'unique_id',
         'email',
         'phone',
-        'coupone_code',
-        'package',
         'amount',
         'profit',
         'status'

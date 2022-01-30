@@ -43,7 +43,7 @@
                 <th>Amount(₦)</th>
                 <th>Status</th>
                 <th>Duration</th>
-                <th>Date/Time</th>
+                <th>Days Left</th>
                 <th>Action</th>
               </tr>
               <?php
@@ -56,7 +56,7 @@
                 <td>₦{{$item->amount}}</td>
                 <td>{{$item->status}}</td>
                 <td>{{$item->duration}} days</td>
-                <td>{{$item->created_at}}</td>
+                <td>{{$item->days_left}} days</td>
                 <td> <a href="{{route('payment_details')}}?transaction={{$item->trans_id}}"><i class="fas fa-eye"></i></a> </td>
                 @endif
               </tr>

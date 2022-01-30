@@ -15,7 +15,9 @@ class AllTransactions extends Model
         'trans_type',
         'amount',
         'status',
-        'duration'
+        'duration',
+        'days_left',
+        'profit'
     ];
 
     public $incrementing = false;

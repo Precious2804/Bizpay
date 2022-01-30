@@ -364,9 +364,11 @@ class MainController extends Controller
                 'trans_id' => $transID,
                 'email' => $email,
                 'amount' => $amount,
+                'profit' => $amount + $amount * 0.5,
                 'trans_type' => "Investment",
                 'status' => "Inititated",
                 'duration' => $duration,
+                'days_left' => $duration,
             ]);
             $user->update([
                 'no_of_invest' => $user->no_of_invest + 1
@@ -402,41 +404,22 @@ class MainController extends Controller
 
     public function doWithdraw(Request $req)
     {
-        $req->validate([
-            'coupone_code' => 'unique:withdrwa_requests'
+        $user = User::where('unique_id', Auth::user()->unique_id)->first();
+        $data = AllTransactions::where('trans_id', $req->transaction)->first();
+        WithdrwaRequest::create([
+            'unique_id'=>$this->createUniqueID('withdrwa_requests', 'unique_id'),
+            'email'=>$user->email,
+            'phone'=>$user->phone,
+            'amount'=>$data->amount,
+            'profit'=>$data->profit,
+            'status'=>"Requested"
         ]);
-        $email = auth()->user()->email;
-        $username = auth()->user()->first_name . " " . auth()->user()->last_name;
-        $user = User::where('email', $email)->first();
-        $phone = $user['phone'];
-        $coupone = $req->coupone_code;
-        $couponeDetails = Coupones::where('coupone_code', $coupone)->first();
-        $coupPackage = $couponeDetails['package'];
-        $coupAmount = $couponeDetails['amount'];
-        $coupProfit = $couponeDetails['profit'];
-        $coupStatus = $couponeDetails['status'];
-        $unique_id = $this->generateRand();
-        if ($coupStatus == "Expired") {
-            $result = WithdrwaRequest::create([
-                'unique_id' => $unique_id,
-                'email' => $email,
-                'phone' => $phone,
-                'coupone_code' => $coupone,
-                'package' => $coupPackage,
-                'amount' => $coupAmount,
-                'profit' => $coupProfit,
-                'status' => "Awaiting Payment"
-            ]);
-            if ($result) {
-                $couponeDetails->update([
-                    'status' => "Awaiting Payment"
-                ]);
-                $user->notify(new WithdrawalRequestNotification($email, $coupAmount, $coupPackage, $username, $coupProfit, $coupone));
-                return back()->with("success", "Your Withdrawal Request was received successfully. Please hold on for a while, as we Process your payment. Thank you");
-            }
-        } elseif ($coupStatus != "Expired") {
-            return back()->with('failed', "Sorry! You cannot Withdraw this Coupon Investment, Thank You");
-        }
+        $data->update([
+            'status'=>"Requested Withdrawal"
+        ]);
+
+        // $user->notify(new WithdrawalRequestNotification($email, $coupAmount, $coupPackage, $username, $coupProfit, $coupone));
+        return back()->with("success", "Your Withdrawal Request was received successfully. Please hold on for a while, as we Process your payment. Thank you");
     }
 
     public function confirmPay(Request $req)

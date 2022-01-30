@@ -19,8 +19,10 @@ class CreateAllTransactionsTable extends Migration
             $table->string('email');
             $table->string('trans_type');
             $table->string('amount');
+            $table->string('profit');
             $table->string('status');
             $table->string('duration');
+            $table->string('days_left');
             $table->timestamps();
         });
     }

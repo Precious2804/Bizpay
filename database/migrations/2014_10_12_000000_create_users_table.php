@@ -20,10 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->date('date');
             $table->string('image')->nullable();
-            $table->string('coupone_code');
-            $table->string('package');
             $table->string('referral')->nullable();
             $table->string('ref_bonus')->nullable();
             $table->string('bank')->nullable();
@@ -31,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('acct_number')->nullable()->unique();
             $table->string('isAdmin')->nullable()->default(0);
             $table->string('isVerified')->nullable()->default(0);
+            $table->string('isActivated')->nullable()->default(0);
+            $table->string('no_of_invest')->nullable()->default(0);
             $table->string('password');
             $table->string('remember_token')->nullable();
             $table->timestamps();

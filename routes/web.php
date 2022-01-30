@@ -79,11 +79,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update_account', [MainController::class, 'updateAccount'])->name('update_account');
     Route::post('/update_pic', [MainController::class, 'updatePicture'])->name('update_pic');
     Route::get('/invest', [MainController::class, 'invest'])->name('invest');
+    Route::get('/payment_details', [MainController::class, 'payment_details'])->name('payment_details');
     Route::get('/withdraw', [MainController::class, 'withdraw'])->name('withdraw');
     Route::get('/referral', [MainController::class, 'referral'])->name('referral');
     Route::get('/loan', [MainController::class, 'loan'])->name('loan');
     Route::get('/new_coupone', [MainController::class, 'newCoupone'])->name('new_coupone');
     Route::post('/re_invest', [MainController::class, 'reInvest'])->name('re_invest');
+    Route::post('/activate_acct', [MainController::class, 'activate_acct'])->name('activate_acct');
     Route::post('/do_withdraw', [MainController::class, 'doWithdraw'])->name('do_withdraw');
     Route::post('/confirm_pay', [MainController::class, 'confirmPay'])->name('confirm_pay');
     Route::post('/get_loan', [MainController::class, 'getLoan'])->name('get_loan');

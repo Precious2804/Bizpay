@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activations;
 use App\Models\AllTransactions;
 use App\Models\BankCodes;
 use App\Models\ContactMessages;
@@ -59,7 +60,7 @@ class MainController extends Controller
     public function packages()
     {
         $page = 'packages';
-        $packages = ['packages'=>PackagePlans::all()];
+        $packages = ['packages' => PackagePlans::all()];
         return $this->landingDynamic($page)->with($packages);
     }
     public function contact()
@@ -67,13 +68,14 @@ class MainController extends Controller
         $page = 'contact';
         return $this->landingDynamic($page);
     }
-    public function doContact(Request $req){
+    public function doContact(Request $req)
+    {
         ContactMessages::create([
-            'message_id'=>$this->generateRand(),
-            'name'=>$req->name,
-            'email'=>$req->email,
-            'subject'=>$req->subject,
-            'message'=>$req->message
+            'message_id' => $this->generateRand(),
+            'name' => $req->name,
+            'email' => $req->email,
+            'subject' => $req->subject,
+            'message' => $req->message
         ]);
 
         return back()->with('sent', "Message has been sent successfully to the admin");
@@ -86,13 +88,13 @@ class MainController extends Controller
     public function resend(Request $req)
     {
         $req->validate([
-            'email'=>'required|email'
+            'email' => 'required|email'
         ]);
         $email = $req->email;
         $user = User::where('email', $email)->first();
-        if(!$user){
+        if (!$user) {
             return back()->with('unknown', "This email address is not recognized");
-        } else{
+        } else {
             $name = $user['first_name'];
             $token = $this->generateId();
             $user->notify(new VerifyEmailNotification($name, $email, $token));
@@ -150,11 +152,7 @@ class MainController extends Controller
                 if ($user['isAdmin'] == 1) {
                     return redirect()->to(route('admin.dashboard'));
                 } else {
-                    if ($user['isVerified'] == 0) {
-                        return back()->with('unverified', "This account has not been verified");
-                    } else {
-                        return redirect()->to(route('dashboard'));
-                    }
+                    return redirect()->to(route('dashboard'));
                 }
             } else {
                 return redirect()->back()->with('info', 'Incorrect password!, please check your credentials and try again.')->withInput($req->only('loginEmail'));
@@ -169,93 +167,60 @@ class MainController extends Controller
         $req->validate([
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|unique:users',
-            'date' => 'required',
-            'coupone_code' => 'required|string',
-            'value' => 'required',
             'password' => 'required|confirmed'
         ]);
-        $getPackage = PackagePlans::where('value', $req->value)->first();
-        $packageName = $getPackage->package;
 
-        $selectCoupone = UnUsedCoupones::where('coupone_code', $req->coupone_code)
-            ->where('package', $packageName)
-            ->first();
-        if (!$selectCoupone) {
-            return back()->with('fail', 'Sorry! This Coupon is not Recognized for the selected Package , Kindly Re-confirm Coupone Code to Register');
-        } else {
-            if ($selectCoupone->status == "Used") {
-                return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
+        $unique_id = $this->generateRand();
+        $email = $req->email;
+        $result = User::create([
+            'unique_id' => $unique_id,
+            'first_name' => $req->first_name,
+            'last_name' => $req->last_name,
+            'email' => $req->email,
+            'phone' => $req->phone,
+            'password' => Hash::make($req->password)
+        ]);
+        if ($result) {
+            // $this->usingAcoupone($email, $req);
+            $registeringUser = User::where('email', $req->email)->first();
+            //implementing the referral grants id a user uses a referral code
+            if ($req->referral) {
+                $userRef = User::where('unique_id', $req->referral)->first(); //get the user with the referral code used
+
+                //referral user details
+                $firstName = $userRef['first_name'];
+                $lastName = $userRef['last_name'];
+                $remail = $userRef['email'];
+                $registeringUser->update([
+                    'referral' => $firstName . " " . $lastName,
+                ]);
+                ReferralTable::create([
+                    'unique_id' => $this->generateRand(),
+                    'referrer' => $remail,
+                    'refered' => $req->email,
+                    'ref_id' => $req->referral
+                ]);
             } else {
-                $calAge = $this->calculateAge($req);
-                if ($calAge) {
-                    return $this->calculateAge($req);
-                } else {
-                    $unique_id = $this->generateRand();
-                    $email = $req->email;
-                    $result = User::create([
-                        'unique_id' => $unique_id,
-                        'first_name' => $req->first_name,
-                        'last_name' => $req->last_name,
-                        'email' => $req->email,
-                        'phone' => $req->phone,
-                        'date' => $req->date,
-                        'coupone_code' => $req->coupone_code,
-                        'package' => $packageName,
-                        'password' => Hash::make($req->password)
-                    ]);
-                    if ($result) {
-                        $this->usingAcoupone($email, $req);
-                        $registeringUser = User::where('email', $req->email)->first();
-                        //implementing the referral grants id a user uses a referral code
-                        if ($req->referral) {
-                            $userRef = User::where('unique_id', $req->referral)->first(); //get the user with the referral code used
-
-                            //get the user's current package and the ref_bonus for the current package
-                            $package = $userRef['package'];
-                            $ref_package = PackagePlans::where('package', $package)->first();
-                            $ref_bonus = $ref_package['ref_bonus'];
-
-                            //calculate the referral user new referral bonus and update referral user details
-                            $userCurrentRef = $userRef['ref_bonus'];
-                            $newRefBonus = $userCurrentRef + $ref_bonus;
-                            $userRef->update([
-                                'ref_bonus' => $newRefBonus
-                            ]);
-
-                            //referral user details
-                            $firstName = $userRef['first_name'];
-                            $lastName = $userRef['last_name'];
-                            $remail = $userRef['email'];
-                            $registeringUser->update([
-                                'referral' => $firstName . " " . $lastName,
-                            ]);
-                            ReferralTable::create([
-                                'unique_id' => $this->generateRand(),
-                                'referrer' => $remail,
-                                'refered' => $req->email,
-                                'ref_id' => $req->referral
-                            ]);
-                        } else {
-                            $registeringUser->update([
-                                'referral' => "None",
-                                'ref_bonus' => "0"
-                            ]);
-                        }
-                        //sending the mail
-                        $name = $req->first_name;
-                        $token = $this->generateId();
-                        $userDet = User::where('email', $email)->first();
-                        $userDet->notify(new VerifyEmailNotification($name, $email, $token));
-                        EmailVerifyToken::create([
-                            'token' => $token,
-                            'email' => $email
-                        ]);
-                        return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address " . $email . " for veification. Do ensure to verify your email address before progressing!");
-                    }
-                }
+                $registeringUser->update([
+                    'referral' => "None",
+                    'ref_bonus' => "0"
+                ]);
             }
+            //sending the mail
+            $name = $req->first_name;
+            $token = $this->generateId();
+            $userDet = User::where('email', $email)->first();
+            $userDet->notify(new VerifyEmailNotification($name, $email, $token));
+            EmailVerifyToken::create([
+                'token' => $token,
+                'email' => $email
+            ]);
+            return back()->with('verifyEmail', "An Email Verification Link has been sent to the email address " . $email . " for veification. Do ensure to verify your email address before progressing!");
         }
     }
+
+
+
 
     //logout method
     public function logout()
@@ -273,7 +238,7 @@ class MainController extends Controller
     public function updateProfile(Request $req)
     {
         $req->validate([
-            'acct_number'=>'unique:users'
+            'acct_number' => 'unique:users'
         ]);
         $user = User::where('email', auth()->user()->email)->first();
         $result = $user->update([
@@ -286,62 +251,63 @@ class MainController extends Controller
         }
     }
 
-    public function validateAccount(Request $req){
+    public function validateAccount(Request $req)
+    {
         $req->validate([
-            'acct_number'=>'required|numeric',
-            'bank'=>'required'
+            'acct_number' => 'required|numeric',
+            'bank' => 'required'
         ]);
         $account_number = $req->acct_number;
         $bank = $req->bank;
         $curl = curl_init();
-  
+
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank",
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => "",
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 30,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => "GET",
-          CURLOPT_HTTPHEADER => array(
-            "Authorization: Bearer sk_live_8e85518584e900fd4567300544e1d44189c63049",
-            "Cache-Control: no-cache",
-          ),
+            CURLOPT_URL => "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer sk_live_8e85518584e900fd4567300544e1d44189c63049",
+                "Cache-Control: no-cache",
+            ),
         ));
-        
+
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        
-        curl_close($curl);
-        
-        if ($err) {
-          echo "cURL Error #:" . $err;
-        } else {
-          $decodeRes = json_decode($response, true);
-          $message = $decodeRes['message'];
-          if($message != "Account number resolved"){
-              return back()->with('not', "Unable to resolve the Account number with the details provided");
-          } else{
-            $account_name = $decodeRes['data']['account_name'];
-            $account_number = $decodeRes['data']['account_number'];
-  
-            $bank_detail = BankCodes::where('codes', $bank)->first();
-            $bank_name = $bank_detail['bank_name'];
-  
-            return back()->with('account', $account_name)
-                          ->with('number', $account_number)
-                          ->with('bank', $bank_name);
-          }
-        }
 
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $decodeRes = json_decode($response, true);
+            $message = $decodeRes['message'];
+            if ($message != "Account number resolved") {
+                return back()->with('not', "Unable to resolve the Account number with the details provided");
+            } else {
+                $account_name = $decodeRes['data']['account_name'];
+                $account_number = $decodeRes['data']['account_number'];
+
+                $bank_detail = BankCodes::where('codes', $bank)->first();
+                $bank_name = $bank_detail['bank_name'];
+
+                return back()->with('account', $account_name)
+                    ->with('number', $account_number)
+                    ->with('bank', $bank_name);
+            }
+        }
     }
-    public function updateAccount(Request $req){
+    public function updateAccount(Request $req)
+    {
         $user = User::where('unique_id', Auth::user()->unique_id)->first();
 
         $user->update([
-            'bank'=>$req->bank,
-            'acct_number'=>$req->acct_number,
-            'acct_name'=>$req->acct_name
+            'bank' => $req->bank,
+            'acct_number' => $req->acct_number,
+            'acct_name' => $req->acct_name
         ]);
         return back()->with('bank_updated', "Bank Account Updated Succesfully");
     }
@@ -378,53 +344,56 @@ class MainController extends Controller
 
     public function reInvest(Request $req)
     {
-        $req->validate([
-            'coupone_code' => 'required|string',
-            'value' => 'required'
-        ]);
-        $getPackage = PackagePlans::where('value', $req->value)->first();
-        $packageName = $getPackage->package;
-        $coupone = $req->coupone_code;
-        $name = auth()->user()->first_name;
-        $user = User::where('email', '=', auth()->user()->email)->first();
-        $email = $user->email;
-        $selectCoupone = UnUsedCoupones::where('coupone_code', $coupone)
-            ->where('package', $packageName)
-            ->first();
-        if (!$selectCoupone) {
-            return back()->with('fail', "Coupone is not Recognized for the selected package plan, Kindly Re-confirm the coupone details and Try again");
+        $user = User::where('email', auth()->user()->email)->first();
+        if ($user->isActivated == 0) {
+            return back()->with('not-active', "Sorry, you need tot pay an activation fee of 1000 before any investment can be placed on this platform");
         } else {
-            if ($selectCoupone->status == "Used") {
-                return back()->with('usedCoup', "Sorry! This Coupon Has already been used by another User");
+            $req->validate([
+                'amount' => 'required|numeric|min:10000',
+            ]);
+            $email = $user->email;
+            if ($user->no_of_invest == 0) {
+                $duration = 3;
             } else {
-                $expected = $getPackage->min_withdraw;
-                $expire = Carbon::now()->addDays(30);
-                $amount = $req->value;
-                $seclectEmailCoup = Coupones::where('user_email', $email)->first();
-                $user->update([
-                    'coupone_code' => $coupone
-                ]);
-                $seclectEmailCoup->update([
-                    'unique_id' => $this->generateRand(),
-                    'coupone_code' => $coupone,
-                    'user_email' => $email,
-                    'status' => "Active",
-                    'package' => $packageName,
-                    'amount' => $amount,
-                    'profit' => $expected,
-                    'expire_at' => $expire,
-                    'days_left' => 30,
-                ]);
-                $unused = UnUsedCoupones::where('coupone_code', $coupone)->first();
-                $unused->update([
-                    'status' => "Used"
-                ]);
-                $this->updateCouponeTrans($req, $email, $packageName, $amount);
-                $user->notify(new CreatedInvestment($name, $email, $packageName, $amount, $coupone));
-                return back()->with('success', "Re-investment was successful");
+                $duration = 7;
             }
+
+            $amount = $req->amount;
+            $transID = $this->createUniqueID('all_transactions', 'trans_id');
+            AllTransactions::create([
+                'trans_id' => $transID,
+                'email' => $email,
+                'amount' => $amount,
+                'trans_type' => "Investment",
+                'status' => "Inititated",
+                'duration' => $duration,
+            ]);
+            $user->update([
+                'no_of_invest' => $user->no_of_invest + 1
+            ]);
+
+            // $user->notify(new CreatedInvestment($name, $email, $amount));
+            return redirect()->to(route('payment_details') . "?transaction=$transID");
+            // return back()->with('success', "Investment was successful");
         }
     }
+
+    public function payment_details(Request $req)
+    {
+        $page = 'payment_details';
+        $transaction = ['transaction' => AllTransactions::where('trans_id', $req->transaction)->first()];
+        return $this->dynamicPage($page)->with($transaction);
+    }
+
+    public function activate_acct(Request $req)
+    {
+        Activations::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'phone' => $req->phone
+        ]);
+    }
+
     public function withdraw()
     {
         $page = 'withdraw';
@@ -602,7 +571,7 @@ class MainController extends Controller
                     'lname' => $req->lname,
                     'phone' => $req->phone,
                     'amount' => $req->amount,
-                    'duration'=>"NULL",
+                    'duration' => "NULL",
                     'reasons' => $req->reasons,
                     'document' => '/storage/' . $filePath,
                     'status' => "Awaiting Approval"

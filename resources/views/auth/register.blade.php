@@ -51,36 +51,12 @@ $title = 'Register | Bizpay Global';
                     <input id="last_name" type="text" class="form-control" name="phone" value="{{old('phone')}}" placeholder="Choose a UserName">
                     <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                   </div>
-                  <div class="form-group col-6">
-                    <label for="date">Date of Birth <strong class="text text-danger">*</strong></label>
-                    <input type="date" name="date" class="form-control" value="{{old('date')}}">
-                    <span class="text-danger">@error('date'){{ "The Date of Birth is required" }}@enderror</span>
-                  </div>
                 </div>
                 <div class="form-group">
                   <label for="email">Email <strong class="text text-danger">*</strong></label>
                   <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Enter Email">
                   <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                   <div class="invalid-feedback">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-group">
-                    <label for="last_name">Coupon Code <strong class="text text-danger">*</strong></label>
-                    <input id="last_name" type="text" class="form-control" name="coupone_code" placeholder="Input Coupone Code(Compulsory)">
-                    <span class="text-danger">@error('coupone_code'){{ $message }}@enderror</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-group">
-                    <label for="">Choose a Package Plan <strong class="text text-danger">*</strong></label>
-                    <select name="value" id="" class="form-control">
-                      <option value="" class="form-control">Select</option>
-                      @foreach($packages as $item)
-                      <option value="{{$item->value}}" class="form-control">{{$item->package}} (₦{{$item->value}})</option>
-                      @endforeach
-                    </select>
-                    <span class="text-danger">@error('package'){{ "You must Select a Package" }}@enderror</span>
                   </div>
                 </div>
                 <div class="row">

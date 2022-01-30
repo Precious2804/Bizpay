@@ -71,12 +71,12 @@
           </ul>
         </div>
         <a href="{{ route('profile') }}" style="color: green;"><div class="text text-success">{{$loggedUserInfo['first_name']}} {{$loggedUserInfo['last_name']}}</div></a>
-        <ul class="navbar-nav navbar-right">
+        <!-- <ul class="navbar-nav navbar-right">
           <li class="dropdown">
               <a href="{{ route('profile') }}" class="dropdown-item has-icon text-success"> <i class="far fa-user"></i> Profile
               </a> 
           </li>
-        </ul>
+        </ul> -->
       </nav>
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
@@ -99,10 +99,7 @@
               <a href="{{ route('referral') }}" class="nav-link"><i class="fas fa-retweet" style="color:green;"></i><span>Referral</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('loan') }}" class="nav-link"><i class="fas fa-credit-card" style="color:green;"></i><span>Loan</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('new_coupone') }}" class="nav-link"><i class="fas fa-barcode" style="color:green;"></i><span>Get New Coupon</span></a>
+              <a href="{{ route('profile') }}" class="nav-link"><i class="fas fa-user" style="color:green;"></i><span>Profile</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt" style="color:red"></i><span style="color:red"> Logout</span></a>

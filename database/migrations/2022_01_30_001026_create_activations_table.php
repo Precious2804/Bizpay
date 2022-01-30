@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAllTransactionsTable extends Migration
+class CreateActivationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateAllTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('all_transactions', function (Blueprint $table) {
+        Schema::create('activations', function (Blueprint $table) {
             $table->id();
-            $table->uuid('trans_id');
-            $table->string('email');
-            $table->string('trans_type');
-            $table->string('amount');
-            $table->string('status');
-            $table->string('duration');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateAllTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('all_transactions');
+        Schema::dropIfExists('activations');
     }
 }

@@ -12,11 +12,10 @@ class AllTransactions extends Model
     protected $fillable = [
         'trans_id',
         'email',
-        'coupone_code',
-        'package',
         'trans_type',
         'amount',
-        'status'
+        'status',
+        'duration'
     ];
 
     public $incrementing = false;

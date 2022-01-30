@@ -92,25 +92,16 @@
               <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
+              <a href="{{ route('admin.invest') }}" class="nav-link"><i class="fas fa-money-check"></i><span>All Investments</span></a>
+            </li>
+            <li class="dropdown">
               <a href="{{ route('admin.withdraw') }}" class="nav-link"><i class="fas fa-money-check"></i><span>Withdrawal Requests</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('admin.all_users') }}" class="nav-link"><i class="fas fa-user"></i><span>User Management</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('admin.create_coupone') }}" class="nav-link"><i class="fas fa-barcode"></i><span>Coupons</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('admin.create_package') }}" class="nav-link"><i class="fas fa-desktop"></i><span>Packages</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('admin.loan') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Loan Requests</span></a>
-            </li>
-            <li class="dropdown">
               <a href="{{ route('admin.referral') }}" class="nav-link"><i class="fas fa-retweet"></i><span>Referral Withdrawal</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('admin.vendor') }}" class="nav-link"><i class="fas fa-users"></i><span>Manage Vendors</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('admin.contact') }}" class="nav-link"><i class="fas fa-envelope"></i><span>Messages</span></a>

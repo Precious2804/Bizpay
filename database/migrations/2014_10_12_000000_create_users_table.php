@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('image')->nullable();
             $table->string('referral')->nullable();
-            $table->string('ref_bonus')->nullable();
+            $table->string('ref_bonus')->default(0);
             $table->string('bank')->nullable();
             $table->string('acct_name')->nullable();
             $table->string('acct_number')->nullable()->unique();

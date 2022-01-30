@@ -46,14 +46,6 @@
               <div class="py-4">
                 <p class="clearfix">
                   <span class="float-left">
-                    Birthday
-                  </span>
-                  <span class="float-right text-muted">
-                    {{$loggedUserInfo['date']}}
-                  </span>
-                </p>
-                <p class="clearfix">
-                  <span class="float-left">
                     Phone
                   </span>
                   <span class="float-right text-muted">

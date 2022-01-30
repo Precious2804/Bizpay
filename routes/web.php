@@ -98,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/create_package', [AdminController::class, 'createPackage'])->name('admin.create_package');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/invest', [AdminController::class, 'invest'])->name('admin.invest');
     Route::get('/admin/withdraw', [AdminController::class, 'withdraw'])->name('admin.withdraw');
     Route::get('/admin/all_users', [AdminController::class, 'allUsers'])->name('admin.all_users');
     Route::get('/delete-user/{unique_id}', [AdminController::class, 'delUser'])->name('delete-user');
@@ -115,6 +116,11 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/del-vendor/{vendor_id}', [AdminController::class, 'delVendor'])->name('del-vendor');
     Route::get('/del-coup/{coupone_code}', [AdminController::class, 'delCoup'])->name('del-coup');
     Route::get('/del_pack/{package_id}', [AdminController::class, 'delPack'])->name('del_pack');
+    Route::get('/cancel_invest', [AdminController::class, 'cancel_invest'])->name('cancel_invest');
+    Route::get('/activate_invest', [AdminController::class, 'activate_invest'])->name('activate_invest');
+    Route::get('/confirm_invest', [AdminController::class, 'confirm_invest'])->name('confirm_invest');
+    Route::get('/approve_with', [AdminController::class, 'approve_with'])->name('approve_with');
+    Route::get('/delete_with', [AdminController::class, 'delete_with'])->name('delete_with');
 });
 
 

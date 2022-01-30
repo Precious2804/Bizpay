@@ -366,7 +366,7 @@ class MainController extends Controller
                 'amount' => $amount,
                 'profit' => $amount + $amount * 0.5,
                 'trans_type' => "Investment",
-                'status' => "Inititated",
+                'status' => "Initiated",
                 'duration' => $duration,
                 'days_left' => $duration,
             ]);

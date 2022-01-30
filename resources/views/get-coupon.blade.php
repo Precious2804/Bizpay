@@ -1,5 +1,5 @@
 <?php
-$title = 'Get Coupon | Bizpay Global';
+$title = 'Get Coupon | '.env('APP_NAME');
 $active1 = 'active';
 ?>
 

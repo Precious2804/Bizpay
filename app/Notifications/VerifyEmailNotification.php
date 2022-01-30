@@ -46,10 +46,10 @@ class VerifyEmailNotification extends Notification
         $url = route('complete-verification')."?email=$this->email&token=$this->token";
         return (new MailMessage)
                     ->greeting('Hello '.$this->name)
-                    ->line('Your account on Bizpay Global is almost created completely')
+                    ->line('Your account on '.env('APP_NAME').' is almost created completely')
                     ->line('Click on the Link below to verify your email address and activate all the features of this platform')
                     ->action('Verify Email', $url)
-                    ->line('Thank you for using Bizpay Global');
+                    ->line('Thank you for using '.env('APP_NAME'));
     }
 
     /**

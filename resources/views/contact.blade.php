@@ -1,5 +1,5 @@
 <?php
-    $title = 'Contact Us | Bizpay Global'; $active6='active';
+    $title = 'Contact Us | '.env('APP_NAME') .'Global'; $active6='active';
 ?>
 
 @extends('layout2')

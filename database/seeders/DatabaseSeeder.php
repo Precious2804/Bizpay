@@ -20,13 +20,13 @@ class DatabaseSeeder extends Seeder
             'unique_id'=>'123456',
             'first_name' => 'Admin',
             'last_name' => 'Admin',
-            'email' => 'admin@bizpayglobal.com',
+            'email' => 'admin@millionaire.com',
             'phone' => '0000000',
             'isAdmin' => '1',
             'referral'=>'admin',
             'isVerified'=>'1',
             'ref_bonus'=>'0000000',
-            'password' => Hash::make('2r@stok45'),
+            'password' => Hash::make('admin'),
         ]);
 
         $bank1 = \App\Models\BankCodes::create([
@@ -128,6 +128,13 @@ class DatabaseSeeder extends Seeder
             'id'=>'20',
             'codes'=>'057',
             'bank_name'=>'Zenith Bank International'
+        ]);
+
+        $adminAcct = \App\Models\AdminBankDetails::create([
+            'bank'=>"Admin Bank name",
+            'number'=>"002302920920",
+            'name'=>"Admin Account name",
+            'contact'=>"09292929299"
         ]);
     }
 }

@@ -3,8 +3,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
-<meta name="keywords" content="investment, payment, earning, make money online, investment platform, how to make money, Bizpay Global" />
+<meta name="description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
+<meta name="keywords" content="investment, payment, earning, make money online, investment platform, how to make money, {{env('APP_NAME')}}" />
 <meta name="Classification" content="Investment Platform">
 <meta name="target" content="Investment Platform">
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -15,26 +15,26 @@
 
 <meta property="fb:app_id" content="">
 <meta property="og:locale" content="en_US" />
-<meta property="og:site_name" content="Bizpay Global" />
+<meta property="og:site_name" content="{{env('APP_NAME')}}" />
 <meta property="og:title" content="<?php print @$title; ?>" />
 <meta property="og:type" content="article" />
-<meta property="og:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
-<meta property="og:url" content="https://bizpayglobal.com/">
-<meta property="og:image" content="https://bizpayglobal.com/img/favicon.png">
-<meta property="og:image:secure_url" content="https://bizpayglobal.com/img/favicon.png" />
+<meta property="og:description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
+<meta property="og:url" content="https://{{env('APP_NAME')}}global.com/">
+<meta property="og:image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png">
+<meta property="og:image:secure_url" content="https://{{env('APP_NAME')}}global.com/img/favicon.png" />
 <meta property="og:image:width" content="600" />
 <meta property="og:image:height" content="415" />
 
-<meta name="twitter:card" content="Bizpay Global" />
-<meta name="twitter:url" content="https://bizpayglobal.com/">
-<meta name="twitter:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
-<meta name="twitter:image" content="https://bizpayglobal.com/img/favicon.png" />
-<meta name="twitter:domain" content="https://bizpayglobal.com/">
-<meta name="twitter:creator" content="Bizpay Global">
+<meta name="twitter:card" content="{{env('APP_NAME')}}" />
+<meta name="twitter:url" content="https://{{env('APP_NAME')}}global.com/">
+<meta name="twitter:description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
+<meta name="twitter:image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png" />
+<meta name="twitter:domain" content="https://{{env('APP_NAME')}}global.com/">
+<meta name="twitter:creator" content="{{env('APP_NAME')}}">
 
-<meta itemprop="name" content="Bizpay Global">
-<meta itemprop="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
-<meta itemprop="image" content="https://bizpayglobal.com/img/favicon.png">
+<meta itemprop="name" content="{{env('APP_NAME')}}">
+<meta itemprop="description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
+<meta itemprop="image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png">
 
 <link rel="stylesheet" href="{{URL::asset('asset/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{URL::asset('asset/css/meanmenu.css')}}">
@@ -68,7 +68,7 @@
             <div class="container ">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{route('welcome')}}">
-                        <img src="{{URL::asset('img/logo.png')}}" alt="Logo">
+                    <img src="{{URL::asset('img/logo.png')}}" style="width: 50%; height:75px" alt="Logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
@@ -79,16 +79,7 @@
                                 <a href="{{route('about')}}" class="nav-link <?php print @$active2 ?>">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('loan-page')}}" class="nav-link <?php print @$active3 ?>">Loan</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{route('how-it-works')}}" class="nav-link <?php print @$active4 ?>">How it works </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('terms')}}" class="nav-link <?php print @$active5 ?>">Terms</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('packages')}}" class="nav-link <?php print @$active7 ?>">Packages</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('contact')}}" class="nav-link <?php print @$active6 ?>">Contact Us</a>
@@ -105,17 +96,6 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="side-nav hide">
-
-                            <a href="{{route('get-coupon')}}" style="background-color: #2c7920;" class="btn btn-success">
-                                Request Coupon <i class='bx bx-arrow-to-right'></i>
-                            </a>
-                            <div class="navbar-modal-btn">
-                                <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#myModalRight">
-                                    <i class='bx bx-menu-alt-right'></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </nav>
             </div>
@@ -233,10 +213,10 @@
                                         <a style="color: #000000 !important;" href="mailto:<?php print $email;?>"><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email;?></span></a>
                                     </li>
                                     <li>
-                                        <a style="color: #000000 !important;" href="https://instagram.com/bizpayglobal_?utm_medium=copy_link"><i style="color: #2c7920;" class='bx bxl-instagram'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Instagram</span></a>
+                                        <a style="color: #000000 !important;" href="https://instagram.com/{{env('APP_NAME')}}global_?utm_medium=copy_link"><i style="color: #2c7920;" class='bx bxl-instagram'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Instagram</span></a>
                                     </li>
                                     <li>
-                                        <a style="color: #000000 !important;" href="https://m.facebook.com/Bizpay-Global-Investment-107467634964906/?tsid=0.46218908728939245&source=result"><i style="color: #2c7920;" class='bx bxl-facebook-square'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Facebook</span></a>
+                                        <a style="color: #000000 !important;" href="https://m.facebook.com/{{env('APP_NAME')}}-Global-Investment-107467634964906/?tsid=0.46218908728939245&source=result"><i style="color: #2c7920;" class='bx bxl-facebook-square'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Facebook</span></a>
                                     </li>
                                 </ul>
                             </div>

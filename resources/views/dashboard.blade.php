@@ -11,7 +11,7 @@
     @endif
     @if($loggedUserInfo['isActivated'] == 0)
     <div class="alert alert-warning">
-      Note: It is required that an activation fee of only 1,000 naira was paid before an investment can be placed on our platform. <br> <a href="" style="color: blue;">Click here to activate your account now</a>
+      Note: It is required that an activation fee of only 1,000 naira was paid before an investment can be placed on our platform. <br> <a href="{{route('invest')}}" style="color: blue;">Click here to activate your account now</a>
     </div>
     @endif
 

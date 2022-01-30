@@ -1,5 +1,5 @@
 <?php
-$title = 'Forgot Password | Bizpay Global';
+$title = 'Forgot Password | '.env('APP_NAME');
 ?>
 @extends('auth.layout')
 @section('content')

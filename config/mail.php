@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'info@bizpayglobal.com', 'name' => 'Bizpay Global'],
+    'from' => ['address' => 'preshdev28@gmail.com', 'name' => env('APP_NAME')],
 
 
     /*

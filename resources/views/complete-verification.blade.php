@@ -1,5 +1,5 @@
 <?php
-$title = 'Verify Email | Bizpay Global';
+$title = 'Verify Email | '.env('APP_NAME').' Global';
 ?>
 @extends('auth.layout')
 @section('content')
@@ -13,7 +13,7 @@ $title = 'Verify Email | Bizpay Global';
                             <h4>Verification Completed</h4>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success">Your Email Address has been successfully verified on Bizpay Global. <br> You can now proceed to Login into your account. <span><a href="{{route('auth.login')}}">Login Here</a></span>
+                            <div class="alert alert-success">Your Email Address has been successfully verified on {{env('APP_NAME')}}. <br> You can now proceed to Login into your account. <span><a href="{{route('auth.login')}}">Login Here</a></span>
                             </div>
                         </div>
                     </div>

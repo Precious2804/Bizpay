@@ -22,6 +22,11 @@
           <span> {{Session::get('success')}}</span>
         </div>
         @endif
+        @if(Session::get('activate'))
+        <div class="alert alert-success">
+          <span> {{Session::get('activate')}}</span>
+        </div>
+        @endif
         @if(Session::get('not-active'))
         <div class="alert alert-danger">
           <span> {{Session::get('not-active')}}</span>
@@ -114,62 +119,26 @@
             </div>
             <div class="card-body">
               <p>
-                <span>Bank name: ifeifheifhe</span>
+                <span>Bank name: {{$bank_details['bank']}}</span>
               </p>
               <p>
-                <span>Account Name: ifeifheifhe</span>
+                <span>Account Name: {{$bank_details['name']}}</span>
               </p>
               <p>
-                <span>Account Number: ifeifheifhe</span>
+                <span>Account Number: {{$bank_details['number']}}</span>
               </p>
               <p>
-                <span>Contact Number: ifeifheifhe</span>
+                <span>Contact Number: {{$bank_details['contact']}}</span>
               </p>
             </div>
             <div class="card-footer">
               <p class="text-info">Endeavour to call the contact details provided above before and after the activation fee is paid</p>
               <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">Confirm Payment here</button>
+              <form action="{{route('activate_acct')}}">
+                <button class="btn btn-primary">Confirm Payment here</button>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="formModal">Create an Investment now</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="" action="{{ route('activate_acct') }}" method="POST">
-            @csrf
-            <div class="form-group">
-              <label>Enter your registered name here</label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter name" name="name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Enter your registered email address here</label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter email address" name="email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Enter your registered phone number here</label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter phone number" name="phone">
-              </div>
-            </div>
-            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-success">Submit</button>
-          </form>
         </div>
       </div>
     </div>

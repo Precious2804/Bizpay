@@ -1,5 +1,5 @@
 <?php
-$title = 'How it works | Bizpay Global';
+$title = 'How it works | '.env('APP_NAME');
 $active4 = 'active';
 ?>
 
@@ -49,11 +49,11 @@ $active4 = 'active';
                     <div class="cybersecurity-about-text" style="text-align: justify;">
 
                         <div class="text">
-                            <p>Bizpay Global is a platform where members invest in physical assets such as Real estates, gadgets and Livestock, Gadgets, Agro-based, shares, local and international bonds and stocks <br>
-                                Bizpay Global also offers a monetary trade platform (Peer to peer funding market) </p>
+                            <p>{{env('APP_NAME')}} is a platform where members invest in physical assets such as Real estates, gadgets and Livestock, Gadgets, Agro-based, shares, local and international bonds and stocks <br>
+                                {{env('APP_NAME')}} also offers a monetary trade platform (Peer to peer funding market) </p>
                         </div>
                         <div class="text">
-                            <p>The core activities that runs on Bizpay Global are:
+                            <p>The core activities that runs on {{env('APP_NAME')}} are:
                             <ul>
                                 <li>1. Registration</li>
                                 <li>2. Investment</li>
@@ -61,11 +61,11 @@ $active4 = 'active';
                                 <li>4. Withdrawal</li>
                             </ul>
                             </p>
-                            <p>Bizpay Global provides an investment opportunity to interested members of the public who wishes to invest with us. Members funds are invested into real estates projects, livestock and gadgets sales with a mouth watering Profit paid within 14-30 Days.</p>
+                            <p>{{env('APP_NAME')}} provides an investment opportunity to interested members of the public who wishes to invest with us. Members funds are invested into real estates projects, livestock and gadgets sales with a mouth watering Profit paid within 14-30 Days.</p>
                             <div>
                                 <h6>CREATE AN ACCOUNT</h6>
                                 <p>
-                                    Click the 'Register' button to Create an account with Bizpay and get it activated with a coupon code.
+                                    Click the 'Register' button to Create an account with {{env('APP_NAME')}} and get it activated with a coupon code.
                                 </p>
                             </div>
                             <br>
@@ -94,9 +94,9 @@ $active4 = 'active';
 
                             <div>
                                 <h6>LOAN</h6>
-                                <p> Of course Our goal is to make financial expertise broadly accessible and effective in helping people live the lives their want, that is why we also offer Instant loans to individuals and business owners who creates an account with Bizpay and apply for loan when qualified.
-                                    Getting loans on Bizpay is completely easy and just in few clicks you are good to go! Without any bulky documents.
-                                    Bizpay global is strictly for adults therefore you must be at least 18 years of age before you are eligible to create an account with us.</p>
+                                <p> Of course Our goal is to make financial expertise broadly accessible and effective in helping people live the lives their want, that is why we also offer Instant loans to individuals and business owners who creates an account with {{env('APP_NAME')}}and apply for loan when qualified.
+                                    Getting loans on {{env('APP_NAME')}}is completely easy and just in few clicks you are good to go! Without any bulky documents.
+                                    {{env('APP_NAME')}} is strictly for adults therefore you must be at least 18 years of age before you are eligible to create an account with us.</p>
                             </div>
                         </div>
 

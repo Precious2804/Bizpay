@@ -1,5 +1,5 @@
 <?php
-$title = 'Welcome to Bizpay Global';
+$title = 'Welcome to ' . env("APP_NAME");
 $active1 = 'active';
 ?>
 @extends('layout2')
@@ -17,7 +17,8 @@ $active1 = 'active';
                         <div class="banner-content" style="margin-top: 0px;">
                             <!--<span>Your Financial Status Is Good Hands</span>-->
                             <h1 style="  color: #2c7920;">Welcome to <br><?php print $siteName; ?></h1>
-                            <p style="text-align: center; font-size: 14px;"><?php print $siteName; ?> is an investment company that offers 50% return of investments, on all investment amount by our investors, simple as that. We are here to help those who are ready to take actions. </p>
+                            <p style="font-size: 14px;"><?php print $siteName; ?> Millionaires Club is a company and affiliate platform envisioned with; Real Estate Services, Investment Research, Forex and Trading Activities. This is channeled towards the growth and development of their subscribers' businesses as our major aim is to see their businesses thrive tremendously. These subscriptions are in different packages and in return over 50% On Day 3 (First withdrawal) and subsequent 14days withdrawal. Our system offers an automative payment method, No merging hassles and Quick withdrawal gateway. Why not give us a try today?
+                                The power to become a millionaire is in your hands.</p>
                             <div class="banner-btn-area">
                                 <a class="common-btn three" href="contact" style="background-color: #2c7920;">
                                     Contact Us
@@ -26,7 +27,7 @@ $active1 = 'active';
                             </div>
                         </div>
                         <div class="banner-slider-img">
-                            <img src="{{URL::asset('assets/img/banner/banner-main5.png')}}" alt="Banner">
+                            <img src="{{URL::asset('img/2.jpeg')}}" alt="Banner">
                         </div>
                     </div>
                 </div>
@@ -45,19 +46,19 @@ $active1 = 'active';
                         <span class="sub-title" style="color: #2c7920;">About <?php print $siteName; ?></span>
                         <h2>We Help Our Clients To Grow Their Investment</h2>
                     </div>
-                    <p style="text-align: center;" class="about-p">We are Biz pay.
-                        We help over 2000 people feel more confident in their most important financial goals, manage employee benefit programs for over 45 Businesses, and support more than 4 Financial institutions with innovative investments and technology solutions to grow their businesses.
-                        Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you. </p>
+                    <p class="about-p">We are {{env('APP_NAME')}}.
+                        We Help Our Clients To Grow Their Investment
+                        We are Millionaires Club. We help over 5,000 people feel more confident in their most important financial goals, manage employee benefit programs for over 45 Businesses, and support more than 4 Financial institutions with innovative investments and technology solutions to grow their businesses. Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</p>
                     <ul>
                         <li>
                             <i class="flaticon-bar-chart" style="color: #2c7920;"></i>
                             <h3>Our Misson</h3>
-                            <p>Our vision is to be a trusted partner for our clients and a respected leader in global asset management.</p>
+                            <p>Our mission is to add value with active portfolio management to help our clients reach their long-term financial goals. We achieve this through our investment strategies, adhering to our values and investment principles, and offering employees a challenging and rewarding place to build a career.</p>
                         </li>
                         <li>
                             <i class="flaticon-consulting" style="color: #2c7920;"></i>
                             <h3>Our vision</h3>
-                            <p>Our mission is to add value with active portfolio management to help our clients reach their long-term financial goals. We achieve this through our investment strategies, adhering to our values and investment principles, and offering employees a challenging and rewarding place to build a career.</p>
+                            <p>Our vision is to be a trusted partner for our clients and a respected leader in global asset management.</p>
                         </li>
                         <li>
                             <i class="flaticon-consultation" style="color: #2c7920;"></i>
@@ -76,10 +77,6 @@ $active1 = 'active';
 
                     <div class="ht-banner-01 ">
                         <img class="img-fluid border-radus-5 animation_images one wow fadeInDown" src="{{URL::asset('img/2.jpeg')}}" alt="">
-                    </div>
-
-                    <div class="ht-banner-02">
-                        <img class="img-fluid border-radus-5 animation_images two wow fadeInDown" src="{{URL::asset('img/6.jpeg')}}" alt="">
                     </div>
 
                     <div class="main-video-box video-popup">
@@ -104,12 +101,6 @@ $active1 = 'active';
                     <div class="ht-banner-03">
                         <img class="img-fluid border-radus-5 animation_images three wow fadeInDown" src="{{URL::asset('img/1.jpeg')}}" alt="">
                     </div>
-
-                    <div class="ht-banner-04">
-                        <img class="img-fluid border-radus-5 animation_images four wow fadeInDown" src="{{URL::asset('img/4.jpeg')}}" alt="">
-                    </div>
-
-
                 </div>
             </div>
         </div>
@@ -203,7 +194,7 @@ $active1 = 'active';
                             <i class='bx bx-check'></i>
                             <h3>No daily Tax.</h3>
                             <p>
-                                We do not offer daily tasks to our Investors, Our sponsored ads are completely optional to share. Thus, Investing with Bizpay comes with less stress. Withdrawal is done after 30days.</p>
+                                We do not offer daily tasks to our Investors, Our sponsored ads are completely optional to share. Thus, Investing with {{env('APP_NAME')}} comes with less stress. Withdrawal is done after 30days.</p>
                         </li>
                         <li>
                             <i class='bx bx-check'></i>
@@ -257,46 +248,5 @@ $active1 = 'active';
         </div>
     </div>
 </div>
-
-
-<section class="provide-area pt-100 pb-70">
-    <div class="container">
-        <div class="section-title three">
-            <span class="sub-title" style="color: #2c7920;">Pricing</span>
-            <h2>Our pricing list</h2>
-            <p></p>
-        </div>
-
-        <div class="pricing-table-area ">
-            <div class="pricing-table-content-area">
-                <div class="container">
-                    <div class="row pricing-table-two">
-                        @foreach($packages as $item)
-                        <div class="col-lg-4 col-md-6 pricing-table wow move-up">
-                            <div class="pricing-table__inner">
-                                <div class="pricing-table__header">
-                                    <h5 class="pricing-table__title">{{$item->package}}</h5>
-                                    <div class="pricing-table__price-wrap">
-                                        <h6 class="currency">₦</h6>
-                                        <h6 class="price">{{$item->value}}</h6>
-                                        <h6 class="period">/month</h6>
-                                    </div> <br>
-                                    <div>₦{{$item->ref_bonus}} Referral Bonus</div>
-                                    <div>₦{{$item->spons_bonus}} Sponsord Bonus</div>
-                                    <div>₦{{$item->min_withdraw}} Minimum Withdrawable</div>
-                                    <br>
-                                    <div>
-                                        <a href="{{route('get-coupon')}}" target="_blank" class="ht-btn ht-btn-default btn--secondary" style="background-color: #2c7920;">Get started</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-
-</section>
 
 @stop

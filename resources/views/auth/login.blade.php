@@ -1,5 +1,5 @@
 <?php
-    $title = 'Login | Bizpay Global'; 
+    $title = 'Login | '.env('APP_NAME'); 
 ?>
 @extends('auth.layout')
 @section('content')

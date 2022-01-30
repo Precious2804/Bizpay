@@ -44,7 +44,7 @@
 {{ $salutation }}
 @else
 @lang('Regards'),<br>
-Bizpay Global
+{{env('APP_NAME')}}
 @endif
 
 {{-- Subcopy --}}

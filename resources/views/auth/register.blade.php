@@ -1,5 +1,5 @@
 <?php
-$title = 'Register | Bizpay Global';
+$title = 'Register | '.env('APP_NAME');
 ?>
 
 @extends('auth.layout')
@@ -48,7 +48,7 @@ $title = 'Register | Bizpay Global';
                   </div>
                   <div class="form-group col-6">
                     <label for="last_name">Phone <strong class="text text-danger">*</strong></label>
-                    <input id="last_name" type="text" class="form-control" name="phone" value="{{old('phone')}}" placeholder="Choose a UserName">
+                    <input id="phone" type="text" class="form-control" name="phone" value="{{old('phone')}}" placeholder="Enter phone number">
                     <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                   </div>
                 </div>

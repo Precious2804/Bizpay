@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activations;
+use App\Models\AdminBankDetails;
 use App\Models\AllTransactions;
 use App\Models\ContactMessages;
 use App\Models\LoanCoupones;
@@ -93,6 +95,11 @@ class AdminController extends Controller
     {
         $allusers = ['allusers' => User::all()];
         return view('admin.all_users')->with($allusers);
+    }
+    public function activate()
+    {
+        $activate = ['activate' => Activations::all()];
+        return view('admin.activate')->with($activate);
     }
     public function delUser($unique_id)
     {
@@ -247,6 +254,35 @@ class AdminController extends Controller
         $findID->delete();
 
         return back();
+    }
+    public function bank()
+    {
+        $bank_details = ['bank_details' => AdminBankDetails::where('id', 1)->first()];
+        return view('admin/bank')->with($bank_details);
+    }
+    public function update_admin_bank(Request $req)
+    {
+        $data = AdminBankDetails::where('id', 1)->first();
+
+        $data->update([
+            'bank' => $req->bank,
+            'number' => $req->number,
+            'name' => $req->name
+        ]);
+
+        return back()->with('created', "Admin bank account was updated successfully");
+    }
+    public function activate_now(Request $req)
+    {
+        $user = User::where('email', $req->email)->first();
+
+        $user->update([
+            'isActivated' => 1
+        ]);
+
+        $data = Activations::where('email', $req->email)->first();
+        $data->delete();
         
+        return back();
     }
 }

@@ -1,5 +1,5 @@
 <?php
-$title = 'Resend Verify | Bizpay Global';
+$title = 'Resend Verify | '.env('APP_NAME');
 ?>
 @extends('auth.layout')
 @section('content')

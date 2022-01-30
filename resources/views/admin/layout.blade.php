@@ -83,13 +83,16 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('welcome') }}"><span class="logo-name"><img src="{{URL::asset('assets/img/Bizpayglobal_logo.png')}}" style="width: 150px;" alt=""></span>
+            <a href="{{ route('welcome') }}"><span class="logo-name"><img src="{{URL::asset('img/logo.png')}}" style="width: 150px;" alt=""></span>
             </a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown">
               <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+            </li>
+            <li class="dropdown">
+              <a href="{{ route('admin.activate') }}" class="nav-link"><i class="fas fa-map-marked-alt"></i><span>Activations</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('admin.invest') }}" class="nav-link"><i class="fas fa-money-check"></i><span>All Investments</span></a>
@@ -102,6 +105,9 @@
             </li>
             <li class="dropdown">
               <a href="{{ route('admin.referral') }}" class="nav-link"><i class="fas fa-retweet"></i><span>Referral Withdrawal</span></a>
+            </li>
+            <li class="dropdown">
+              <a href="{{ route('admin.bank') }}" class="nav-link"><i class="fas fa-home"></i><span>Bank Settings</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('admin.contact') }}" class="nav-link"><i class="fas fa-envelope"></i><span>Messages</span></a>

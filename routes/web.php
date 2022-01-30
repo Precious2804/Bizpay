@@ -26,10 +26,10 @@ use Illuminate\Support\Str;
 
 function dyn($page)
 {
-    $siteName = ['siteName' => "Bizpay Global"];
+    $siteName = ['siteName' => env('APP_NAME') ];
     $whatsAppPhone = ['whatsAppPhone' => "2349123652607"];
     $phone = ['phone' => "882-569-756"];
-    $email = ['email' => "info@bizpayglobal.com"];
+    $email = ['email' => "info@millionairareclub.com"];
     $address = ['address' => "4578 Marmora Road, NG"];
     $packages = ['packages'=>PackagePlans::all()];
 
@@ -101,18 +101,21 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/invest', [AdminController::class, 'invest'])->name('admin.invest');
     Route::get('/admin/withdraw', [AdminController::class, 'withdraw'])->name('admin.withdraw');
     Route::get('/admin/all_users', [AdminController::class, 'allUsers'])->name('admin.all_users');
+    Route::get('/admin/activate', [AdminController::class, 'activate'])->name('admin.activate');
     Route::get('/delete-user/{unique_id}', [AdminController::class, 'delUser'])->name('delete-user');
     Route::get('/delete-with/{unique_id}', [AdminController::class, 'delWith'])->name('delete-with');
     Route::post('/creating_package', [AdminController::class, 'creatingPackage'])->name('creating_package');
     Route::get('/admin/create_coupone', [AdminController::class, 'createCoupone'])->name('admin.create_coupone');
     Route::get('/admin/coupone/{package_id}', [AdminController::class, 'coupone'])->name('admin.coupone');
     Route::get('/admin/loan', [AdminController::class, 'loan'])->name('admin.loan');
+    Route::get('/admin/bank', [AdminController::class, 'bank'])->name('admin.bank');
     Route::get('/admin/referral', [AdminController::class, 'referral'])->name('admin.referral');
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
     Route::post('/create_coup', [AdminController::class, 'creatingCoupone'])->name('create_coup');
     Route::get('/approve/{loan_id}', [AdminController::class, 'approve'])->name('approve');
     Route::get('/admin/vendor', [AdminController::class, 'vendor'])->name('admin.vendor');
     Route::post('/create-vendor', [AdminController::class, 'creatingVendor'])->name('create-vendor');
+    Route::post('/update_admin_bank', [AdminController::class, 'update_admin_bank'])->name('update_admin_bank');
     Route::get('/del-vendor/{vendor_id}', [AdminController::class, 'delVendor'])->name('del-vendor');
     Route::get('/del-coup/{coupone_code}', [AdminController::class, 'delCoup'])->name('del-coup');
     Route::get('/del_pack/{package_id}', [AdminController::class, 'delPack'])->name('del_pack');
@@ -121,6 +124,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/confirm_invest', [AdminController::class, 'confirm_invest'])->name('confirm_invest');
     Route::get('/approve_with', [AdminController::class, 'approve_with'])->name('approve_with');
     Route::get('/delete_with', [AdminController::class, 'delete_with'])->name('delete_with');
+    Route::get('/activate_now', [AdminController::class, 'activate_now'])->name('activate_now');
 });
 
 

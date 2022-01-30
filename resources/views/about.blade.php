@@ -1,5 +1,5 @@
 <?php
-    $title = 'About | Bizpay Global'; $active2 = 'active'; 
+    $title = 'About | '.env('APP_NAME'); $active2 = 'active'; 
 ?>
 
 @extends('layout2')
@@ -15,8 +15,8 @@
                 <!--baseline-->
                 <div class="col-lg-6 col-md-7">
                     <div class="cybersecurity-hero-text wow move-up">
-                        <h6>Welcome to Bizpay Global</h6>
-                        <h3 class="font-weight--reguler mb-30">At Bizpay, Our goal is  <span style="color: #2c7920;" >to make financial expertise </span>  broadly accessible <span style="color: #2c7920;">and effective </span> in helping individuals grow their money faster.</h3>
+                        <h6>Welcome to {{env('APP_NAME')}}</h6>
+                        <h3 class="font-weight--reguler mb-30">At {{env('APP_NAME')}}, Our goal is  <span style="color: #2c7920;" >to make financial expertise </span>  broadly accessible <span style="color: #2c7920;">and effective </span> in helping individuals grow their money faster.</h3>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -59,9 +59,9 @@
                             We help over 2000 people feel more confident in their most important financial goals, manage employee benefit programs for over 45 Businesses, and support more than 4 Financial institutions with innovative investments and technology solutions to grow their businesses.<br>
                             Our diverse businesses and independence give us insight into the entire market and the stability needed to think and act for the long term as we deliver value to you.</div>
 
-                        <div class="text">Bizpay Globalaims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.</div>
+                        <div class="text">{{env('APP_NAME')}}aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.</div>
 
-                        <div class="text">Bizpay Globalhelps individuals, institutions, SME raise funds at it lowest cost. We provide you better resources for growing your income through our team.<br>
+                        <div class="text">{{env('APP_NAME')}}helps individuals, institutions, SME raise funds at it lowest cost. We provide you better resources for growing your income through our team.<br>
                         <?php print $siteName;?>, a Nigerian Investment Firm, has commenced operations with the aim of making personal savings, asset and wealth management accessible to even low-income earners.</div>
 
                         <div class="text">The company is leveraging on the accessibility of its internet-based distribution channel, and a low minimum savings amount required.<br>
@@ -71,7 +71,7 @@
                         All funds coming to the system are going to be invested wisely. The decisions we are making is for the benefit of everyone in the system.  We are trying to lay a strong foundation for our source of income, all we seek for is your support and prayers so we all can have a happy ending.  Thank you all great investors of <?php print $siteName;?>.</div>
 
                         <div class="text"><h4 style="font-size: 20px;">MANAGEMENT<br>
-                                BIZPAY GLOBAL</h4></div>
+                                {{env('APP_NAME')}}</h4></div>
 
                     </div>
                 </div>

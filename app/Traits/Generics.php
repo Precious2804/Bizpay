@@ -18,10 +18,10 @@ use Illuminate\Support\Str;
 trait Generics{
 
     function landingDynamic($page){
-        $siteName = ['siteName'=>"Bizpay Global"];
+        $siteName = ['siteName'=>env('APP_NAME')];
         $whatsAppPhone = ['whatsAppPhone'=>"2349123652607"];
         $phone = ['phone'=>"882-569-756"];
-        $email = ['email'=>"info@bizpayglobal.com"];
+        $email = ['email'=>"info@millionaireclub.com"];
         $address = ['address'=>"4578 Marmora Road, NG"];
 
         return view($page)->with($siteName)

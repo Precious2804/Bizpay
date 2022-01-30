@@ -1,5 +1,5 @@
 <?php
-$title = 'Loan | Bizpay';
+$title = 'Loan | '.env('APP_NAME');
 $active3 = 'active';
 ?>
 @extends('layout2')
@@ -14,7 +14,7 @@ $active3 = 'active';
         <div class="row align-items-center">
             <div class="col-xl-8 col-lg-7">
                 <div class="cta-content md-text-center">
-                    <h3 class="heading text-black">Bizpay Global <span style="color: #2c7920;"> Loan</span> <br> Get quick loan as coupon code when qualified. 70% Interest applies on all packages.</h3>
+                    <h3 class="heading text-black">{{env('APP_NAME')}} <span style="color: #2c7920;"> Loan</span> <br> Get quick loan as coupon code when qualified. 70% Interest applies on all packages.</h3>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">
@@ -47,22 +47,22 @@ $active3 = 'active';
                     <h3>Anytime, Anywhere</h3>
                     <p>
                         Never go broke again. No long queues. No bulky documents. <br>
-                        No long wait times. Just your smartphone and a Bizpay wallet
+                        No long wait times. Just your smartphone and a {{env('APP_NAME')}} wallet
                     </p>
                     <div style="padding-bottom: 10px;">
                         <a href="{{route('loan')}}" target="_blank" class="ht-btn ht-btn-default btn--secondary" style="background-color: #2c7920;">Get started</a>
                     </div>
-                    <img src="{{URL::asset('asset/img/PNG image 2.PNG')}}" alt="Bizpay">
+                    <img src="{{URL::asset('asset/img/PNG image 2.PNG')}}" alt="{{env('APP_NAME')}}">
                 </div>
                 <div class="col-lg-6">
-                    <img src="{{URL::asset('asset/img/PNG image.PNG')}}" alt="Bizpay">
+                    <img src="{{URL::asset('asset/img/PNG image.PNG')}}" alt="{{env('APP_NAME')}}">
                 </div>
             </div>
         </div>
         <br><br>
         <div class="container d-flex justify-content-center">
             <div class="col-lg-6" style="text-align: center;">
-                <h3>Why Choose Bizpay Loan?</h3>
+                <h3>Why Choose {{env('APP_NAME')}} Loan?</h3>
                 <p>
                     We use machine learning to predict borrower's behaviour and instantly evaluate loan applications.
                     We aim at offering digital financial services to help you get closer to your personal and business goals

@@ -40,7 +40,7 @@
                                     <td>{{$item->status}}</td>
                                     <td>
                                         @if($item->status == "Requested Withdrawal")
-                                        <a href="{{route('admin.withdraw')}}"><button class="btn btn-primary">Go to</button></a>
+                                        <a href="{{route('admin.withdraw')}}"><button class="btn btn-primary">Continue</button></a>
                                         @elseif($item->status == "Ongoing")
                                         <a href="/cancel_invest?trans={{$item->trans_id}}"><button class="btn btn-danger">Cancel</button></a>
                                         @elseif($item->status == "Initiated")

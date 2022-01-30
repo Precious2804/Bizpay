@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activations;
+use App\Models\AdminBankDetails;
 use App\Models\AllTransactions;
 use App\Models\BankCodes;
 use App\Models\ContactMessages;
@@ -339,7 +340,8 @@ class MainController extends Controller
     public function invest()
     {
         $page = 'invest';
-        return $this->dynamicPage($page);
+        $bank_details = ['bank_details'=>AdminBankDetails::where('id', 1)->first()];
+        return $this->dynamicPage($page)->with($bank_details);
     }
 
     public function reInvest(Request $req)
@@ -351,6 +353,7 @@ class MainController extends Controller
             $req->validate([
                 'amount' => 'required|numeric|min:10000',
             ]);
+            $name = $user->name;
             $email = $user->email;
             if ($user->no_of_invest == 0) {
                 $duration = 3;
@@ -374,7 +377,7 @@ class MainController extends Controller
                 'no_of_invest' => $user->no_of_invest + 1
             ]);
 
-            // $user->notify(new CreatedInvestment($name, $email, $amount));
+            $user->notify(new CreatedInvestment($name, $email, $amount));
             return redirect()->to(route('payment_details') . "?transaction=$transID");
             // return back()->with('success', "Investment was successful");
         }
@@ -389,11 +392,13 @@ class MainController extends Controller
 
     public function activate_acct(Request $req)
     {
+        $user = User::where('email', Auth::user()->email)->first();
         Activations::create([
-            'name' => $req->name,
-            'email' => $req->email,
-            'phone' => $req->phone
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone
         ]);
+        return back()->with('activate', "Your request to activate your account was sent successfully, your account wouild be activated immediately");
     }
 
     public function withdraw()
@@ -418,7 +423,7 @@ class MainController extends Controller
             'status'=>"Requested Withdrawal"
         ]);
 
-        // $user->notify(new WithdrawalRequestNotification($email, $coupAmount, $coupPackage, $username, $coupProfit, $coupone));
+        $user->notify(new WithdrawalRequestNotification($user->email, $user->first_name, $data->amount, $data->profit,));
         return back()->with("success", "Your Withdrawal Request was received successfully. Please hold on for a while, as we Process your payment. Thank you");
     }
 

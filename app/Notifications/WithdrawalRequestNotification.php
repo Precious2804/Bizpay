@@ -16,15 +16,13 @@ class WithdrawalRequestNotification extends Notification
      *
      * @return void
      */
-    public function __construct($email, $coupAmount, $coupPackage, $username, $coupProfit, $coupone)
+    public function __construct($email, $first_name, $amount, $profit)
     {
         //
         $this->email = $email;
-        $this->coupAmount = $coupAmount;
-        $this->coupPackage = $coupPackage;
-        $this->username = $username;
-        $this->coupProfit = $coupProfit;
-        $this->coupone = $coupone;
+        $this->first_name = $first_name;
+        $this->amount = $amount;
+        $this->profit = $profit;
     }
 
     /**
@@ -48,12 +46,11 @@ class WithdrawalRequestNotification extends Notification
     {
         $url = route('withdraw');
         return (new MailMessage)
-                                ->greeting('Hello '.$this->username)
-                                ->line('You initiated a Withdrawal request of ₦'.$this->coupAmount.' on Bizpay Global for the Coupon Code of '."$this->coupone")
-                                ->line('The Coupon was investted on pacakge: '."$this->coupPackage ". 'at an amount cost of ₦'.$this->coupAmount. ', which is expected yield a profit of ₦'.$this->coupProfit. ' after a period 30 days')
+                                ->greeting('Hello '.$this->first_name)
+                                ->line('You initiated a Withdrawal request for an amount of ₦'.$this->profit.' on '.env('APP_NAME'))
                                 ->action('Go to Dashboard', $url)
                                 ->line('PS: The Administration would confirm your request in the soonest possible time and then make the necessary procedures to provide a payment returns for your investment')
-                                ->line('Thank you for choosing Bizpay Global');                                
+                                ->line('Thank you for choosing '.env('APP_NAME'));                                
     }
 
     /**

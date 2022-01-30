@@ -9,8 +9,8 @@
   <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
-        <meta name="keywords" content="investment, payment, earning, make money online, investment platform, how to make money, Bizpay Global"/>
+        <meta name="description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
+        <meta name="keywords" content="investment, payment, earning, make money online, investment platform, how to make money, {{env('APP_NAME')}}"/>
         <meta name="Classification" content="Investment Platform">
         <meta name="target" content="Investment Platform">
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -21,27 +21,27 @@
 
         <meta property="fb:app_id" content="">
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="Bizpay Global"/>
+        <meta property="og:site_name" content="{{env('APP_NAME')}}"/>
         <meta property="og:title" content="<?php print @$title;?>"/>
         <meta property="og:type" content="article"/>
-        <meta property="og:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
-        <meta property="og:url" content="https://bizpayglobal.com/">
-        <meta property="og:image" content="https://bizpayglobal.com/img/favicon.png">
-        <meta property="og:image:secure_url" content="https://bizpayglobal.com/img/favicon.png" />
+        <meta property="og:description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales." />
+        <meta property="og:url" content="https://{{env('APP_NAME')}}global.com/">
+        <meta property="og:image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png">
+        <meta property="og:image:secure_url" content="https://{{env('APP_NAME')}}global.com/img/favicon.png" />
         <meta property="og:image:width" content="600" />
         <meta property="og:image:height" content="415" />
 
-        <meta name="twitter:card" content="Bizpay Global"/>
-        <meta name="twitter:url" content="https://bizpayglobal.com/">
-        <meta name="twitter:description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
-        <meta name="twitter:image" content="https://bizpayglobal.com/img/favicon.png"/>
-        <meta name="twitter:domain" content="https://bizpayglobal.com/">
-        <meta name="twitter:creator" content="Bizpay Global">
+        <meta name="twitter:card" content="{{env('APP_NAME')}}"/>
+        <meta name="twitter:url" content="https://{{env('APP_NAME')}}global.com/">
+        <meta name="twitter:description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales."/>
+        <meta name="twitter:image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png"/>
+        <meta name="twitter:domain" content="https://{{env('APP_NAME')}}global.com/">
+        <meta name="twitter:creator" content="{{env('APP_NAME')}}">
 
-        <meta itemprop="name" content="Bizpay Global">
-        <meta itemprop="description" content="Bizpay Global aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
-        <meta itemprop="image" content="https://bizpayglobal.com/img/favicon.png">
-  <title>Bizpay</title>
+        <meta itemprop="name" content="{{env('APP_NAME')}}">
+        <meta itemprop="description" content="{{env('APP_NAME')}} aims to simplify and enhance the experience of investing in Automobile, Housing, Agricultural sector, oil and gas, Local and Internationally Bonds and Gadget sales.">
+        <meta itemprop="image" content="https://{{env('APP_NAME')}}global.com/img/favicon.png">
+  <title>{{env('APP_NAME')}}</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{URL::asset('assets/css/app.min.css')}}">
   <link rel="stylesheet" href="{{URL::asset('assets/bundles/bootstrap-social/bootstrap-social.css')}}">
@@ -81,7 +81,7 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}"><span class="logo-name"><img src="{{URL::asset('assets/img/Bizpayglobal_logo.png')}}" style="width: 150px;" alt=""></span>
+            <a href="{{ route('dashboard') }}"><span class="logo-name"><img src="{{URL::asset('img/logo.png')}}" style="width: 150px;" alt=""></span>
             </a>
           </div>
           <ul class="sidebar-menu">
@@ -113,7 +113,7 @@
 
     <footer class="main-footer">
         <div class="footer-left">
-          <a href="{{ route('dashboard') }}">BizPay Global Investments</a>
+          <a href="{{ route('dashboard') }}">{{env('APP_NAME')}} Investments</a>
         </div>
         <div class="footer-right">
         </div>

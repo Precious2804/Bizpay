@@ -18,19 +18,19 @@
                     <div class="form-group">
                         <label>Account Name:</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" value="" style="border-color: green;" readonly>
+                            <input type="text" class="form-control" value="{{$bank_details['name']}}" style="border-color: green;" readonly>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Bank Name:</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" value="" style="border-color: green;" readonly>
+                            <input type="text" class="form-control" value="{{$bank_details['bank']}}" style="border-color: green;" readonly>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Account Number:</label>
                         <div class="form-group">
-                            <input type="text" id="box" class="form-control" value="" style="border-color: green;" readonly>
+                            <input type="text" id="box" class="form-control" value="{{$bank_details['number']}}" style="border-color: green;" readonly>
                         </div>
                     </div>
 

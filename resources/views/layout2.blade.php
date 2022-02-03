@@ -164,12 +164,6 @@
                             </div>
                             <div class="col-6 col-lg-4">
                                 <a>
-                                    <img src="{{URL::asset('img/2.jpeg')}}" alt="Instagram">
-                                    <i class='bx bxl-instagram'></i>
-                                </a>
-                            </div>
-                            <div class="col-6 col-lg-4">
-                                <a>
                                     <img src="{{URL::asset('img/1.jpeg')}}" alt="Instagram">
                                     <i class='bx bxl-instagram'></i>
                                 </a>
@@ -180,7 +174,7 @@
                         <h3>Our Social Contact</h3>
                         <ul>
                             <li>
-                                <a href="https://www.facebook.com/" target="_blank">
+                                <a href="https://m.facebook.com/MillionairesClubNG/" target="_blank">
                                     <i class='bx bxl-facebook'></i>
                                 </a>
                             </li>
@@ -195,7 +189,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/" target="_blank">
+                                <a href="https://www.instagram.com/millionairesclubng.vip/" target="_blank">
                                     <i class='bx bxl-instagram'></i>
                                 </a>
                             </li>
@@ -248,10 +242,10 @@
                                     <a style="color: #000000 !important;" href="mailto:<?php print $email; ?>"><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce"><?php print $email; ?></span></a>
                                 </li>
                                 <li>
-                                    <a style="color: #000000 !important;" href="https://instagram.com/{{env('APP_NAME')}}global_?utm_medium=copy_link"><i style="color: #2c7920;" class='bx bxl-instagram'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Instagram</span></a>
+                                    <a style="color: #000000 !important;" href="https://www.instagram.com/millionairesclubng.vip/"><i style="color: #2c7920;" class='bx bxl-instagram'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Instagram</span></a>
                                 </li>
                                 <li>
-                                    <a style="color: #000000 !important;" href="https://m.facebook.com/{{env('APP_NAME')}}-Global-Investment-107467634964906/?tsid=0.46218908728939245&source=result"><i style="color: #2c7920;" class='bx bxl-facebook-square'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Facebook</span></a>
+                                    <a style="color: #000000 !important;" href="https://m.facebook.com/MillionairesClubNG/"><i style="color: #2c7920;" class='bx bxl-facebook-square'></i><span style="color: #000000 !important;" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c5cacdcccd8dc0ccce">Facebook</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -264,9 +258,6 @@
                             <ul>
                                 <li>
                                     <a href="about" class="text-black">About</a>
-                                </li>
-                                <li>
-                                    <a href="loan-page" class="text-black">Loan</a>
                                 </li>
                                 <li>
                                     <a href="how-it-works" class="text-black">How it works</a>

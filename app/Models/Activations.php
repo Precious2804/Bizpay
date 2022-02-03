@@ -11,6 +11,7 @@ class Activations extends Model
     protected $fillable = [
         'name',
         'email',
-        'phone'
+        'phone',
+        'proof'
     ];
 }

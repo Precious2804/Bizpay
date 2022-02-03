@@ -387,17 +387,26 @@ class MainController extends Controller
     public function payment_details(Request $req)
     {
         $page = 'payment_details';
+        $bank_details = ['bank_details'=>AdminBankDetails::where('id', 1)->first()];
         $transaction = ['transaction' => AllTransactions::where('trans_id', $req->transaction)->first()];
-        return $this->dynamicPage($page)->with($transaction);
+        return $this->dynamicPage($page)->with($transaction)->with($bank_details);
     }
 
-    public function activate_acct()
+    public function activate_acct(Request $req)
     {
         $user = User::where('email', Auth::user()->email)->first();
+        $req->validate([
+            'proof' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2048'
+        ]);
+        if ($req->file()) {
+            $name = time() . '_' . $req->proof->getClientOriginalName();
+            $filePath = $req->file('proof')->storeAs('proofs', $name, 'public');
+        }
         Activations::create([
             'name' => $user->first_name. " ". $user->last_name,
             'email' => $user->email,
-            'phone' => $user->phone
+            'phone' => $user->phone,
+            'proof'=>'/storage/' . $filePath
         ]);
         return back()->with('activate', "Your request to activate your account was sent successfully, your account wouild be activated immediately");
     }

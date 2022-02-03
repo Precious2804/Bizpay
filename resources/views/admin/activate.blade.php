@@ -21,6 +21,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone Number</th>
                                     <th scope="col">Action</th>
+                                    <th scope="col">Proof</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,6 +37,11 @@
                                     <th>
                                         <a href="/activate_now?email={{$item->email}}">
                                             <button class="btn btn-primary">Activate</button>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a href="{{$item->proof}}">
+                                            {{$item->proof}}
                                         </a>
                                     </th>
                                 </tr>

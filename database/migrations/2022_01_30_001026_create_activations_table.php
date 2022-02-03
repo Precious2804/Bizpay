@@ -18,6 +18,7 @@ class CreateActivationsTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('proof')->nullable();
             $table->timestamps();
         });
     }

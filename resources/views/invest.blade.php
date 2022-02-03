@@ -33,7 +33,12 @@
         </div>
         @endif
         @error('amount')
-        <div class="alert alert-warning">
+        <div class="alert alert-danger">
+          <span> {{$message}}</span>
+        </div>
+        @enderror
+        @error('proof')
+        <div class="alert alert-danger">
           <span> {{$message}}</span>
         </div>
         @enderror
@@ -133,8 +138,13 @@
             </div>
             <div class="card-footer">
               <p class="text-info">Endeavour to call the contact details provided above before and after the activation fee is paid</p>
-              <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <form action="{{route('activate_acct')}}">
+              <form action="{{route('activate_acct')}}" method="POST"  enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <label for="">Upload Proof</label>
+                  <input type="file" name="proof" class="form-control">
+                </div>
+                <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button class="btn btn-primary">Confirm Payment here</button>
               </form>
             </div>

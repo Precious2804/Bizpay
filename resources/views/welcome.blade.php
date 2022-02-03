@@ -79,9 +79,9 @@ $active1 = 'active';
                         <!-- <a target="_blank" href="https://youtu.be/9jzsaAyk9DY" class="video-link  mt-30"> -->
                         <div class="single-popup-wrap">
                             <div class="ht-popup-video video-button">
-                                <!-- <video width="100%" height="300" controls>
-                                        <source src="millionaire.mp4" type="video/mp4">
-                                    </video> -->
+                                <video width="100%" height="300" controls>
+                                    <source src="millionaire.mp4" type="video/mp4">
+                                </video>
                             </div>
                         </div>
                         </a>

@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="alert alert-success" style="opacity: 0.8;"><strong>Hint:</strong> Copy the account number by clicking the "Copy Account Number" button. <br> Then proceed to make your payment of your earlier requested amount to the account details provided to you. <br> <strong>Also, </strong>Endeavour to contact the account owner displayed above before and after making payments. Thank you</div>
+                    <div class="alert alert-success" style="opacity: 0.8;"><strong>Hint:</strong> Copy the account number by clicking the "Copy Account Number" button. <br> Then proceed to make your payment of your earlier requested amount to the account details provided to you. <br> <strong>Also, </strong>Endeavor to contact the customer service before and after making a deposit for confirmation.</div>
                 </div>
             </div>
         </div>

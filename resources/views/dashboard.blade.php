@@ -6,7 +6,7 @@
 
     @if(!$loggedUserInfo['acct_number'])
     <div class="alert alert-warning">
-      Note: To continue to use Bizpay, please endeavour to Update your Bank information on the platform, so as to be able to receive payment into your Bank accounts. To do this Click on "Profile" on the side bar navigation of your screen and locate "Update Bank details", to update your account. Thank you.
+      Note: To continue to use {{env('APP_NAME')}}, please endeavour to Update your Bank information on the platform, so as to be able to receive payment into your Bank accounts. To do this Click on "Profile" on the side bar navigation of your screen and locate "Update Bank details", to update your account. Thank you.
     </div>
     @endif
     @if($loggedUserInfo['isActivated'] == 0)
@@ -16,7 +16,7 @@
     @endif
 
     <div class="row ">
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
           <div class="card-statistic-4">
             <div class="align-items-center justify-content-between">
@@ -37,15 +37,15 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
           <div class="card-statistic-4">
             <div class="align-items-center justify-content-between">
               <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
-                    <h5 class="font-15">Total Investment</h5>
-                    <p class="mb-0"><span class="col-black" style="font-weight: bold;">10</span></p>
+                    <h5 class="font-15">Total Withdrawal</h5>
+                    <p class="mb-0"><span class="col-black" style="font-weight: bold;">{{$withdraw}}</span></p>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -58,28 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-statistic-4">
-            <div class="align-items-center justify-content-between">
-              <div class="row ">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                  <div class="card-content">
-                    <h5 class="font-15">Total Investment</h5>
-                    <p class="mb-0"><span class="col-black" style="font-weight: bold;">10</span></p>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                  <div class="banner-img">
-                    <img src="{{URL::asset('assets/img/banner/3.png')}}" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
           <div class="card-statistic-4">
             <div class="align-items-center justify-content-between">
@@ -87,13 +66,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
                     <h5 class="font-15">Referral Bonus</h5>
-                    @if(!$loggedUserInfo['ref_bonus'])
-                    <h2 class="mb-3 font-18">NILL</h2>
-                    @endif
-                    @if($loggedUserInfo['ref_bonus'])
-                    <h2 class="mb-3 font-18">₦{{$loggedUserInfo['ref_bonus']}}</h2>
-                    <a href="{{route('referral')}}"><button type="button" class="btn btn-block btn-success">Withdraw</button></a>
-                    @endif
+                    <h2 class="mb-3 font-18">{{$loggedUserInfo['ref_bonus']}}</h2>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">

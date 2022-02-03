@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/loan', [MainController::class, 'loan'])->name('loan');
     Route::get('/new_coupone', [MainController::class, 'newCoupone'])->name('new_coupone');
     Route::post('/re_invest', [MainController::class, 'reInvest'])->name('re_invest');
-    Route::post('/activate_acct', [MainController::class, 'activate_acct'])->name('activate_acct');
+    Route::get('/activate_acct', [MainController::class, 'activate_acct'])->name('activate_acct');
     Route::get('/do_withdraw', [MainController::class, 'doWithdraw'])->name('do_withdraw');
     Route::post('/confirm_pay', [MainController::class, 'confirmPay'])->name('confirm_pay');
     Route::post('/get_loan', [MainController::class, 'getLoan'])->name('get_loan');

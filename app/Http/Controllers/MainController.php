@@ -334,7 +334,8 @@ class MainController extends Controller
     public function dashboard()
     {
         $page = 'dashboard';
-        return $this->dynamicPage($page);
+        $withdraw = ['withdraw'=>WithdrwaRequest::where('unique_id', Auth::user()->unique_id)->count()];
+        return $this->dynamicPage($page)->with($withdraw);
     }
 
     public function invest()
@@ -358,7 +359,7 @@ class MainController extends Controller
             if ($user->no_of_invest == 0) {
                 $duration = 3;
             } else {
-                $duration = 7;
+                $duration = 14;
             }
 
             $amount = $req->amount;
@@ -390,11 +391,11 @@ class MainController extends Controller
         return $this->dynamicPage($page)->with($transaction);
     }
 
-    public function activate_acct(Request $req)
+    public function activate_acct()
     {
         $user = User::where('email', Auth::user()->email)->first();
         Activations::create([
-            'name' => $user->name,
+            'name' => $user->first_name. " ". $user->last_name,
             'email' => $user->email,
             'phone' => $user->phone
         ]);

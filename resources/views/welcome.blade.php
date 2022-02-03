@@ -27,7 +27,7 @@ $active1 = 'active';
                             </div>
                         </div>
                         <div class="banner-slider-img">
-                            <img src="{{URL::asset('img/2.jpeg')}}" alt="Banner">
+                            <img src="{{URL::asset('assets/img/banner/banner-main5.png')}}" alt="Banner">
                         </div>
                     </div>
                 </div>
@@ -75,31 +75,16 @@ $active1 = 'active';
             <div class="col-lg-6">
                 <div class="rv-video-section">
 
-                    <div class="ht-banner-01 ">
-                        <img class="img-fluid border-radus-5 animation_images one wow fadeInDown" src="{{URL::asset('img/2.jpeg')}}" alt="">
-                    </div>
-
                     <div class="main-video-box video-popup">
-                        <a target="_blank" href="https://youtu.be/9jzsaAyk9DY" class="video-link  mt-30">
+                        <!-- <a target="_blank" href="https://youtu.be/9jzsaAyk9DY" class="video-link  mt-30"> -->
                             <div class="single-popup-wrap">
-                                <img class="img-fluid border-radus-5" src="{{URL::asset('img/3.jpeg')}}" alt="">
                                 <div class="ht-popup-video video-button">
-                                    <div class="video-mark">
-                                        <div class="wave-pulse wave-pulse-1"></div>
-                                        <div class="wave-pulse wave-pulse-2"></div>
-                                    </div>
-                                    <div class="video-button__two">
-                                        <div class="video-play">
-                                            <span class="video-play-icon"></span>
-                                        </div>
-                                    </div>
+                                    <video width="400" height="300" controls>
+                                        <source src="millionaire.mp4" type="video/mp4">
+                                    </video>
                                 </div>
                             </div>
                         </a>
-                    </div>
-
-                    <div class="ht-banner-03">
-                        <img class="img-fluid border-radus-5 animation_images three wow fadeInDown" src="{{URL::asset('img/1.jpeg')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -192,12 +177,6 @@ $active1 = 'active';
                         </li>
                         <li>
                             <i class='bx bx-check'></i>
-                            <h3>No daily Tax.</h3>
-                            <p>
-                                We do not offer daily tasks to our Investors, Our sponsored ads are completely optional to share. Thus, Investing with {{env('APP_NAME')}} comes with less stress. Withdrawal is done after 30days.</p>
-                        </li>
-                        <li>
-                            <i class='bx bx-check'></i>
                             <h3>Improved customer support.</h3>
                             <p>
                                 Our group of highly trained support staffs are always available to assist you.</p>
@@ -212,7 +191,7 @@ $active1 = 'active';
                             <i class='bx bx-check'></i>
                             <h3>Affiliate Program.</h3>
                             <p>
-                                We credit you 5% Profit when you refer people and they register using your referral link. Remember that referral is optional.</p>
+                                We credit you 10% Profit when you refer people and they register using your referral link. Remember that referral is optional.</p>
                         </li>
                         <li>
                             <i class='bx bx-check'></i>

@@ -17,7 +17,7 @@ $active1 = 'active';
                         <div class="banner-content" style="margin-top: 0px;">
                             <!--<span>Your Financial Status Is Good Hands</span>-->
                             <h1 style="  color: #2c7920;">Welcome to <br><?php print $siteName; ?></h1>
-                            <p style="font-size: 14px;"><?php print $siteName; ?> Millionaires Club is a company and affiliate platform envisioned with; Real Estate Services, Investment Research, Forex and Trading Activities. This is channeled towards the growth and development of their subscribers' businesses as our major aim is to see their businesses thrive tremendously. These subscriptions are in different packages and in return over 50% On Day 3 (First withdrawal) and subsequent 14days withdrawal. Our system offers an automative payment method, No merging hassles and Quick withdrawal gateway. Why not give us a try today?
+                            <p style="font-size: 14px;"><?php print $siteName; ?>is a company and affiliate platform envisioned with; Real Estate Services, Investment Research, Forex and Trading Activities. This is channeled towards the growth and development of their subscribers' businesses as our major aim is to see their businesses thrive tremendously. These subscriptions are in different packages and in return over 50% On Day 3 (First withdrawal) and subsequent 14days withdrawal. Our system offers an automative payment method, No merging hassles and Quick withdrawal gateway. Why not give us a try today?
                                 The power to become a millionaire is in your hands.</p>
                             <div class="banner-btn-area">
                                 <a class="common-btn three" href="contact" style="background-color: #2c7920;">
@@ -77,13 +77,13 @@ $active1 = 'active';
 
                     <div class="main-video-box video-popup">
                         <!-- <a target="_blank" href="https://youtu.be/9jzsaAyk9DY" class="video-link  mt-30"> -->
-                            <div class="single-popup-wrap">
-                                <div class="ht-popup-video video-button">
-                                    <video width="400" height="300" controls>
+                        <div class="single-popup-wrap">
+                            <div class="ht-popup-video video-button">
+                                <!-- <video width="100%" height="300" controls>
                                         <source src="millionaire.mp4" type="video/mp4">
-                                    </video>
-                                </div>
+                                    </video> -->
                             </div>
+                        </div>
                         </a>
                     </div>
                 </div>
@@ -177,6 +177,12 @@ $active1 = 'active';
                         </li>
                         <li>
                             <i class='bx bx-check'></i>
+                            <h3>No daily Tax.</h3>
+                            <p>
+                                We do not offer daily tasks to our Investors, Our sponsored ads are completely optional to share. Thus, Investing with {{env('APP_NAME')}} comes with less stress. Withdrawal is done after 30days.</p>
+                        </li>
+                        <li>
+                            <i class='bx bx-check'></i>
                             <h3>Improved customer support.</h3>
                             <p>
                                 Our group of highly trained support staffs are always available to assist you.</p>
@@ -191,7 +197,7 @@ $active1 = 'active';
                             <i class='bx bx-check'></i>
                             <h3>Affiliate Program.</h3>
                             <p>
-                                We credit you 10% Profit when you refer people and they register using your referral link. Remember that referral is optional.</p>
+                                We credit you 5% Profit when you refer people and they register using your referral link. Remember that referral is optional.</p>
                         </li>
                         <li>
                             <i class='bx bx-check'></i>
